@@ -43,7 +43,7 @@ public class FPController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         originalSpeed = moveSpeed;
-        sprintSpeed = moveSpeed * 3f;
+        sprintSpeed = moveSpeed * 20f;
         startPos = _camera.localPosition;
 
     }
@@ -59,7 +59,7 @@ public class FPController : MonoBehaviour
         }
         else
         {
-            ResetPostion();
+            //ResetPostion();
         }
     }
     public void OnMove(InputAction.CallbackContext context)

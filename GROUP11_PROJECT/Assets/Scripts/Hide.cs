@@ -7,7 +7,7 @@ public class Hide : MonoBehaviour
     public GameObject hideText, stopHidingText;
     public GameObject normalPlayer, hidingPlayer;
     bool interact;
-    bool isHiding;
+    public bool isHiding;
 
     private void Awake()
     {

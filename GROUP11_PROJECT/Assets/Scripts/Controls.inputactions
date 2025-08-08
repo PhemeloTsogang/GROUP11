@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "StopHide",
+                    "type": "Button",
+                    "id": "cecf6d83-9346-4dfe-ad82-2e5e2bd1b097",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -265,12 +274,34 @@
                 },
                 {
                     "name": "",
-                    "id": "93116dcf-cb06-4e08-ac5e-c029a8eb7ffa",
+                    "id": "9ca0d032-4dbc-4c0a-8c0a-ed2657e22442",
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Hide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f14f4c9-3e9c-4031-ac57-32e55933c74f",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "StopHide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2d84dd7e-a8cb-4e13-bfa5-d102ea48b570",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "StopHide",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
