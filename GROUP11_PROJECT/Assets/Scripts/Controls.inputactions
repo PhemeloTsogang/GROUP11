@@ -40,6 +40,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "StopHide",
+                    "type": "Button",
+                    "id": "2966ea3c-489a-455a-9ec0-dcde5028bfc6",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Stun",
+                    "type": "Button",
+                    "id": "6ec6ac94-58ef-413b-bff0-d5ebcdcbf393",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -210,6 +228,28 @@
                 },
                 {
                     "name": "",
+                    "id": "819e8dad-440b-4888-af51-46e7cf86cd02",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "StopHide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b8f723f1-c40e-477f-a403-acf2f599d0dd",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "StopHide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "805cf79a-7bd7-4177-af3a-7d1555e2875d",
                     "path": "<Mouse>/delta",
                     "interactions": "",
@@ -265,12 +305,34 @@
                 },
                 {
                     "name": "",
-                    "id": "93116dcf-cb06-4e08-ac5e-c029a8eb7ffa",
+                    "id": "9ca0d032-4dbc-4c0a-8c0a-ed2657e22442",
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Hide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "02086721-1744-48a9-847d-17c2e0a1c142",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Stun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "063eacee-156c-4044-9822-3add76b32a6f",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Stun",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

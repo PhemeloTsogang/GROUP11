@@ -126,6 +126,24 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StopHide"",
+                    ""type"": ""Button"",
+                    ""id"": ""2966ea3c-489a-455a-9ec0-dcde5028bfc6"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Stun"",
+                    ""type"": ""Button"",
+                    ""id"": ""6ec6ac94-58ef-413b-bff0-d5ebcdcbf393"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -296,6 +314,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""819e8dad-440b-4888-af51-46e7cf86cd02"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""StopHide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b8f723f1-c40e-477f-a403-acf2f599d0dd"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""StopHide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""805cf79a-7bd7-4177-af3a-7d1555e2875d"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
@@ -351,12 +391,34 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""93116dcf-cb06-4e08-ac5e-c029a8eb7ffa"",
+                    ""id"": ""9ca0d032-4dbc-4c0a-8c0a-ed2657e22442"",
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
                     ""action"": ""Hide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""02086721-1744-48a9-847d-17c2e0a1c142"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Stun"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""063eacee-156c-4044-9822-3add76b32a6f"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Stun"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -399,6 +461,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Hide = m_Player.FindAction("Hide", throwIfNotFound: true);
+        m_Player_StopHide = m_Player.FindAction("StopHide", throwIfNotFound: true);
+        m_Player_Stun = m_Player.FindAction("Stun", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -483,6 +547,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Hide;
+    private readonly InputAction m_Player_StopHide;
+    private readonly InputAction m_Player_Stun;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -510,6 +576,14 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Hide".
         /// </summary>
         public InputAction @Hide => m_Wrapper.m_Player_Hide;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/StopHide".
+        /// </summary>
+        public InputAction @StopHide => m_Wrapper.m_Player_StopHide;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Stun".
+        /// </summary>
+        public InputAction @Stun => m_Wrapper.m_Player_Stun;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -548,6 +622,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Hide.started += instance.OnHide;
             @Hide.performed += instance.OnHide;
             @Hide.canceled += instance.OnHide;
+            @StopHide.started += instance.OnStopHide;
+            @StopHide.performed += instance.OnStopHide;
+            @StopHide.canceled += instance.OnStopHide;
+            @Stun.started += instance.OnStun;
+            @Stun.performed += instance.OnStun;
+            @Stun.canceled += instance.OnStun;
         }
 
         /// <summary>
@@ -571,6 +651,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Hide.started -= instance.OnHide;
             @Hide.performed -= instance.OnHide;
             @Hide.canceled -= instance.OnHide;
+            @StopHide.started -= instance.OnStopHide;
+            @StopHide.performed -= instance.OnStopHide;
+            @StopHide.canceled -= instance.OnStopHide;
+            @Stun.started -= instance.OnStun;
+            @Stun.performed -= instance.OnStun;
+            @Stun.canceled -= instance.OnStun;
         }
 
         /// <summary>
@@ -665,5 +751,19 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnHide(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "StopHide" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnStopHide(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Stun" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnStun(InputAction.CallbackContext context);
     }
 }

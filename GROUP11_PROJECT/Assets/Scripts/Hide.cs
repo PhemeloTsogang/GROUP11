@@ -7,18 +7,30 @@ public class Hide : MonoBehaviour
     public GameObject hideText, stopHidingText;
     public GameObject normalPlayer, hidingPlayer;
     bool interact;
-    bool isHiding;
+    public bool isHiding;
+    private bool isUsed;
+
+    //monster settings
+    public EnemyAI monsterScript;
+    public Transform monster;
+    public float loseDistance;
 
     private void Awake()
     {
         controller = GetComponent<CharacterController>();   
         interact = false;
         isHiding = false;
+        isUsed = false;
 
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (isUsed)
+        {
+            return;
+        }
+
         if (other.CompareTag("MainCamera"))
         {
             hideText.SetActive(true);
@@ -37,6 +49,11 @@ public class Hide : MonoBehaviour
 
     public void onHide(InputAction.CallbackContext context)
     { 
+        if (isUsed)
+        {
+            return;
+        }
+
         if (interact == true)
         {
             if (context.performed)
@@ -47,6 +64,7 @@ public class Hide : MonoBehaviour
                 isHiding = true;
                 normalPlayer.SetActive(false);
                 interact = false;
+                isUsed = true;
             }
         }
     }
@@ -61,6 +79,21 @@ public class Hide : MonoBehaviour
                 normalPlayer.SetActive(true);
                 hidingPlayer.SetActive(false);
                 isHiding = false;
+            }
+        }
+    }
+
+    private void Update()
+    {
+        float distance = Vector3.Distance(monster.position, normalPlayer.transform.position);
+        if (isHiding)
+        {
+            if (loseDistance > distance)
+            {
+                if (monsterScript.isChasing)
+                {
+                    StartCoroutine(monsterScript.stopChase());
+                }
             }
         }
     }
