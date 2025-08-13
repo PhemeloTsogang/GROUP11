@@ -36,6 +36,9 @@ public class FPController : MonoBehaviour
     private Vector2 lookInput;
     private Vector3 velocity;
     private float verticalRotation = 0f;
+    private float hidingYRotation = 0f;
+    public float hidingLookLimit = 45f;
+    public Hide player;
 
     private void Awake()
     {
@@ -43,7 +46,7 @@ public class FPController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         originalSpeed = moveSpeed;
-        sprintSpeed = moveSpeed * 20f;
+        sprintSpeed = moveSpeed * 2f;
         startPos = _camera.localPosition;
 
     }
@@ -122,10 +125,22 @@ public class FPController : MonoBehaviour
         float mouseX = lookInput.x * lookSensitivity;
         float mouseY = lookInput.y * lookSensitivity;
 
-        verticalRotation -= mouseY;
-        verticalRotation = Mathf.Clamp(verticalRotation, -verticalLookLimit, verticalLookLimit);
+        if (player.isHiding)
+        {
+            transform.Rotate(Vector3.up * mouseX);
+            hidingYRotation += mouseX;
+            hidingYRotation = Mathf.Clamp(hidingYRotation, -hidingLookLimit, hidingLookLimit);
 
-        cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
-        transform.Rotate(Vector3.up * mouseX);
+            Quaternion lockerRotation = Quaternion.Euler(0f, hidingYRotation, 0f);
+            transform.localRotation = lockerRotation;
+        }
+        else
+        {
+            verticalRotation -= mouseY;
+            verticalRotation = Mathf.Clamp(verticalRotation, -verticalLookLimit, verticalLookLimit);
+
+            cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
+            transform.Rotate(Vector3.up * mouseX);
+        }
     }
 }
