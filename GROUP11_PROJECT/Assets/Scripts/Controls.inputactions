@@ -367,11 +367,33 @@
                 },
                 {
                     "name": "",
+                    "id": "1bd8e8e6-d000-4063-89c5-28d965559c47",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Tutorial",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "13e9e619-0bff-401d-af90-cde4c544b6fe",
                     "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard",
+                    "action": "NextPage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ad5d1dd5-2126-4005-b8d2-941c7a48214c",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "NextPage",
                     "isComposite": false,
                     "isPartOfComposite": false

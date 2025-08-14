@@ -1,8 +1,10 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using static UnityEngine.InputSystem.InputAction;
 
 
 public class DialogueManager : MonoBehaviour
@@ -16,10 +18,9 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<string>();
-        Cursor.visible = true;
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue( Dialogue dialogue)
     {
         animator.SetBool("IsOpen", true);
         Debug.Log("starting conversation with " + dialogue.name);
@@ -36,16 +37,27 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
     }
 
-    public void DisplayNextSentence ()
+    public void NextPage(CallbackContext context)
     {
-        if (sentences.Count == 0)
+        if (context.performed)
         {
-            EndDialogue();
-            return;
+            DisplayNextSentence();
         }
+}
 
-        string sentence = sentences.Dequeue();
-        dialogueText.text = sentence;
+    public void DisplayNextSentence()
+    {
+            if (sentences.Count == 0)
+            {
+                EndDialogue();
+                return;
+            }
+
+            string sentence = sentences.Dequeue();
+            dialogueText.text = sentence;
+            Debug.Log(sentence);
+        
+
     }
     void EndDialogue()
     {

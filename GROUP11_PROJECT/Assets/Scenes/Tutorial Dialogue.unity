@@ -1926,8 +1926,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 535483334}
         m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-        m_MethodName: DisplayNextSentence
-        m_Mode: 1
+        m_MethodName: NextPage
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1975,17 +1975,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 964902213}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03dc01c404a2be044aa0a1bef530ffc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: Tutotrial
+    name: Tutorial
     sentences:
-    - Sentence1
-    - Sentence2
-    - Sentence3
+    - '"W A S D" Keys to move
+
+      "Mouse" To look around'
+    - '"E" To Hide in Lockers
+
+      "Q" To Exit Lockers'
+    - Evade/ Hide from the monster!
 --- !u!1 &1063465736
 GameObject:
   m_ObjectHideFlags: 0
