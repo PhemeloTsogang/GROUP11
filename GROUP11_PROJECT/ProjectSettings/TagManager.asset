@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Monster
+  - Vent
+  - Locker
   layers:
   - Default
   - TransparentFX
@@ -12,7 +14,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - IgnoreRaycastTrigger
   - 
   - 
   - 

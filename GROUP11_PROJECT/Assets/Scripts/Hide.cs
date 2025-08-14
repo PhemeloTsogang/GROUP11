@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class Hide : MonoBehaviour
 {
     private CharacterController controller;
-    public GameObject hideText, stopHidingText;
+    public GameObject hideText, stopHidingText, stopHidingVentText, blackScreen;
     public GameObject normalPlayer, hidingPlayer;
     bool interact;
     public bool isHiding;
@@ -13,7 +13,6 @@ public class Hide : MonoBehaviour
     //monster settings
     public EnemyAI monsterScript;
     public Transform monster;
-    public float loseDistance;
 
     private void Awake()
     {
@@ -58,13 +57,33 @@ public class Hide : MonoBehaviour
         {
             if (context.performed)
             {
+                if (monsterScript.currentState == EnemyAI.AIState.Chasing)
+                {
+                    monsterScript.StopChase();
+                }
+
                 hideText.SetActive(false);
                 hidingPlayer.SetActive(true);
+
+                if(this.gameObject.CompareTag("Vent"))
+                {
+                    stopHidingVentText.SetActive(true);
+                    blackScreen.SetActive(true);
+                }
+
                 stopHidingText.SetActive(true);
                 isHiding = true;
                 normalPlayer.SetActive(false);
                 interact = false;
-                isUsed = true;
+
+                if (this.gameObject.CompareTag("Locker")) //makes only the lockers a one time use, not the vents.
+                {
+                    isUsed = true;
+                }
+                else
+                {
+                    isUsed = false;
+                }
             }
         }
     }
@@ -76,24 +95,16 @@ public class Hide : MonoBehaviour
             if(context.performed)
             {
                 stopHidingText.SetActive(false);
+
+                if (this.gameObject.CompareTag("Vent"))
+                {
+                    stopHidingVentText.SetActive(false);
+                    blackScreen.SetActive(false);
+                }
+
                 normalPlayer.SetActive(true);
                 hidingPlayer.SetActive(false);
                 isHiding = false;
-            }
-        }
-    }
-
-    private void Update()
-    {
-        float distance = Vector3.Distance(monster.position, normalPlayer.transform.position);
-        if (isHiding)
-        {
-            if (loseDistance > distance)
-            {
-                if (monsterScript.isChasing)
-                {
-                    StartCoroutine(monsterScript.stopChase());
-                }
             }
         }
     }

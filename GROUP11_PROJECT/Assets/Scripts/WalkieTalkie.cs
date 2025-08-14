@@ -6,16 +6,17 @@ public class WalkieTalkie : MonoBehaviour
     public bool inStunRange;
     public EnemyAI monster;
     public float batteryCount;
+    public Hide lockerPlayer, ventPlayer;
 
     private void Awake()
     {
         inStunRange = false;
-        batteryCount = 0;
+        batteryCount = 1;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Monster"))
+        if (other.CompareTag("Monster") && !lockerPlayer.isHiding && !ventPlayer.isHiding) //check this
         {
             inStunRange = true;
         }
@@ -24,7 +25,7 @@ public class WalkieTalkie : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Monster"))
+        if (other.CompareTag("Monster") && !lockerPlayer.isHiding && !ventPlayer.isHiding)
         {
             inStunRange = false;
         }
