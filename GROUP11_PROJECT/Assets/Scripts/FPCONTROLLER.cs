@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static EnemyAI;
 
 
 
@@ -35,7 +36,7 @@ public class FPController : MonoBehaviour
     public float batteryCount = 0;
     public EnemyAI monster;
     public StunFlash flash;
-    public GameObject stunText;
+    public GameObject stunText,normalPlayer;
 
 
     [Header("General Settings")]
@@ -77,6 +78,13 @@ public class FPController : MonoBehaviour
         {
             batteryCount = battery.batteryCount;
         }
+
+        if (!normalPlayer.activeInHierarchy)
+        {
+            monster.ai.isStopped = false;
+        }
+
+        Debug.Log(monster.ai.isStopped);
        
     }
     public void OnMove(InputAction.CallbackContext context)

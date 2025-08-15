@@ -19,7 +19,7 @@ public class EnemyAI : MonoBehaviour
     public LayerMask raycastLayerMask;
 
     private Transform currDestination;
-    private Vector3 dest;
+    private Vector3 dest; 
 
     private void Awake()
     {
@@ -130,5 +130,6 @@ public class EnemyAI : MonoBehaviour
         int random = Random.Range(0, destinationAmount);
         currDestination = destinations[random];
         currentState = AIState.Walking;
+
     }
 }
