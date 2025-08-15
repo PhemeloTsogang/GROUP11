@@ -40,7 +40,7 @@ public class DialogueManager : MonoBehaviour
         {
             DisplayNextSentence();
         }
-}
+    }
 
     public void DisplayNextSentence()
     {
@@ -52,13 +52,9 @@ public class DialogueManager : MonoBehaviour
 
             string sentence = sentences.Dequeue();
             dialogueText.text = sentence;
-            Debug.Log(sentence);
-        
-
     }
     void EndDialogue()
     {
         animator.SetBool("IsOpen", false);
     }
-    
 }
