@@ -7,6 +7,8 @@ TagManager:
   - Monster
   - Vent
   - Locker
+  - Detect
+  - Battery
   layers:
   - Default
   - TransparentFX

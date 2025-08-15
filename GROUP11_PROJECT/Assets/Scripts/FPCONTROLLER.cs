@@ -18,9 +18,9 @@ public class FPController : MonoBehaviour
     [Header("Sprint Settings")]
     public float originalSpeed;
     public float sprintSpeed;
-    //initializers for head bob movement while running
     private bool isSprinting = false;
 
+    [Header("Head Bob Settings")]
     public float amplitutde = 0.015f;
     private float frequency = 10.0f;
 
@@ -28,9 +28,17 @@ public class FPController : MonoBehaviour
     public Transform cameraHolder;
 
     private Vector3 startPos;
-    //
+
+    [Header("Stun Settings")]
+    public WalkieTalkie stun;
+    public CollectBattery battery;
+    public float batteryCount = 0;
+    public EnemyAI monster;
+    public StunFlash flash;
+    public GameObject stunText;
 
 
+    [Header("General Settings")]
     private CharacterController controller;
     private Vector2 moveInput;
     private Vector2 lookInput;
@@ -64,6 +72,8 @@ public class FPController : MonoBehaviour
         {
             //ResetPostion();
         }
+
+        batteryCount = battery.batteryCount;
     }
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -106,6 +116,18 @@ public class FPController : MonoBehaviour
         }
 
         _camera.localPosition = Vector3.Lerp(_camera.localPosition, startPos, 5f * Time.deltaTime);
+    }
+
+    public void onStun(InputAction.CallbackContext context)
+    {
+        if (context.performed && stun.inStunRange && battery.batteryCount == 1)
+        {
+            stunText.SetActive(false);
+            Debug.Log("STUNNED!!!");
+            StartCoroutine(monster.Stun());
+            StartCoroutine(flash.Flash());  
+            battery.batteryCount -= 1;
+        }
     }
 
     public void HandleMovement()

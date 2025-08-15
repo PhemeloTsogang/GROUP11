@@ -80,9 +80,6 @@ public class EnemyAI : MonoBehaviour
                 // Do nothing while idle — the coroutine will transition to Walking
                 break;
         }
-
-        // Optional: log current state for debugging
-        Debug.Log($"AI State: {currentState}");
     }
 
     IEnumerator Idle()
@@ -114,10 +111,22 @@ public class EnemyAI : MonoBehaviour
         SceneManager.LoadScene("MainScene");
     }
 
-    // Optional public method to force stop chasing (if used externally)
     public void StopChase()
     {
         StopAllCoroutines();
+        int random = Random.Range(0, destinationAmount);
+        currDestination = destinations[random];
+        currentState = AIState.Walking;
+    }
+
+    public IEnumerator Stun()
+    {
+        ai.isStopped = true;
+        currentState = AIState.Idle; //my monster is stopped
+
+        yield return new WaitForSeconds(3f);
+
+        ai.isStopped = false;
         int random = Random.Range(0, destinationAmount);
         currDestination = destinations[random];
         currentState = AIState.Walking;
