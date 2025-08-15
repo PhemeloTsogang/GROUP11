@@ -1,41 +1,46 @@
+using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static EnemyAI;
 
 public class WalkieTalkie : MonoBehaviour
 {
+    public float stunRange;
     public bool inStunRange;
-    public EnemyAI monster;
-    public float batteryCount;
+    public Transform monster, player;
+    public LayerMask ignore;
+    public GameObject stunText;
 
     private void Awake()
     {
         inStunRange = false;
-        batteryCount = 0;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Monster"))
+    private void Update()
+     {
+        Vector3 direction = (player.transform.position - monster.position).normalized;
+        Ray ray = new Ray(monster.position, direction);
+        RaycastHit hit;
+
+        // If the ray hits something
+        if (Physics.Raycast(ray, out hit, stunRange, ignore))
         {
-            inStunRange = true;
+            if(hit.collider.CompareTag("Player"))
+            {
+                inStunRange = true;
+                stunText.SetActive(true);
+                
+            }
+            else
+            {
+                inStunRange = false;
+                stunText.SetActive(false);
+            }
         }
-
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Monster"))
+        else
         {
             inStunRange = false;
-        }
-    }
-
-    public void onStun(InputAction.CallbackContext context)
-    {
-        if (inStunRange && context.performed && batteryCount >= 1)
-        {
-            Debug.Log("STUNNED!");
-            //code to stun monster
+            stunText.SetActive(false);
         }
     }
 }

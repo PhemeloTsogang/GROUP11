@@ -2,29 +2,29 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.AI;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class EnemyAI : MonoBehaviour
 {
+    public enum AIState { Idle, Walking, Chasing }
+    public AIState currentState;
+
     public NavMeshAgent ai;
     public List<Transform> destinations;
     public float idleTime, walkSpeed, chaseSpeed, detectDistance, caughtDist;
-    public float chasetime, minChasetime, maxChasetime; 
-    public bool isWalking, isChasing, isIdle;
+    public float minChasetime, maxChasetime;
     public Transform player;
-    private Transform currDestination;
-    private Vector3 dest;
-    private int random, random2;
     public int destinationAmount;
     public Vector3 rayCastOffset;
-    public float aiDistance;
+    public LayerMask raycastLayerMask;
+
+    private Transform currDestination;
+    private Vector3 dest;
 
     private void Awake()
     {
-        isWalking = true;
-        isIdle = false;
-        random = Random.Range(0, destinationAmount);
+        currentState = AIState.Walking;
+        int random = Random.Range(0, destinationAmount);
         currDestination = destinations[random];
     }
 
@@ -32,75 +32,77 @@ public class EnemyAI : MonoBehaviour
     {
         Vector3 direction = (player.position - transform.position).normalized;
         RaycastHit hit;
-        aiDistance = Vector3.Distance(player.position, this.transform.position);
-        
-        if (Physics.Raycast(transform.position + rayCastOffset,direction, out hit, detectDistance))
+
+        // Player detection only if not already chasing
+        if (currentState != AIState.Chasing)
         {
-            if(hit.collider.CompareTag("Player"))
+            if (Physics.Raycast(transform.position + rayCastOffset, direction, out hit, detectDistance, raycastLayerMask))
             {
-                isWalking = false;
-                StopCoroutine(Idle());
-                StartCoroutine(Chase());
-                isChasing = true;
-            }
-        }
-
-        if (isChasing)
-        {
-            dest = player.position;
-            ai.destination = dest;
-            ai.speed = chaseSpeed;
-
-            if (aiDistance <= caughtDist)
-            {
-                player.gameObject.SetActive(false);
-                StartCoroutine(Dead());
-                isChasing = false;
-            }
-        }
-
-        if(isWalking)
-        {
-            dest = currDestination.position;
-            ai.destination = dest;
-            ai.speed = walkSpeed;
-
-            if (ai.remainingDistance <= ai.stoppingDistance & !isIdle)
-            {
-                random2 = Random.Range(0, 2);   
-                if (random2 == 0 )
+                if (hit.collider.CompareTag("Player"))
                 {
-                    random = Random.Range(0, destinationAmount);
-                    currDestination = destinations[random];
+                    StopAllCoroutines();
+                    StartCoroutine(Chase());
+                    currentState = AIState.Chasing;
                 }
-                else
+            }
+        }
+
+        switch (currentState)
+        {
+            case AIState.Chasing:
+                ai.destination = player.position;
+                ai.speed = chaseSpeed;
+
+                float distance = Vector3.Distance(player.position, ai.transform.position);
+                if (distance <= caughtDist)
+                {
+                    player.gameObject.SetActive(false);
+                    StopAllCoroutines();
+                    StartCoroutine(Dead());
+                    currentState = AIState.Idle;
+                }
+                break;
+
+            case AIState.Walking:
+                ai.destination = currDestination.position;
+                ai.speed = walkSpeed;
+
+                if (ai.remainingDistance <= ai.stoppingDistance)
                 {
                     ai.speed = 0;
-                    isWalking = false;
-                    isIdle = true;
+                    StopAllCoroutines();
                     StartCoroutine(Idle());
+                    currentState = AIState.Idle;
                 }
-            }
+                break;
+
+            case AIState.Idle:
+                // Do nothing while idle — the coroutine will transition to Walking
+                break;
         }
     }
 
     IEnumerator Idle()
     {
         yield return new WaitForSeconds(idleTime);
-        isWalking = true;
-        isIdle = false;
-        random = Random.Range(0, destinationAmount);
+
+        int random = Random.Range(0, destinationAmount);
         currDestination = destinations[random];
+        currentState = AIState.Walking;
     }
 
     IEnumerator Chase()
     {
-        chasetime = Random.Range(minChasetime, maxChasetime);
-        yield return new WaitForSeconds(chasetime);
-        isWalking = true;
-        isChasing = false;
-        random = Random.Range(0, destinationAmount);
-        currDestination = destinations[random];
+        float chaseTime = Random.Range(minChasetime, maxChasetime);
+        yield return new WaitForSeconds(chaseTime);
+
+        // Only go back to patrol if player wasn't caught
+        if (currentState == AIState.Chasing)
+        {
+            int random = Random.Range(0, destinationAmount);
+            currDestination = destinations[random];
+            currentState = AIState.Walking;
+        }
     }
 
     IEnumerator Dead()
@@ -109,13 +111,24 @@ public class EnemyAI : MonoBehaviour
         SceneManager.LoadScene("MainScene");
     }
 
-    public IEnumerator stopChase()
+    public void StopChase()
     {
-        yield return new WaitForSeconds(3);
-        isWalking = true;
-        isChasing = false;
-        StopCoroutine(Chase());
-        random = Random.Range(0, destinationAmount);
+        StopAllCoroutines();
+        int random = Random.Range(0, destinationAmount);
         currDestination = destinations[random];
+        currentState = AIState.Walking;
+    }
+
+    public IEnumerator Stun()
+    {
+        ai.isStopped = true;
+        currentState = AIState.Idle; //my monster is stopped
+
+        yield return new WaitForSeconds(3f);
+
+        ai.isStopped = false;
+        int random = Random.Range(0, destinationAmount);
+        currDestination = destinations[random];
+        currentState = AIState.Walking;
     }
 }
