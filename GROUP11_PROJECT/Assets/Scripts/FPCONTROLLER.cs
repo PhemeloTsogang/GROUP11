@@ -73,7 +73,11 @@ public class FPController : MonoBehaviour
             //ResetPostion();
         }
 
-        batteryCount = battery.batteryCount;
+        if (this.gameObject.activeInHierarchy)
+        {
+            batteryCount = battery.batteryCount;
+        }
+       
     }
     public void OnMove(InputAction.CallbackContext context)
     {
