@@ -51952,11 +51952,22 @@ MonoBehaviour:
   dialogue:
     name: Tutorial
     sentences:
-    - '[W] [A] [S] [D] Keys to move
+    - '[W] [A] [S] [D] Keys / (Left Stick) to move
 
-      [Mouse] To look around'
-    - Hold [Shift] to run
-    - Evade/ Hide from the monster!
+      [Mouse] / (Right Stick)
+      To look around'
+    - Hold [Shift] / (Left Stick Click) to Sprint
+    - '[E] / (Y) to enter lockers or vents
+
+      [Q] / (B) to stop hiding'
+    - '[Space] / (X) to stun the monster'
+    - '[B] / (X) to pick up items
+
+'
+    - 'The walkie talkie requires batteries to stun the monster
+
+'
+    - Collect key parts to escape while evading the monster
 --- !u!114 &964902224
 MonoBehaviour:
   m_ObjectHideFlags: 0
