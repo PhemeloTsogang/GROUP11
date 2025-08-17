@@ -18,14 +18,22 @@ public class EnemyAI : MonoBehaviour
     public Vector3 rayCastOffset;
     public LayerMask raycastLayerMask;
 
+
     private Transform currDestination;
-    private Vector3 dest; 
+    private Vector3 dest;
+
+    //Attack settings
+    public Attack cameraShake;
+    public float attackCooldown = 2f;
+    private bool canAttack;
+    public PlayerHealth health;
 
     private void Awake()
     {
         currentState = AIState.Walking;
         int random = Random.Range(0, destinationAmount);
         currDestination = destinations[random];
+        canAttack = true;
     }
 
     private void Update()
@@ -33,7 +41,6 @@ public class EnemyAI : MonoBehaviour
         Vector3 direction = (player.position - transform.position).normalized;
         RaycastHit hit;
 
-        // Player detection only if not already chasing
         if (currentState != AIState.Chasing)
         {
             if (Physics.Raycast(transform.position + rayCastOffset, direction, out hit, detectDistance, raycastLayerMask))
@@ -54,12 +61,17 @@ public class EnemyAI : MonoBehaviour
                 ai.speed = chaseSpeed;
 
                 float distance = Vector3.Distance(player.position, ai.transform.position);
-                if (distance <= caughtDist)
+                if (distance <= caughtDist && canAttack )
                 {
-                    player.gameObject.SetActive(false);
-                    StopAllCoroutines();
-                    StartCoroutine(Dead());
-                    currentState = AIState.Idle;
+                    if (health.health <= 0)
+                    {
+                        player.gameObject.SetActive(false);
+                        StopAllCoroutines();
+                        StartCoroutine(Dead());
+                        currentState = AIState.Idle;
+                        return;
+                    }
+                    StartCoroutine(EnemyAttack());
                 }
                 break;
 
@@ -77,7 +89,6 @@ public class EnemyAI : MonoBehaviour
                 break;
 
             case AIState.Idle:
-                // Do nothing while idle — the coroutine will transition to Walking
                 break;
         }
     }
@@ -130,6 +141,22 @@ public class EnemyAI : MonoBehaviour
         int random = Random.Range(0, destinationAmount);
         currDestination = destinations[random];
         currentState = AIState.Walking;
+
+    }
+
+    private IEnumerator EnemyAttack()
+    {
+        canAttack = false;
+        ai.isStopped = true;
+
+  
+        yield return StartCoroutine(cameraShake.Shake(0.15f, 0.4f));
+        yield return new WaitForSeconds(attackCooldown);
+
+        ai.isStopped = false;
+
+        canAttack = true;
+        health.health--;
 
     }
 }

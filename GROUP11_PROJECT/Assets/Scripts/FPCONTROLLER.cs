@@ -37,6 +37,15 @@ public class FPController : MonoBehaviour
     public EnemyAI monster;
     public StunFlash flash;
     public GameObject stunText,normalPlayer;
+    public BatteryUI batteryUI;
+
+
+    [Header("KeyPart Settings")]
+    public CollectPart part;
+    public float keyPartCount;
+
+    [Header("KeyPart Settings")]
+    public OpenDoor door;
 
 
     [Header("General Settings")]
@@ -57,6 +66,8 @@ public class FPController : MonoBehaviour
         originalSpeed = moveSpeed;
         sprintSpeed = moveSpeed * 2f;
         startPos = _camera.localPosition;
+        batteryCount = 0;
+        keyPartCount = 0;
 
     }
 
@@ -74,17 +85,12 @@ public class FPController : MonoBehaviour
             //ResetPostion();
         }
 
-        if (this.gameObject.activeInHierarchy)
-        {
-            batteryCount = battery.batteryCount;
-        }
 
         if (!normalPlayer.activeInHierarchy)
         {
             monster.ai.isStopped = false;
         }
 
-        Debug.Log(monster.ai.isStopped);
        
     }
     public void OnMove(InputAction.CallbackContext context)
@@ -130,15 +136,59 @@ public class FPController : MonoBehaviour
         _camera.localPosition = Vector3.Lerp(_camera.localPosition, startPos, 5f * Time.deltaTime);
     }
 
+    public void onCollectBat(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (battery != null && battery.inCollectRange && batteryCount < 1)
+            {
+                battery.Collect();
+                battery = null;
+            }
+        }
+    }
+
+    public void AddBattery()
+    {
+        batteryCount++;
+    }
+
+    public void onCollectKeyPart(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (part != null && part.inCollectRange)
+            {
+                part.Collect();
+                part = null;
+            }
+        }
+    }
+
+    public void AddPart()
+    {
+        keyPartCount++;
+    }
+
     public void onStun(InputAction.CallbackContext context)
     {
-        if (context.performed && stun.inStunRange && battery.batteryCount == 1)
+        if (context.performed && stun.inStunRange && batteryCount == 1)
         {
-            stunText.SetActive(false);
-            Debug.Log("STUNNED!!!");
             StartCoroutine(monster.Stun());
-            StartCoroutine(flash.Flash());  
-            battery.batteryCount -= 1;
+            StartCoroutine(flash.Flash());
+            batteryCount--;
+            batteryUI.UpdateUI(batteryCount);
+
+        }
+
+        stunText.SetActive(false);
+    }
+
+    public void onOpen(InputAction.CallbackContext context)
+    {
+        if (context.performed && door.canOpen)
+        {
+            door.Open();
         }
     }
 
