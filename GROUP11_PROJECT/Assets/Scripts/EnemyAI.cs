@@ -22,11 +22,13 @@ public class EnemyAI : MonoBehaviour
     private Transform currDestination;
     private Vector3 dest;
 
+
     //Attack settings
     public Attack cameraShake;
     public float attackCooldown = 2f;
     private bool canAttack;
     public PlayerHealth health;
+    public Hide hide;
 
     private void Awake()
     {
@@ -45,7 +47,7 @@ public class EnemyAI : MonoBehaviour
         {
             if (Physics.Raycast(transform.position + rayCastOffset, direction, out hit, detectDistance, raycastLayerMask))
             {
-                if (hit.collider.CompareTag("Player"))
+                if (hit.collider.CompareTag("Player") && !hide.isHiding)
                 {
                     StopAllCoroutines();
                     StartCoroutine(Chase());
@@ -61,7 +63,7 @@ public class EnemyAI : MonoBehaviour
                 ai.speed = chaseSpeed;
 
                 float distance = Vector3.Distance(player.position, ai.transform.position);
-                if (distance <= caughtDist && canAttack )
+                if (distance <= caughtDist && canAttack && !hide.isHiding )
                 {
                     if (health.health <= 0)
                     {

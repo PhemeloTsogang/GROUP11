@@ -15,6 +15,7 @@ public class FPController : MonoBehaviour
     public Transform cameraTransform;
     public float lookSensitivity = 2f;
     public float verticalLookLimit = 90f;
+    public float peekLimit = 180f;
 
     [Header("Sprint Settings")]
     public float originalSpeed;
@@ -49,14 +50,14 @@ public class FPController : MonoBehaviour
 
 
     [Header("General Settings")]
-    private CharacterController controller;
+    public CharacterController controller;
     private Vector2 moveInput;
     private Vector2 lookInput;
     private Vector3 velocity;
     private float verticalRotation = 0f;
-    private float hidingYRotation = 0f;
+    public float hidingYRotation = 0f;
     public float hidingLookLimit = 45f;
-    public Hide player;
+  
 
     private void Awake()
     {
@@ -73,7 +74,11 @@ public class FPController : MonoBehaviour
 
     private void Update()
     {
-        HandleMovement();
+        if (controller.enabled)
+        {
+            HandleMovement();
+        }
+
         HandleLook();
 
         if (isSprinting && controller.isGrounded && moveInput != Vector2.zero)
@@ -209,22 +214,10 @@ public class FPController : MonoBehaviour
         float mouseX = lookInput.x * lookSensitivity;
         float mouseY = lookInput.y * lookSensitivity;
 
-        if (player.isHiding)
-        {
-            transform.Rotate(Vector3.up * mouseX);
-            hidingYRotation += mouseX;
-            hidingYRotation = Mathf.Clamp(hidingYRotation, -hidingLookLimit, hidingLookLimit);
+        verticalRotation -= mouseY;
+        verticalRotation = Mathf.Clamp(verticalRotation, -verticalLookLimit, verticalLookLimit);
+        cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
+        transform.Rotate(Vector3.up * mouseX);
 
-            Quaternion lockerRotation = Quaternion.Euler(0f, hidingYRotation, 0f);
-            transform.localRotation = lockerRotation;
-        }
-        else
-        {
-            verticalRotation -= mouseY;
-            verticalRotation = Mathf.Clamp(verticalRotation, -verticalLookLimit, verticalLookLimit);
-
-            cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
-            transform.Rotate(Vector3.up * mouseX);
-        }
     }
 }
