@@ -716,6 +716,9 @@ MonoBehaviour:
   raycastLayerMask:
     serializedVersion: 2
     m_Bits: 1
+  cameraShake: {fileID: 0}
+  attackCooldown: 2
+  health: {fileID: 0}
 --- !u!114 &243404454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -736,6 +739,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 55
   stunText: {fileID: 8367101}
+  batteryCount: {fileID: 0}
 --- !u!1 &310466187
 GameObject:
   m_ObjectHideFlags: 0
@@ -2209,6 +2213,11 @@ MonoBehaviour:
   monster: {fileID: 243404453}
   flash: {fileID: 964902222}
   stunText: {fileID: 8367101}
+  normalPlayer: {fileID: 964902213}
+  batteryUI: {fileID: 0}
+  part: {fileID: 0}
+  keyPartCount: 0
+  door: {fileID: 0}
   hidingLookLimit: 45
   player: {fileID: 46257492}
 --- !u!114 &964902219
@@ -2332,6 +2341,26 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6ec6ac94-58ef-413b-bff0-d5ebcdcbf393
     m_ActionName: 'Player/Stun[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 597918d7-46ab-459f-8d91-faad78f8f83c
+    m_ActionName: 'Player/Tutorial[/Keyboard/t,/DualSenseGamepadHID/select]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d04ce04c-54c9-48bd-8541-b613778d110b
+    m_ActionName: 'Player/NextPage[/Keyboard/enter,/DualSenseGamepadHID/buttonSouth]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e7b8a715-cf95-437a-b866-6d47763df570
+    m_ActionName: 'Player/CollectBat[/Keyboard/b,/DualSenseGamepadHID/buttonWest]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4c14a4ff-7769-4df6-831a-44c9d3f8981c
+    m_ActionName: 'Player/CollectPart[/Keyboard/b,/DualSenseGamepadHID/buttonWest]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d2cbb124-a265-4e79-98d4-63f658be50e7
+    m_ActionName: 'Player/Open[/DualSenseGamepadHID/buttonNorth,/Keyboard/e]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -2374,8 +2403,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e165153407a7ef48ba56900e361adb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batteryCount: 0
-  battery: {fileID: 964902218}
+  player: {fileID: 0}
+  pickUpText: {fileID: 0}
+  battery: {fileID: 0}
+  inCollectRange: 0
 --- !u!114 &964902222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2635,6 +2666,11 @@ MonoBehaviour:
   monster: {fileID: 243404453}
   flash: {fileID: 964902222}
   stunText: {fileID: 1387774446}
+  normalPlayer: {fileID: 0}
+  batteryUI: {fileID: 0}
+  part: {fileID: 0}
+  keyPartCount: 0
+  door: {fileID: 0}
   hidingLookLimit: 50
   player: {fileID: 46257492}
 --- !u!1 &1073233878
@@ -3335,6 +3371,11 @@ MonoBehaviour:
   monster: {fileID: 243404453}
   flash: {fileID: 964902222}
   stunText: {fileID: 1387774446}
+  normalPlayer: {fileID: 0}
+  batteryUI: {fileID: 0}
+  part: {fileID: 0}
+  keyPartCount: 0
+  door: {fileID: 0}
   hidingLookLimit: 50
   player: {fileID: 46257492}
 --- !u!114 &1365233792

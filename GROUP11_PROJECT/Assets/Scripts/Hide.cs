@@ -1,14 +1,22 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Hide : MonoBehaviour
 {
-    private CharacterController controller;
-    public GameObject hideText, stopHidingText, stopHidingVentText, blackScreen;
-    public GameObject normalPlayer, hidingPlayer;
+    public GameObject hideText, stopHidingText, stopHidingVentText, blackScreen, player;
     bool interact;
     public bool isHiding;
     private bool isUsed;
+
+    public FPController fpController;
+    public Transform cameraHolder;
+    public MeshRenderer playerMesh;
+    public Collider playerCollider;
+    private Vector3 originalCameraPosition;
+    private Quaternion originalCameraRotation;
+    public Transform hideSpot;
+    public bool isVent;
+    public bool isLocker;
 
     //monster settings
     public EnemyAI monsterScript;
@@ -16,10 +24,11 @@ public class Hide : MonoBehaviour
 
     private void Awake()
     {
-        controller = GetComponent<CharacterController>();   
         interact = false;
         isHiding = false;
         isUsed = false;
+        isLocker = false;
+        isVent = false;
 
     }
 
@@ -56,16 +65,15 @@ public class Hide : MonoBehaviour
         if (interact == true)
         {
             if (context.performed)
-            {
+            {  
                 if (monsterScript.currentState == EnemyAI.AIState.Chasing)
                 {
                     monsterScript.StopChase();
                 }
 
                 hideText.SetActive(false);
-                hidingPlayer.SetActive(true);
 
-                if(this.gameObject.CompareTag("Vent"))
+                if (this.gameObject.CompareTag("Vent"))
                 {
                     stopHidingVentText.SetActive(true);
                     blackScreen.SetActive(true);
@@ -73,15 +81,39 @@ public class Hide : MonoBehaviour
 
                 stopHidingText.SetActive(true);
                 isHiding = true;
-                normalPlayer.SetActive(false);
+
+                originalCameraPosition = cameraHolder.position;
+                originalCameraRotation = cameraHolder.rotation;
+
+                if (playerMesh != null)
+                {
+                    playerMesh.enabled = false;
+                }
+
+                if (playerCollider != null)
+                {
+                    playerCollider.enabled = false;
+                }
+
+                fpController.controller.enabled = false;
+                //fpController.hidingYRotation = 0;
+
+                if (hideSpot != null)
+                {
+                    cameraHolder.position = hideSpot.position;
+                    cameraHolder.rotation = hideSpot.rotation;
+                }
+
                 interact = false;
 
-                if (this.gameObject.CompareTag("Locker")) //makes only the lockers a one time use, not the vents.
+                if (this.gameObject.CompareTag("Locker"))
                 {
+                    isLocker = true;
                     isUsed = true;
                 }
                 else
                 {
+                    isVent = true;
                     isUsed = false;
                 }
             }
@@ -102,9 +134,24 @@ public class Hide : MonoBehaviour
                     blackScreen.SetActive(false);
                 }
 
-                normalPlayer.SetActive(true);
-                hidingPlayer.SetActive(false);
                 isHiding = false;
+                isLocker = false;
+                isVent = false;
+
+                if (playerMesh != null)
+                {
+                    playerMesh.enabled = true;
+                }
+
+                if (playerCollider != null)
+                {
+                    playerCollider.enabled = true;
+                }
+
+                fpController.controller.enabled = true;
+
+                cameraHolder.position = originalCameraPosition;
+                cameraHolder.transform.rotation = originalCameraRotation;
             }
         }
     }
