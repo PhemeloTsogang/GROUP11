@@ -15,6 +15,7 @@ public class FPController : MonoBehaviour
     public Transform cameraTransform;
     public float lookSensitivity = 2f;
     public float verticalLookLimit = 90f;
+    public float peekLimit = 180f;
 
     [Header("Sprint Settings")]
     public float originalSpeed;
@@ -37,17 +38,26 @@ public class FPController : MonoBehaviour
     public EnemyAI monster;
     public StunFlash flash;
     public GameObject stunText,normalPlayer;
+    public BatteryUI batteryUI;
+
+
+    [Header("KeyPart Settings")]
+    public CollectPart part;
+    public float keyPartCount;
+
+    [Header("KeyPart Settings")]
+    public OpenDoor door;
 
 
     [Header("General Settings")]
-    private CharacterController controller;
+    public CharacterController controller;
     private Vector2 moveInput;
     private Vector2 lookInput;
     private Vector3 velocity;
     private float verticalRotation = 0f;
-    private float hidingYRotation = 0f;
+    public float hidingYRotation = 0f;
     public float hidingLookLimit = 45f;
-    public Hide player;
+  
 
     private void Awake()
     {
@@ -57,12 +67,18 @@ public class FPController : MonoBehaviour
         originalSpeed = moveSpeed;
         sprintSpeed = moveSpeed * 2f;
         startPos = _camera.localPosition;
+        batteryCount = 0;
+        keyPartCount = 0;
 
     }
 
     private void Update()
     {
-        HandleMovement();
+        if (controller.enabled)
+        {
+            HandleMovement();
+        }
+
         HandleLook();
 
         if (isSprinting && controller.isGrounded && moveInput != Vector2.zero)
@@ -74,17 +90,12 @@ public class FPController : MonoBehaviour
             //ResetPostion();
         }
 
-        if (this.gameObject.activeInHierarchy)
-        {
-            batteryCount = battery.batteryCount;
-        }
 
         if (!normalPlayer.activeInHierarchy)
         {
             monster.ai.isStopped = false;
         }
 
-        Debug.Log(monster.ai.isStopped);
        
     }
     public void OnMove(InputAction.CallbackContext context)
@@ -130,15 +141,59 @@ public class FPController : MonoBehaviour
         _camera.localPosition = Vector3.Lerp(_camera.localPosition, startPos, 5f * Time.deltaTime);
     }
 
+    public void onCollectBat(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (battery != null && battery.inCollectRange && batteryCount < 1)
+            {
+                battery.Collect();
+                battery = null;
+            }
+        }
+    }
+
+    public void AddBattery()
+    {
+        batteryCount++;
+    }
+
+    public void onCollectKeyPart(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (part != null && part.inCollectRange)
+            {
+                part.Collect();
+                part = null;
+            }
+        }
+    }
+
+    public void AddPart()
+    {
+        keyPartCount++;
+    }
+
     public void onStun(InputAction.CallbackContext context)
     {
-        if (context.performed && stun.inStunRange && battery.batteryCount == 1)
+        if (context.performed && stun.inStunRange && batteryCount == 1)
         {
-            stunText.SetActive(false);
-            Debug.Log("STUNNED!!!");
             StartCoroutine(monster.Stun());
-            StartCoroutine(flash.Flash());  
-            battery.batteryCount -= 1;
+            StartCoroutine(flash.Flash());
+            batteryCount--;
+            batteryUI.UpdateUI(batteryCount);
+
+        }
+
+        stunText.SetActive(false);
+    }
+
+    public void onOpen(InputAction.CallbackContext context)
+    {
+        if (context.performed && door.canOpen)
+        {
+            door.Open();
         }
     }
 
@@ -159,22 +214,10 @@ public class FPController : MonoBehaviour
         float mouseX = lookInput.x * lookSensitivity;
         float mouseY = lookInput.y * lookSensitivity;
 
-        if (player.isHiding)
-        {
-            transform.Rotate(Vector3.up * mouseX);
-            hidingYRotation += mouseX;
-            hidingYRotation = Mathf.Clamp(hidingYRotation, -hidingLookLimit, hidingLookLimit);
+        verticalRotation -= mouseY;
+        verticalRotation = Mathf.Clamp(verticalRotation, -verticalLookLimit, verticalLookLimit);
+        cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
+        transform.Rotate(Vector3.up * mouseX);
 
-            Quaternion lockerRotation = Quaternion.Euler(0f, hidingYRotation, 0f);
-            transform.localRotation = lockerRotation;
-        }
-        else
-        {
-            verticalRotation -= mouseY;
-            verticalRotation = Mathf.Clamp(verticalRotation, -verticalLookLimit, verticalLookLimit);
-
-            cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
-            transform.Rotate(Vector3.up * mouseX);
-        }
     }
 }

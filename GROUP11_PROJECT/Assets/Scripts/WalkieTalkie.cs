@@ -10,6 +10,7 @@ public class WalkieTalkie : MonoBehaviour
     public Transform monster, player;
     public LayerMask ignore;
     public GameObject stunText;
+    public FPController batteryCount;
 
     private void Awake()
     {
@@ -28,8 +29,10 @@ public class WalkieTalkie : MonoBehaviour
             if(hit.collider.CompareTag("Player"))
             {
                 inStunRange = true;
-                stunText.SetActive(true);
-                
+                if (batteryCount.batteryCount == 1)
+                {
+                    stunText.SetActive(true);
+                }
             }
             else
             {

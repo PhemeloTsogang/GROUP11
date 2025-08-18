@@ -9,6 +9,7 @@ TagManager:
   - Locker
   - Detect
   - Battery
+  - Door
   layers:
   - Default
   - TransparentFX

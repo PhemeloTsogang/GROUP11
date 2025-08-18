@@ -162,6 +162,33 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CollectBat"",
+                    ""type"": ""Button"",
+                    ""id"": ""e7b8a715-cf95-437a-b866-6d47763df570"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CollectPart"",
+                    ""type"": ""Button"",
+                    ""id"": ""4c14a4ff-7769-4df6-831a-44c9d3f8981c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Open"",
+                    ""type"": ""Button"",
+                    ""id"": ""d2cbb124-a265-4e79-98d4-63f658be50e7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -332,6 +359,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""1b65c951-9dfe-4024-abfa-7132fb052891"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""819e8dad-440b-4888-af51-46e7cf86cd02"",
                     ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
@@ -476,11 +514,77 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ad5d1dd5-2126-4005-b8d2-941c7a48214c"",
-                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""NextPage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2084a840-cfec-4ed2-bb5b-e935bf1f6c97"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""CollectBat"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""29975169-2249-4331-a029-dba9b565d6a8"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""CollectBat"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1e1e9ea8-2cab-4a68-9fc1-d4b4664198b0"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""CollectPart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f81b2052-8c48-438a-9588-927f95262d7c"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""CollectPart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c0f5748e-e0f7-4603-b036-c9eb90c0a04a"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Open"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e2287007-6fb5-4ff0-af72-28689efc58db"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Open"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -527,6 +631,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Stun = m_Player.FindAction("Stun", throwIfNotFound: true);
         m_Player_Tutorial = m_Player.FindAction("Tutorial", throwIfNotFound: true);
         m_Player_NextPage = m_Player.FindAction("NextPage", throwIfNotFound: true);
+        m_Player_CollectBat = m_Player.FindAction("CollectBat", throwIfNotFound: true);
+        m_Player_CollectPart = m_Player.FindAction("CollectPart", throwIfNotFound: true);
+        m_Player_Open = m_Player.FindAction("Open", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -615,6 +722,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Stun;
     private readonly InputAction m_Player_Tutorial;
     private readonly InputAction m_Player_NextPage;
+    private readonly InputAction m_Player_CollectBat;
+    private readonly InputAction m_Player_CollectPart;
+    private readonly InputAction m_Player_Open;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -658,6 +768,18 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/NextPage".
         /// </summary>
         public InputAction @NextPage => m_Wrapper.m_Player_NextPage;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/CollectBat".
+        /// </summary>
+        public InputAction @CollectBat => m_Wrapper.m_Player_CollectBat;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/CollectPart".
+        /// </summary>
+        public InputAction @CollectPart => m_Wrapper.m_Player_CollectPart;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Open".
+        /// </summary>
+        public InputAction @Open => m_Wrapper.m_Player_Open;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -708,6 +830,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @NextPage.started += instance.OnNextPage;
             @NextPage.performed += instance.OnNextPage;
             @NextPage.canceled += instance.OnNextPage;
+            @CollectBat.started += instance.OnCollectBat;
+            @CollectBat.performed += instance.OnCollectBat;
+            @CollectBat.canceled += instance.OnCollectBat;
+            @CollectPart.started += instance.OnCollectPart;
+            @CollectPart.performed += instance.OnCollectPart;
+            @CollectPart.canceled += instance.OnCollectPart;
+            @Open.started += instance.OnOpen;
+            @Open.performed += instance.OnOpen;
+            @Open.canceled += instance.OnOpen;
         }
 
         /// <summary>
@@ -743,6 +874,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @NextPage.started -= instance.OnNextPage;
             @NextPage.performed -= instance.OnNextPage;
             @NextPage.canceled -= instance.OnNextPage;
+            @CollectBat.started -= instance.OnCollectBat;
+            @CollectBat.performed -= instance.OnCollectBat;
+            @CollectBat.canceled -= instance.OnCollectBat;
+            @CollectPart.started -= instance.OnCollectPart;
+            @CollectPart.performed -= instance.OnCollectPart;
+            @CollectPart.canceled -= instance.OnCollectPart;
+            @Open.started -= instance.OnOpen;
+            @Open.performed -= instance.OnOpen;
+            @Open.canceled -= instance.OnOpen;
         }
 
         /// <summary>
@@ -865,5 +1005,26 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnNextPage(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "CollectBat" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCollectBat(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "CollectPart" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCollectPart(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Open" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnOpen(InputAction.CallbackContext context);
     }
 }
