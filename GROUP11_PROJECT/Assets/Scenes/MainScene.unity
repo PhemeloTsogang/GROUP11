@@ -23130,6 +23130,111 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1001 &440750822
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1305361657887952452, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305361657887952452, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368701949106075620, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
+      propertyPath: m_Name
+      value: Canvas Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772170771257522059, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772170771257522059, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772170771257522059, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772170771257522059, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772170771257522059, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772170771257522059, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772170771257522059, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772170771257522059, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772170771257522059, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772170771257522059, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772170771257522059, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772170771257522059, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772170771257522059, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772170771257522059, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772170771257522059, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772170771257522059, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772170771257522059, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772170771257522059, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772170771257522059, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772170771257522059, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0f533891b97688c47a39f43b9da30094, type: 3}
 --- !u!43 &444259758
 Mesh:
   m_ObjectHideFlags: 0
@@ -50871,11 +50976,22 @@ MonoBehaviour:
   dialogue:
     name: Tutorial
     sentences:
-    - '[W] [A] [S] [D] Keys to move
+    - '[W] [A] [S] [D] Keys / (Left Stick) to move
 
-      [Mouse] To look around'
-    - Hold [Shift] to run
-    - Evade/ Hide from the monster!
+      [Mouse] / (Right Stick)
+      To look around'
+    - Hold [Shift] / (Left Stick Click) to Sprint
+    - '[E] / (Y) to enter lockers or vents
+
+      [Q] / (B) to stop hiding'
+    - '[Space] / (X) to stun the monster'
+    - '[B] / (X) to pick up items
+
+'
+    - 'The walkie talkie requires batteries to stun the monster
+
+'
+    - Collect key parts to escape while evading the monster
 --- !u!114 &964902224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50888,7 +51004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8924321f316a5b944b66fb24fdfedc98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 100
 --- !u!43 &965475130
 Mesh:
   m_ObjectHideFlags: 0
@@ -102785,3 +102901,4 @@ SceneRoots:
   - {fileID: 909798226}
   - {fileID: 1149818295}
   - {fileID: 1409067202}
+  - {fileID: 440750822}
