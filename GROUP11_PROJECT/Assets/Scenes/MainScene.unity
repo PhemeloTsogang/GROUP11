@@ -8837,7 +8837,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -14029,7 +14029,7 @@ MonoBehaviour:
   walkSpeed: 5
   chaseSpeed: 6
   detectDistance: 10
-  caughtDist: 3
+  caughtDist: 2.5
   minChasetime: 10
   maxChasetime: 25
   player: {fileID: 964902217}
@@ -31448,15 +31448,15 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 156355805}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 3
   m_WholeNumbers: 1
-  m_Value: 100
+  m_Value: 3
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -50645,7 +50645,8 @@ MonoBehaviour:
   moveSpeed: 5
   gravity: -9.81
   cameraTransform: {fileID: 1305895201}
-  lookSensitivity: 0.5
+  mouseSensitivity: 0.25
+  controllerSensitivity: 1.6
   verticalLookLimit: 90
   peekLimit: 30
   originalSpeed: 0
@@ -51076,17 +51077,25 @@ MonoBehaviour:
       [Mouse] / (Right Stick)
       To look around'
     - Hold [Shift] / (Left Stick Click) to Sprint
-    - '[E] / (Y) to enter lockers or vents
+    - '[E] / (Y) to enter lockers (RED) or vents (YELLOW)
 
-      [Q] / (B) to stop hiding'
-    - '[Space] / (X) to stun the monster'
+      [Q] / (B) to stop
+      hiding
+
+      (LOCKERS CAN ONLY BE ENTERED ONCE)'
+    - '[Space] / (X) to stun the monster
+
+      (BATTERY IS NEEDED)'
     - '[B] / (X) to pick up items
 
 '
-    - 'The walkie talkie requires batteries to stun the monster
+    - 'The walkie talkie requires batteries (GREEN CUBES) to stun the monster
+
+      (BATTERIES
+      CANNOT BE STACKED)
 
 '
-    - Collect key parts to escape while evading the monster
+    - Collect key parts to escape through GREEN DOOR while evading the monster
 --- !u!114 &964902224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51100,6 +51109,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  healthSlider: {fileID: 655811939}
+  fillImage: {fileID: 156355806}
+  defaultColor: {r: 0, g: 1, b: 0, a: 1}
+  hurtColor: {r: 1, g: 0.5, b: 0, a: 1}
+  deathColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!43 &965475130
 Mesh:
   m_ObjectHideFlags: 0
@@ -85737,6 +85751,10 @@ PrefabInstance:
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3616402645263490480, guid: 0aab05fda07533348930614829dd978f, type: 3}
+      propertyPath: m_margin.z
+      value: -314.43713
+      objectReference: {fileID: 0}
+    - target: {fileID: 3616402645263490480, guid: 0aab05fda07533348930614829dd978f, type: 3}
       propertyPath: m_fontStyle
       value: 1
       objectReference: {fileID: 0}
@@ -86890,7 +86908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9547169, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
