@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class EnemyAI : MonoBehaviour
 {
+    //Title: How to Program in Unity: State Machines Explained
+    //Author: iHeartGameDev (Youtube)
+    //16 August 2025
+    //Availability: https://www.youtube.com/watch?v=Vt8aZDPzRjI
     public enum AIState { Idle, Walking, Chasing }
     public AIState currentState;
 
@@ -43,6 +47,15 @@ public class EnemyAI : MonoBehaviour
         Vector3 direction = (player.position - transform.position).normalized;
         RaycastHit hit;
 
+        if (health.health <= 0)
+        {
+            player.gameObject.SetActive(false);
+            StopAllCoroutines();
+            Dead();
+            currentState = AIState.Idle;
+            return;
+        }
+
         if (currentState != AIState.Chasing)
         {
             if (Physics.Raycast(transform.position + rayCastOffset, direction, out hit, detectDistance, raycastLayerMask))
@@ -67,10 +80,6 @@ public class EnemyAI : MonoBehaviour
                 {
                     if (health.health <= 0)
                     {
-                        player.gameObject.SetActive(false);
-                        StopAllCoroutines();
-                        StartCoroutine(Dead());
-                        currentState = AIState.Idle;
                         return;
                     }
                     StartCoroutine(EnemyAttack());
@@ -118,9 +127,8 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    IEnumerator Dead()
+    private void Dead()
     {
-        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("MainScene");
     }
 
@@ -151,14 +159,16 @@ public class EnemyAI : MonoBehaviour
         canAttack = false;
         ai.isStopped = true;
 
-  
+        health.health--;
+        health.ChangeColor();
         yield return StartCoroutine(cameraShake.Shake(0.15f, 0.4f));
+
+
         yield return new WaitForSeconds(attackCooldown);
 
         ai.isStopped = false;
 
         canAttack = true;
-        health.health--;
 
     }
 }

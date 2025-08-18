@@ -13,7 +13,9 @@ public class FPController : MonoBehaviour
 
     [Header("Look Settings")]
     public Transform cameraTransform;
-    public float lookSensitivity = 2f;
+    public float mouseSensitivity = 0.5f;
+    public float controllerSensitivity = 50f;
+    private string lastControlScheme = "Keyboard&Mouse";
     public float verticalLookLimit = 90f;
     public float peekLimit = 180f;
 
@@ -105,6 +107,19 @@ public class FPController : MonoBehaviour
 
     public void OnLook(InputAction.CallbackContext context)
     {
+        if (context.control != null)
+        {
+            var device = context.control.device;
+            if (device is Mouse)
+            {
+                lastControlScheme = "Keyboard&Mouse";
+            }    
+
+            else if (device is Gamepad)
+            {
+                lastControlScheme = "Gamepad";
+            }
+        }
         lookInput = context.ReadValue<Vector2>();
     }
 
@@ -122,6 +137,10 @@ public class FPController : MonoBehaviour
         }
     }
 
+    //Title: Unity Quick Guide - FPS Head Bob + Stabilization
+    //Author: Hero 3D (Youtube)
+    //15 August 2025
+    //Availability: https://www.youtube.com/watch?v=5MbR2qJK8Tc
     private void headShake()
     {
         float bobX = Mathf.Cos(Time.time * frequency / 2f) * amplitutde * 2f;
@@ -209,10 +228,16 @@ public class FPController : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
+    //Title: How to convert mouse sensitivity from FPS games into Unity!
+    //Author: NeatoDev (Youtube)
+    //18 August 2025
+    //Availability: https://www.youtube.com/watch?v=81GXWMRubsA
     public void HandleLook()
     {
-        float mouseX = lookInput.x * lookSensitivity;
-        float mouseY = lookInput.y * lookSensitivity;
+        float sensitivity = lastControlScheme == "Gamepad" ? controllerSensitivity : mouseSensitivity;
+
+        float mouseX = lookInput.x * sensitivity;
+        float mouseY = lookInput.y * sensitivity;
 
         verticalRotation -= mouseY;
         verticalRotation = Mathf.Clamp(verticalRotation, -verticalLookLimit, verticalLookLimit);
