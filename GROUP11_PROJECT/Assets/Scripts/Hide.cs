@@ -96,7 +96,6 @@ public class Hide : MonoBehaviour
                 }
 
                 fpController.controller.enabled = false;
-                //fpController.hidingYRotation = 0;
 
                 if (hideSpot != null)
                 {

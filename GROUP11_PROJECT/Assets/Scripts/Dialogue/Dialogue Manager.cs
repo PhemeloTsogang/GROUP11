@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using static UnityEngine.InputSystem.InputAction;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 
 public class DialogueManager : MonoBehaviour
@@ -58,3 +59,10 @@ public class DialogueManager : MonoBehaviour
         animator.SetBool("IsOpen", false);
     }
 }
+/*
+Title: How to make a Dialogue System in Unity
+Author: Brackeys
+Date: 15 August 2025
+Code version: 1
+Availability: https://www.youtube.com/watch?v=_nRzoTzeyxU&t=564s
+*/

@@ -7,6 +7,10 @@ public class Attack : MonoBehaviour
     public GameObject flashScreen;
     public float flashTime;
 
+    //Title: CAMERA SHAKE in Unity
+    //Author: Brackeys (Youtube)
+    //16 August 2025
+    //Availability: https://www.youtube.com/watch?v=9A9yj8KnM8c
     public IEnumerator Shake(float duration, float mag)
     {
         Vector3 originalPos = transform.localPosition;
