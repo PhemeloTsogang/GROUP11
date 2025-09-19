@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Hide : MonoBehaviour
 {
-    public GameObject hideText, stopHidingText, stopHidingVentText, blackScreen, player;
+    public GameObject hideText, stopHidingText, stopHidingVentText, blackScreen, player, hidingSpot, walkieTalkie, lockerScreen;
     bool interact;
     public bool isHiding;
     private bool isUsed;
@@ -43,6 +44,8 @@ public class Hide : MonoBehaviour
         {
             hideText.SetActive(true);
             interact = true;
+
+            fpController.locker = this;
         }
     }
 
@@ -52,6 +55,7 @@ public class Hide : MonoBehaviour
         {
             hideText.SetActive(false);
             interact = false;
+
         }
     }
 
@@ -66,6 +70,8 @@ public class Hide : MonoBehaviour
         {
             if (context.performed)
             {  
+                walkieTalkie.SetActive(false);
+
                 if (monsterScript.currentState == EnemyAI.AIState.Chasing)
                 {
                     monsterScript.StopChase();
@@ -77,6 +83,11 @@ public class Hide : MonoBehaviour
                 {
                     stopHidingVentText.SetActive(true);
                     blackScreen.SetActive(true);
+                }
+
+                if (this.gameObject.CompareTag("Locker"))
+                {
+                    lockerScreen.SetActive(true);
                 }
 
                 stopHidingText.SetActive(true);
@@ -101,6 +112,9 @@ public class Hide : MonoBehaviour
                 {
                     cameraHolder.position = hideSpot.position;
                     cameraHolder.rotation = hideSpot.rotation;
+
+                    Vector3 lockerEuler = hideSpot.rotation.eulerAngles;
+                    fpController.lockerBaseYRotation = lockerEuler.y;
                 }
 
                 interact = false;
@@ -126,11 +140,17 @@ public class Hide : MonoBehaviour
             if(context.performed)
             {
                 stopHidingText.SetActive(false);
+                walkieTalkie.SetActive(true);
 
                 if (this.gameObject.CompareTag("Vent"))
                 {
                     stopHidingVentText.SetActive(false);
                     blackScreen.SetActive(false);
+                }
+
+                if (this.gameObject.CompareTag("Locker"))
+                {
+                    lockerScreen.SetActive(false);
                 }
 
                 isHiding = false;

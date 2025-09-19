@@ -15,8 +15,10 @@ public class FPController : MonoBehaviour
     public Transform cameraTransform;
     public float mouseSensitivity = 0.5f;
     public float controllerSensitivity = 50f;
+    public float lockerBaseYRotation = 0f;
     private string lastControlScheme = "Keyboard&Mouse";
     public float verticalLookLimit = 90f;
+    public float horizontalPeekLimit = 60f;
     public float peekLimit = 180f;
 
     [Header("Sprint Settings")]
@@ -50,6 +52,10 @@ public class FPController : MonoBehaviour
     [Header("KeyPart Settings")]
     public OpenDoor door;
 
+    [Header("Stamina Settings")]
+    public Stamina stamina;
+    public float originalSprintSpeed;
+
 
     [Header("General Settings")]
     public CharacterController controller;
@@ -57,9 +63,15 @@ public class FPController : MonoBehaviour
     private Vector2 lookInput;
     private Vector3 velocity;
     private float verticalRotation = 0f;
+    private float horizontalRotation = 0f; 
     public float hidingYRotation = 0f;
     public float hidingLookLimit = 45f;
-  
+
+    [Header("Hide Settings")]
+    public Hide locker;
+
+    [Header("Audio Settings")]
+    private AudioSource Walk, Run, Breathe;
 
     private void Awake()
     {
@@ -67,11 +79,11 @@ public class FPController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         originalSpeed = moveSpeed;
-        sprintSpeed = moveSpeed * 2f;
+        sprintSpeed = moveSpeed * 2.5f;
+        originalSprintSpeed = sprintSpeed;
         startPos = _camera.localPosition;
         batteryCount = 0;
         keyPartCount = 0;
-
     }
 
     private void Update()
@@ -83,8 +95,10 @@ public class FPController : MonoBehaviour
 
         HandleLook();
 
+
         if (isSprinting && controller.isGrounded && moveInput != Vector2.zero)
         {
+            stamina.Sprinting();
             headShake();
         }
         else
@@ -102,7 +116,23 @@ public class FPController : MonoBehaviour
     }
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (Walk == null || !Walk.isPlaying)
+        {
+            Walk = AudioManager.instance.Play("Walk", this.transform);
+        }
+
+        if (moveSpeed != sprintSpeed)
+        {
+            stamina.isSprinting = false;
+        }
+
         moveInput = context.ReadValue<Vector2>();
+
+        if (context.canceled)
+        {
+            AudioManager.instance.StopSound(Walk);
+            Walk = null;
+        }
     }
 
     public void OnLook(InputAction.CallbackContext context)
@@ -125,15 +155,51 @@ public class FPController : MonoBehaviour
 
     public void onSprint(InputAction.CallbackContext context)
     {
+
         if (context.performed && controller.isGrounded)
         {
+            if (Run == null || !Run.isPlaying)
+            {
+                Run = AudioManager.instance.Play("Run", this.transform);
+            }
+
+            if (Breathe == null || !Breathe.isPlaying)
+            {
+                Breathe = AudioManager.instance.Play("Breathe", this.transform);
+            }
+
             isSprinting = true;
             moveSpeed = sprintSpeed;
         }
         else if (context.canceled)
         {
+            stamina.isSprinting = false;
+            AudioManager.instance.StopSound(Run);
+            Run = null;
+
+            AudioManager.instance.StopSound(Breathe);
+            Breathe = null;
+
             isSprinting = false;
             moveSpeed = originalSpeed;
+        }
+    }
+
+    public void Tired()
+    {
+        isSprinting = false;
+        moveSpeed = originalSpeed;
+
+        if (Run != null)
+        {
+            AudioManager.instance.StopSound(Run);
+            Run = null;
+        }
+
+        if (Breathe != null)
+        {
+            AudioManager.instance.StopSound(Breathe);
+            Breathe = null;
         }
     }
 
@@ -148,16 +214,6 @@ public class FPController : MonoBehaviour
 
         Vector3 bobOffset = new Vector3(bobX, bobY, 0);
         _camera.localPosition = startPos + bobOffset;
-    }
-
-    private void ResetPostion()
-    { 
-        if (_camera.localPosition == startPos)
-        { 
-            return; 
-        }
-
-        _camera.localPosition = Vector3.Lerp(_camera.localPosition, startPos, 5f * Time.deltaTime);
     }
 
     public void onCollectBat(InputAction.CallbackContext context)
@@ -198,6 +254,7 @@ public class FPController : MonoBehaviour
     {
         if (context.performed && stun.inStunRange && batteryCount == 1)
         {
+            AudioManager.instance.Play("Stun", this.transform);
             StartCoroutine(monster.Stun());
             StartCoroutine(flash.Flash());
             batteryCount--;
@@ -239,10 +296,23 @@ public class FPController : MonoBehaviour
         float mouseX = lookInput.x * sensitivity;
         float mouseY = lookInput.y * sensitivity;
 
-        verticalRotation -= mouseY;
-        verticalRotation = Mathf.Clamp(verticalRotation, -verticalLookLimit, verticalLookLimit);
-        cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
-        transform.Rotate(Vector3.up * mouseX);
+        if (locker.isHiding & locker.isLocker)
+        {
+            horizontalRotation += mouseX;
+            horizontalRotation = Mathf.Clamp(horizontalRotation, -horizontalPeekLimit, horizontalPeekLimit);
+            locker.cameraHolder.rotation = Quaternion.Euler(0f, lockerBaseYRotation + horizontalRotation, 0f);
+        }
+        else if (locker.isHiding & locker.isVent)
+        {
+
+        }
+        else 
+        {
+            verticalRotation -= mouseY;
+            verticalRotation = Mathf.Clamp(verticalRotation, -verticalLookLimit, verticalLookLimit);
+            cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
+            transform.Rotate(Vector3.up * mouseX);
+        }
 
     }
 }
