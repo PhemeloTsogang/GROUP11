@@ -34,7 +34,12 @@ public class EnemyAI : MonoBehaviour
     public PlayerHealth health;
     public Hide hide;
 
-    private void Awake()
+    [Header("Audio Settings")]
+    private AudioSource MonsterMove;
+    private AudioSource MonsterRoar;
+    private AudioSource MonsterAttack;
+
+    private void Start()
     {
         currentState = AIState.Walking;
         int random = Random.Range(0, destinationAmount);
@@ -72,6 +77,11 @@ public class EnemyAI : MonoBehaviour
         switch (currentState)
         {
             case AIState.Chasing:
+                if (MonsterMove == null || !MonsterMove.isPlaying)
+                {
+                    MonsterMove = AudioManager.instance.Play("MonsterMove", this.transform);
+                }
+
                 ai.destination = player.position;
                 ai.speed = chaseSpeed;
 
@@ -87,6 +97,11 @@ public class EnemyAI : MonoBehaviour
                 break;
 
             case AIState.Walking:
+                if (MonsterMove == null || !MonsterMove.isPlaying)
+                {
+                    MonsterMove = AudioManager.instance.Play("MonsterMove", this.transform);
+                }
+
                 ai.destination = currDestination.position;
                 ai.speed = walkSpeed;
 
@@ -100,6 +115,14 @@ public class EnemyAI : MonoBehaviour
                 break;
 
             case AIState.Idle:
+                AudioManager.instance.StopSound(MonsterMove);
+
+                if (MonsterRoar == null || !MonsterRoar.isPlaying)
+                {
+                    MonsterRoar = AudioManager.instance.Play("Roar", this.transform);
+                }
+
+                MonsterMove = null;
                 break;
         }
     }
@@ -142,6 +165,9 @@ public class EnemyAI : MonoBehaviour
 
     public IEnumerator Stun()
     {
+        AudioManager.instance.StopSound(MonsterMove);
+        MonsterMove = null;
+
         ai.isStopped = true;
         currentState = AIState.Idle; //my monster is stopped
 
@@ -156,6 +182,11 @@ public class EnemyAI : MonoBehaviour
 
     private IEnumerator EnemyAttack()
     {
+        if (MonsterAttack == null || !MonsterAttack.isPlaying)
+        {
+            MonsterAttack = AudioManager.instance.Play("Attack", this.transform);
+        }
+
         canAttack = false;
         ai.isStopped = true;
 
