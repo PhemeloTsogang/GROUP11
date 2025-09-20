@@ -40,6 +40,7 @@ public class FPController : MonoBehaviour
     public CollectBattery battery;
     public float batteryCount = 0;
     public EnemyAI monster;
+    public TutorialMonster tut;
     public StunFlash flash;
     public GameObject stunText,normalPlayer;
     public BatteryUI batteryUI;
@@ -49,13 +50,32 @@ public class FPController : MonoBehaviour
     public CollectPart part;
     public float keyPartCount;
 
-    [Header("KeyPart Settings")]
+    [Header("Door Settings")]
     public OpenDoor door;
 
     [Header("Stamina Settings")]
     public Stamina stamina;
     public float originalSprintSpeed;
 
+    [Header("Key Settings")]
+    public CollectKey key;
+    public float keyCount;
+
+    [Header("Cabinet Settings")]
+    public Openable cabinet;
+
+    [Header("WalkieTalkie Settings")]
+    public Tutorial walkieTalkie;
+    public GameObject walkie;
+    public bool canCollect;
+
+    [Header("Tutorial Settings")]
+    public float memoryCount;
+    public OpenTutDoor tutDoor;
+    public bool canOpen;
+
+    [Header("UnlockDoor Settings")]
+    public Unlock unlockDoor;
 
     [Header("General Settings")]
     public CharacterController controller;
@@ -65,13 +85,16 @@ public class FPController : MonoBehaviour
     private float verticalRotation = 0f;
     private float horizontalRotation = 0f; 
     public float hidingYRotation = 0f;
-    public float hidingLookLimit = 45f;
+    public float hidingLookLimit = 45f; 
 
     [Header("Hide Settings")]
     public Hide locker;
 
     [Header("Audio Settings")]
     private AudioSource Walk, Run, Breathe;
+
+    [Header("Monster Handling Settings")]
+    public GameObject tutMonst, Monst;
 
     private void Awake()
     {
@@ -84,6 +107,11 @@ public class FPController : MonoBehaviour
         startPos = _camera.localPosition;
         batteryCount = 0;
         keyPartCount = 0;
+        keyCount = 0;
+        memoryCount = 0;    
+        walkie.SetActive(false);
+        canCollect = true;
+        canOpen = false;
     }
 
     private void Update()
@@ -110,6 +138,11 @@ public class FPController : MonoBehaviour
         if (!normalPlayer.activeInHierarchy)
         {
             monster.ai.isStopped = false;
+        }
+
+        if (memoryCount == 1 && tutDoor.inTutRange)
+        {
+            canOpen = true;
         }
 
        
@@ -228,9 +261,39 @@ public class FPController : MonoBehaviour
         }
     }
 
+    public void onOpenCabinet(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (cabinet != null && cabinet.inRange)
+            {
+                cabinet.Open();
+                cabinet = null;
+            }
+        }
+    }
+
+    public void onUnlockDoor(InputAction.CallbackContext context)
+    {
+        if (context.performed && keyCount > 0)
+        {
+            if (unlockDoor != null && unlockDoor.inRange)
+            {
+                keyCount--;
+                unlockDoor.Open();
+                unlockDoor = null;
+            }
+        }
+    }
+
     public void AddBattery()
     {
         batteryCount++;
+    }
+
+    public void AddKey()
+    {
+        keyCount++;
     }
 
     public void onCollectKeyPart(InputAction.CallbackContext context)
@@ -245,6 +308,32 @@ public class FPController : MonoBehaviour
         }
     }
 
+    public void onCollectWalkie(InputAction.CallbackContext context)
+    {
+        if (context.performed && canCollect)
+        {
+            if (walkieTalkie.inRange && walkieTalkie != null)
+            {
+                memoryCount++;
+                walkieTalkie.Collect();
+                walkie.SetActive(true);
+                walkieTalkie = null;
+            }
+        }
+    }
+
+    public void onCollectKey(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (key != null && key.inRange)
+            {
+                key.Collect();
+                key = null;
+            }
+        }
+    }
+
     public void AddPart()
     {
         keyPartCount++;
@@ -254,11 +343,22 @@ public class FPController : MonoBehaviour
     {
         if (context.performed && stun.inStunRange && batteryCount == 1)
         {
-            AudioManager.instance.Play("Stun", this.transform);
-            StartCoroutine(monster.Stun());
-            StartCoroutine(flash.Flash());
-            batteryCount--;
-            batteryUI.UpdateUI(batteryCount);
+            if (Monst.activeInHierarchy)
+            {
+                AudioManager.instance.Play("Stun", this.transform);
+                StartCoroutine(monster.Stun());
+                StartCoroutine(flash.Flash());
+                batteryCount--;
+                batteryUI.UpdateUI(batteryCount);
+            }
+            else if (tutMonst.activeInHierarchy)
+            {
+                AudioManager.instance.Play("Stun", this.transform);
+                StartCoroutine(tut.Stun());
+                StartCoroutine(flash.Flash());
+                batteryCount--;
+                batteryUI.UpdateUI(batteryCount);
+            }
 
         }
 
@@ -270,6 +370,16 @@ public class FPController : MonoBehaviour
         if (context.performed && door.canOpen)
         {
             door.Open();
+        }
+    }
+
+    public void onOpenTut(InputAction.CallbackContext context)
+    {
+        if (context.performed && canOpen)
+        {
+            tutDoor.Open();
+            memoryCount--;
+            canOpen = false;
         }
     }
 

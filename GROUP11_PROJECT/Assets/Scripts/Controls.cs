@@ -191,9 +191,45 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""PauseMenu"",
+                    ""name"": ""CollectKey"",
                     ""type"": ""Button"",
-                    ""id"": ""3f61c236-e287-4f64-8e41-4faccdf2f022"",
+                    ""id"": ""be6b39b6-3466-4f23-a855-a2498e3f9b87"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenCabinet"",
+                    ""type"": ""Button"",
+                    ""id"": ""eb2f50f4-c1e1-4a06-b84b-1a838b8f9ffa"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CollectWalkie"",
+                    ""type"": ""Button"",
+                    ""id"": ""12b713ac-53fb-48b3-88e3-07819257cd67"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UnlockDoor"",
+                    ""type"": ""Button"",
+                    ""id"": ""e70a7570-e662-4cfe-b9a4-8823f78b131c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenTut"",
+                    ""type"": ""Button"",
+                    ""id"": ""58f2c824-1625-4e97-a10c-00bb230994ff"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -654,23 +690,111 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""83bafaf6-e7a1-4f4f-83c3-3237d22c072f"",
-                    ""path"": ""<Keyboard>/escape"",
+                    ""id"": ""0c00a7de-7515-473f-8478-f2663d6024e9"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Keyboard"",
-                    ""action"": ""PauseMenu"",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""CollectKey"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a4e61675-5d9b-4e03-86ab-058c63b56b58"",
-                    ""path"": ""<Gamepad>/start"",
+                    ""id"": ""6f57bc89-419a-4fd8-8291-e8b55a9ef8b1"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""CollectKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d4eb7a8e-bb60-411d-9335-92e03b3d086e"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""OpenCabinet"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e606a6b0-04ad-4bc2-8bc4-34e4a74abc40"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""PauseMenu"",
+                    ""action"": ""OpenCabinet"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fcc3b5f2-eb78-4eaf-81fd-c3a86e826405"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""CollectWalkie"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""169553b4-c015-4ceb-9818-898d0b947aa2"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""CollectWalkie"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""407c0223-d020-4546-b51c-51c5a38bc2c0"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""UnlockDoor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dace3c45-089a-46bf-8dbc-4583e2a2ab39"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""UnlockDoor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""94431ecb-e3b6-4ab1-a927-f5d4289941a7"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""OpenTut"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ea909f63-4c10-4ebf-92d9-a0ddc59c59a9"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""OpenTut"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -720,7 +844,11 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_CollectBat = m_Player.FindAction("CollectBat", throwIfNotFound: true);
         m_Player_CollectPart = m_Player.FindAction("CollectPart", throwIfNotFound: true);
         m_Player_Open = m_Player.FindAction("Open", throwIfNotFound: true);
-        m_Player_PauseMenu = m_Player.FindAction("PauseMenu", throwIfNotFound: true);
+        m_Player_CollectKey = m_Player.FindAction("CollectKey", throwIfNotFound: true);
+        m_Player_OpenCabinet = m_Player.FindAction("OpenCabinet", throwIfNotFound: true);
+        m_Player_CollectWalkie = m_Player.FindAction("CollectWalkie", throwIfNotFound: true);
+        m_Player_UnlockDoor = m_Player.FindAction("UnlockDoor", throwIfNotFound: true);
+        m_Player_OpenTut = m_Player.FindAction("OpenTut", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -812,7 +940,11 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_CollectBat;
     private readonly InputAction m_Player_CollectPart;
     private readonly InputAction m_Player_Open;
-    private readonly InputAction m_Player_PauseMenu;
+    private readonly InputAction m_Player_CollectKey;
+    private readonly InputAction m_Player_OpenCabinet;
+    private readonly InputAction m_Player_CollectWalkie;
+    private readonly InputAction m_Player_UnlockDoor;
+    private readonly InputAction m_Player_OpenTut;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -869,9 +1001,25 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Open => m_Wrapper.m_Player_Open;
         /// <summary>
-        /// Provides access to the underlying input action "Player/PauseMenu".
+        /// Provides access to the underlying input action "Player/CollectKey".
         /// </summary>
-        public InputAction @PauseMenu => m_Wrapper.m_Player_PauseMenu;
+        public InputAction @CollectKey => m_Wrapper.m_Player_CollectKey;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/OpenCabinet".
+        /// </summary>
+        public InputAction @OpenCabinet => m_Wrapper.m_Player_OpenCabinet;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/CollectWalkie".
+        /// </summary>
+        public InputAction @CollectWalkie => m_Wrapper.m_Player_CollectWalkie;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/UnlockDoor".
+        /// </summary>
+        public InputAction @UnlockDoor => m_Wrapper.m_Player_UnlockDoor;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/OpenTut".
+        /// </summary>
+        public InputAction @OpenTut => m_Wrapper.m_Player_OpenTut;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -931,9 +1079,21 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Open.started += instance.OnOpen;
             @Open.performed += instance.OnOpen;
             @Open.canceled += instance.OnOpen;
-            @PauseMenu.started += instance.OnPauseMenu;
-            @PauseMenu.performed += instance.OnPauseMenu;
-            @PauseMenu.canceled += instance.OnPauseMenu;
+            @CollectKey.started += instance.OnCollectKey;
+            @CollectKey.performed += instance.OnCollectKey;
+            @CollectKey.canceled += instance.OnCollectKey;
+            @OpenCabinet.started += instance.OnOpenCabinet;
+            @OpenCabinet.performed += instance.OnOpenCabinet;
+            @OpenCabinet.canceled += instance.OnOpenCabinet;
+            @CollectWalkie.started += instance.OnCollectWalkie;
+            @CollectWalkie.performed += instance.OnCollectWalkie;
+            @CollectWalkie.canceled += instance.OnCollectWalkie;
+            @UnlockDoor.started += instance.OnUnlockDoor;
+            @UnlockDoor.performed += instance.OnUnlockDoor;
+            @UnlockDoor.canceled += instance.OnUnlockDoor;
+            @OpenTut.started += instance.OnOpenTut;
+            @OpenTut.performed += instance.OnOpenTut;
+            @OpenTut.canceled += instance.OnOpenTut;
         }
 
         /// <summary>
@@ -978,9 +1138,21 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Open.started -= instance.OnOpen;
             @Open.performed -= instance.OnOpen;
             @Open.canceled -= instance.OnOpen;
-            @PauseMenu.started -= instance.OnPauseMenu;
-            @PauseMenu.performed -= instance.OnPauseMenu;
-            @PauseMenu.canceled -= instance.OnPauseMenu;
+            @CollectKey.started -= instance.OnCollectKey;
+            @CollectKey.performed -= instance.OnCollectKey;
+            @CollectKey.canceled -= instance.OnCollectKey;
+            @OpenCabinet.started -= instance.OnOpenCabinet;
+            @OpenCabinet.performed -= instance.OnOpenCabinet;
+            @OpenCabinet.canceled -= instance.OnOpenCabinet;
+            @CollectWalkie.started -= instance.OnCollectWalkie;
+            @CollectWalkie.performed -= instance.OnCollectWalkie;
+            @CollectWalkie.canceled -= instance.OnCollectWalkie;
+            @UnlockDoor.started -= instance.OnUnlockDoor;
+            @UnlockDoor.performed -= instance.OnUnlockDoor;
+            @UnlockDoor.canceled -= instance.OnUnlockDoor;
+            @OpenTut.started -= instance.OnOpenTut;
+            @OpenTut.performed -= instance.OnOpenTut;
+            @OpenTut.canceled -= instance.OnOpenTut;
         }
 
         /// <summary>
@@ -1125,11 +1297,39 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnOpen(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "PauseMenu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "CollectKey" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnPauseMenu(InputAction.CallbackContext context);
+        void OnCollectKey(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "OpenCabinet" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnOpenCabinet(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "CollectWalkie" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCollectWalkie(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "UnlockDoor" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnUnlockDoor(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "OpenTut" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnOpenTut(InputAction.CallbackContext context);
     }
 }

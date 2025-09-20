@@ -1,15 +1,16 @@
 using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 using static EnemyAI;
 
 public class WalkieTalkie : MonoBehaviour
 {
     public float stunRange;
     public bool inStunRange;
-    public Transform monster, player;
+    public Transform monster, player, tutMonster;
     public LayerMask ignore;
-    public GameObject stunText;
+    public GameObject stunText, monst, tutMonst;
     public FPController batteryCount;
 
     private void Awake()
@@ -18,32 +19,73 @@ public class WalkieTalkie : MonoBehaviour
     }
 
     private void Update()
-     {
-        Vector3 direction = (player.transform.position - monster.position).normalized;
-        Ray ray = new Ray(monster.position, direction);
-        RaycastHit hit;
-
-        // If the ray hits something
-        if (Physics.Raycast(ray, out hit, stunRange, ignore))
+     { 
+        if (monst.activeInHierarchy)
         {
-            if(hit.collider.CompareTag("Player"))
+            Vector3 direction = (player.transform.position - monster.position).normalized;
+            Ray ray = new Ray(monster.position, direction);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, stunRange, ignore))
             {
-                inStunRange = true;
-                if (batteryCount.batteryCount == 1)
+                if (hit.collider.CompareTag("Player"))
                 {
-                    stunText.SetActive(true);
+                    batteryCount.stun = this;
+                    inStunRange = true;
+                    if (batteryCount.batteryCount == 1)
+                    {
+                        stunText.SetActive(true);
+                    }
+                }
+                else
+                {
+                    inStunRange = false;
+                    stunText.SetActive(false);
                 }
             }
             else
             {
+                if (batteryCount != null && batteryCount.stun == this)
+                {
+                    batteryCount.stun = null;
+                }
+
                 inStunRange = false;
                 stunText.SetActive(false);
             }
         }
-        else
+        else if (tutMonst.activeInHierarchy)
         {
-            inStunRange = false;
-            stunText.SetActive(false);
+            Vector3 direction = (player.transform.position - tutMonster.position).normalized;
+            Ray ray = new Ray(tutMonster.position, direction);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, stunRange, ignore))
+            {
+                if (hit.collider.CompareTag("Player"))
+                {
+                    batteryCount.stun = this;
+                    inStunRange = true;
+                    if (batteryCount.batteryCount == 1)
+                    {
+                        stunText.SetActive(true);
+                    }
+                }
+                else
+                {
+                    inStunRange = false;
+                    stunText.SetActive(false);
+                }
+            }
+            else
+            {
+                if (batteryCount != null && batteryCount.stun == this)
+                {
+                    batteryCount.stun = null;
+                }
+                inStunRange = false;
+                stunText.SetActive(false);
+            }
         }
     }
 }
