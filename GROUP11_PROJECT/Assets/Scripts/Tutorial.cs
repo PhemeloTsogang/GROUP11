@@ -5,6 +5,7 @@ public class Tutorial : MonoBehaviour
     public GameObject collectText;
     public bool inRange;
     public FPController player;
+    public DialogueTrigger trigger;
 
     private void Awake()
     {
@@ -33,7 +34,7 @@ public class Tutorial : MonoBehaviour
             player.canCollect = false;
             collectText.SetActive(false);
             Destroy(gameObject);
-            Debug.Log("IS this bullshit finally working?");
+            trigger.TriggerDialogue();
         }
     }
 }
