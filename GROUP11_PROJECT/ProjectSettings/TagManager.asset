@@ -10,6 +10,7 @@ TagManager:
   - Detect
   - Battery
   - Door
+  - Openable
   layers:
   - Default
   - TransparentFX

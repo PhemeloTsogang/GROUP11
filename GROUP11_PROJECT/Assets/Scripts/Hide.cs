@@ -21,7 +21,9 @@ public class Hide : MonoBehaviour
 
     //monster settings
     public EnemyAI monsterScript;
+    public TutorialMonster tutorial;
     public Transform monster;
+    public Transform tutMonster;
 
     private void Awake()
     {
@@ -75,6 +77,11 @@ public class Hide : MonoBehaviour
                 if (monsterScript.currentState == EnemyAI.AIState.Chasing)
                 {
                     monsterScript.StopChase();
+                }
+
+                if (tutorial.currentState == TutorialMonster.AIState.Chasing)
+                {
+                    tutorial.StopChase();
                 }
 
                 hideText.SetActive(false);
