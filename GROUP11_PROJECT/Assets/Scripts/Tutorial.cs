@@ -33,6 +33,7 @@ public class Tutorial : MonoBehaviour
             player.canCollect = false;
             collectText.SetActive(false);
             Destroy(gameObject);
+            Debug.Log("IS this bullshit working?");
         }
     }
 }
