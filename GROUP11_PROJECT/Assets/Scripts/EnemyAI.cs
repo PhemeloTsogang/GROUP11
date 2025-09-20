@@ -165,7 +165,6 @@ public class EnemyAI : MonoBehaviour
 
     public IEnumerator Stun()
     {
-        //Stun
         AudioManager.instance.StopSound(MonsterMove);
         AudioManager.instance.Play("MonsterHurt", this.transform);
         MonsterMove = null;
