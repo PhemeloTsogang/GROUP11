@@ -6,6 +6,8 @@ public class Tutorial : MonoBehaviour
     public bool inRange;
     public FPController player;
 
+    public DialogueTrigger trigger;
+
     private void Awake()
     {
         inRange = false;
@@ -33,6 +35,7 @@ public class Tutorial : MonoBehaviour
             player.canCollect = false;
             collectText.SetActive(false);
             Destroy(gameObject);
+            trigger.TriggerDialogue();
         }
     }
 }
