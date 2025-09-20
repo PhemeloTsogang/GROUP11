@@ -7,6 +7,7 @@ public class CollectBattery : MonoBehaviour
     public BatteryUI battery;
     public bool inCollectRange = false;
 
+    public DialogueTrigger trigger;
     private void Awake()
     {
         inCollectRange = false;
@@ -46,6 +47,7 @@ public class CollectBattery : MonoBehaviour
             battery.UpdateUI(player.batteryCount);
             pickUpText.SetActive(false);
             Destroy(gameObject);
+            trigger.TriggerDialogue();
         }
     }
 }
