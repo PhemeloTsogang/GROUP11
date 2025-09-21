@@ -47,7 +47,7 @@ public class CollectBattery : MonoBehaviour
             battery.UpdateUI(player.batteryCount);
             pickUpText.SetActive(false);
             Destroy(gameObject);
-            //trigger.TriggerDialogue();
+            trigger.TriggerDialogue();
         }
     }
 }
