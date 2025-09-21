@@ -39,9 +39,12 @@ public class Stamina : MonoBehaviour
                 updateStamina(1);
 
 
-                if (playerStamina >= maxStamina)
+                playerStamina = Mathf.Min(playerStamina, maxStamina);
+
+                if (playerStamina >= maxStamina - 0.01f)
                 {
                     hasRegenerated = true;
+                    playerStamina = maxStamina;
                     player.sprintSpeed = player.originalSprintSpeed;
                     staminaCanvasGroup.alpha = 0;
                 }
