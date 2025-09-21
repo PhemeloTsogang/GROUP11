@@ -152,7 +152,8 @@ public class EnemyAI : MonoBehaviour
 
     private void Dead()
     {
-        SceneManager.LoadScene("MainScene");
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("DeathMenu");
     }
 
     public void StopChase()

@@ -53,6 +53,7 @@ public class AudioManager : MonoBehaviour
         source.pitch = s.pitch;
         source.spatialBlend = s.spatialBlend;
         source.loop = s.loop;
+        
     }
 
     public void StopSound(AudioSource source)

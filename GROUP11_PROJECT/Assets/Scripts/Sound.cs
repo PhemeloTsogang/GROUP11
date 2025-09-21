@@ -21,4 +21,5 @@ public class Sound
 
     [HideInInspector]
     public AudioSource source;
+    internal AudioMixerGroup outputAudioMixerGroup;
 }
