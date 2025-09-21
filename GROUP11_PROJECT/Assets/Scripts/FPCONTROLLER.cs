@@ -206,15 +206,15 @@ public class FPController : MonoBehaviour
         }
         else if (context.canceled)
         {
+            isSprinting = false;
+            moveSpeed = originalSpeed;
+
             stamina.isSprinting = false;
             AudioManager.instance.StopSound(Run);
             Run = null;
 
             AudioManager.instance.StopSound(Breathe);
             Breathe = null;
-
-            isSprinting = false;
-            moveSpeed = originalSpeed;
         }
     }
 
