@@ -234,6 +234,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenPause"",
+                    ""type"": ""Button"",
+                    ""id"": ""283d0b4f-0276-4666-8a1b-74f99f66d62c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -797,6 +806,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""OpenTut"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c6f8fdc8-6d1b-4a3e-b479-d1e2c1b37b24"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""OpenPause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""82747106-a178-4757-86dc-553da6a7e76e"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""OpenPause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -849,6 +880,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_CollectWalkie = m_Player.FindAction("CollectWalkie", throwIfNotFound: true);
         m_Player_UnlockDoor = m_Player.FindAction("UnlockDoor", throwIfNotFound: true);
         m_Player_OpenTut = m_Player.FindAction("OpenTut", throwIfNotFound: true);
+        m_Player_OpenPause = m_Player.FindAction("OpenPause", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -945,6 +977,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_CollectWalkie;
     private readonly InputAction m_Player_UnlockDoor;
     private readonly InputAction m_Player_OpenTut;
+    private readonly InputAction m_Player_OpenPause;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1021,6 +1054,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @OpenTut => m_Wrapper.m_Player_OpenTut;
         /// <summary>
+        /// Provides access to the underlying input action "Player/OpenPause".
+        /// </summary>
+        public InputAction @OpenPause => m_Wrapper.m_Player_OpenPause;
+        /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -1094,6 +1131,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @OpenTut.started += instance.OnOpenTut;
             @OpenTut.performed += instance.OnOpenTut;
             @OpenTut.canceled += instance.OnOpenTut;
+            @OpenPause.started += instance.OnOpenPause;
+            @OpenPause.performed += instance.OnOpenPause;
+            @OpenPause.canceled += instance.OnOpenPause;
         }
 
         /// <summary>
@@ -1153,6 +1193,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @OpenTut.started -= instance.OnOpenTut;
             @OpenTut.performed -= instance.OnOpenTut;
             @OpenTut.canceled -= instance.OnOpenTut;
+            @OpenPause.started -= instance.OnOpenPause;
+            @OpenPause.performed -= instance.OnOpenPause;
+            @OpenPause.canceled -= instance.OnOpenPause;
         }
 
         /// <summary>
@@ -1331,5 +1374,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnOpenTut(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "OpenPause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnOpenPause(InputAction.CallbackContext context);
     }
 }

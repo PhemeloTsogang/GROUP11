@@ -9,7 +9,7 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject puaseMenuUI;
     public FPController FPController;
-    public AudioMixer audioMixer;
+    //public AudioMixer audioMixer;
 
     // Update is called once per frame
     /*void Update()
@@ -66,11 +66,12 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+        Debug.Log("Would Quit if this was fully built");
     }
 
-    public void SetVolume (float volume)
+   /* public void SetVolume (float volume)
     {
         audioMixer.SetFloat("Volume", volume);
         Debug.Log(volume);
-    }
+    }*/
 }
