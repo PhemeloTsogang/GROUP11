@@ -152,7 +152,7 @@ public class TutorialMonster : MonoBehaviour
 
     private void Dead()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("DeathMenu");
     }
 
     public void StopChase()
