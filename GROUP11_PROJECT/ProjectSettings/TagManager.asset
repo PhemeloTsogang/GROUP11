@@ -11,6 +11,9 @@ TagManager:
   - Battery
   - Door
   - Openable
+  - LockedDoor
+  - Bracelet
+  - Trophy
   layers:
   - Default
   - TransparentFX
