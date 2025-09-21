@@ -45,10 +45,10 @@ public class WalkieTalkie : MonoBehaviour
             }
             else
             {
-                if (batteryCount != null && batteryCount.stun == this)
+               /* if (batteryCount != null && batteryCount.stun == this)
                 {
                     batteryCount.stun = null;
-                }
+                } */
 
                 inStunRange = false;
                 stunText.SetActive(false);
@@ -79,10 +79,10 @@ public class WalkieTalkie : MonoBehaviour
             }
             else
             {
-                if (batteryCount != null && batteryCount.stun == this)
+                /*if (batteryCount != null && batteryCount.stun == this)
                 {
                     batteryCount.stun = null;
-                }
+                }*/
                 inStunRange = false;
                 stunText.SetActive(false);
             }
