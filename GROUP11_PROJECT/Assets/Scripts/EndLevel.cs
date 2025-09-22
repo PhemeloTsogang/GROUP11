@@ -8,7 +8,7 @@ public class EndLevel : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("DeathMenu");
+            End.SetActive(true);
         }
     }
 }

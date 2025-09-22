@@ -2,17 +2,14 @@ using UnityEngine;
 
 public class CollectBattery : MonoBehaviour
 {
-    public MeshRenderer visible, visible2, visible3, visible4;
     public FPController player;
     public GameObject pickUpText;
     public BatteryUI battery;
     public bool inCollectRange = false;
-    private DialogueManager manage;
 
     public DialogueTrigger trigger;
     private void Awake()
     {
-        manage = FindFirstObjectByType<DialogueManager>();
         inCollectRange = false;
     }
 
@@ -39,16 +36,6 @@ public class CollectBattery : MonoBehaviour
             {
                 player.battery = null;
             }
-
-            if (manage != null)
-            {
-                manage.EndDialogue();
-            }
-
-            if(gameObject.name == "TUT_BATTERY")
-            {
-                Destroy(gameObject);
-            }
         }
     }
 
@@ -59,19 +46,8 @@ public class CollectBattery : MonoBehaviour
             player.AddBattery();
             battery.UpdateUI(player.batteryCount);
             pickUpText.SetActive(false);
-
-            if (gameObject.name == "TUT_BATTERY")
-            {
-                trigger.TriggerDialogue();
-                visible.enabled = false;
-                visible2.enabled = false;
-                visible3.enabled = false;
-                visible4.enabled = false;
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
+            trigger.TriggerDialogue();
         }
     }
 }
