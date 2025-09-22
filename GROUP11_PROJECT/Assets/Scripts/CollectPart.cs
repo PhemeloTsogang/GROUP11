@@ -7,6 +7,7 @@ public class CollectPart : MonoBehaviour
     public KeyPartUI part;
     public bool inCollectRange = false;
     public DialogueTrigger trigger;
+    public LetterTextTrigger trigger2;
     public Material glowMaterial;
     private Material originalMaterial;
     private MeshRenderer targetRenderer;
@@ -58,9 +59,14 @@ public class CollectPart : MonoBehaviour
             if (gameObject.CompareTag("Trophy") || gameObject.CompareTag("Bracelet"))
             {
                 trigger.TriggerDialogue();
+                
             }
-            
-            Destroy(gameObject);
+            else if(gameObject.CompareTag("Letter"))
+            { 
+                trigger2.TriggerLetter();
+            }
+
+                Destroy(gameObject);
         }
     }
 }
