@@ -67,7 +67,7 @@ public class CollectPart : MonoBehaviour
                 trigger2.TriggerLetter();
             }
 
-                letter.enabled = false;
+                Destroy(gameObject);
         }
     }
 }
