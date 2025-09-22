@@ -11,6 +11,7 @@ public class CollectPart : MonoBehaviour
     public Material glowMaterial;
     private Material originalMaterial;
     private MeshRenderer targetRenderer;
+    public MeshRenderer letter;
 
     private void Awake()
     {
@@ -66,7 +67,7 @@ public class CollectPart : MonoBehaviour
                 trigger2.TriggerLetter();
             }
 
-                Destroy(gameObject);
+                letter.enabled = false;
         }
     }
 }
