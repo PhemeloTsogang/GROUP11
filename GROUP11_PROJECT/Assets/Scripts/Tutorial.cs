@@ -8,11 +8,19 @@ public class Tutorial : MonoBehaviour
     public FPController player;
     public DialogueTrigger trigger;
     private DialogueManager manage;
+    public Material glowMaterial;
+    private Material originalMaterial;
+    private MeshRenderer targetRenderer;
+
+
 
     private void Awake()
     {
         manage = FindFirstObjectByType<DialogueManager>();
+        targetRenderer = GetComponent<MeshRenderer>();
         inRange = false;
+
+        originalMaterial = targetRenderer.material;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,6 +29,7 @@ public class Tutorial : MonoBehaviour
         {
             collectText.SetActive(true);
             inRange = true;
+            targetRenderer.material = glowMaterial;
         }
     }
 
@@ -28,6 +37,7 @@ public class Tutorial : MonoBehaviour
     {
         collectText.SetActive(false);
         inRange = false;
+        targetRenderer.material = originalMaterial;
 
         if (manage != null)
         {
@@ -42,6 +52,7 @@ public class Tutorial : MonoBehaviour
             player.canCollect = false;
             collectText.SetActive(false);
             trigger.TriggerDialogue();
+            targetRenderer.material = originalMaterial;
             walkie.enabled = false;
             walkie2.enabled = false;
         }
