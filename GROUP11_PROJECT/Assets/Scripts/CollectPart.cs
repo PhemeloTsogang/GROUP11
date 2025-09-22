@@ -48,6 +48,11 @@ public class CollectPart : MonoBehaviour
             player.AddPart();
             part.UpdateUI(player.keyPartCount);
             pickUpText.SetActive(false);
+            if (gameObject.CompareTag("Trophy") || gameObject.CompareTag("Bracelet"))
+            {
+                trigger.TriggerDialogue();
+            }
+            
             Destroy(gameObject);
             trigger.TriggerLetter();
         }

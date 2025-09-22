@@ -13,11 +13,11 @@ public class OpenTutDoor : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && player.memoryCount == 1)
+        if (other.CompareTag("Player"))
         {
             if (player != null)
             {
-                inTutRange |= true;
+                inTutRange = true;
                 openText.SetActive(true);
             }
         }

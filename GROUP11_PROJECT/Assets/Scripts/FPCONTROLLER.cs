@@ -77,6 +77,9 @@ public class FPController : MonoBehaviour
     [Header("UnlockDoor Settings")]
     public Unlock unlockDoor;
 
+    [Header("Dialogue Settings")]
+    public DialogueTrigger trigger1, trigger2, trigger3;
+
     [Header("General Settings")]
     public CharacterController controller;
     private Vector2 moveInput;
@@ -284,6 +287,10 @@ public class FPController : MonoBehaviour
                 unlockDoor = null;
             }
         }
+        else if (context.performed && keyCount <= 0 && unlockDoor != null && unlockDoor.inRange)
+        {
+            trigger3.TriggerDialogue();
+        }
     }
 
     public void AddBattery()
@@ -378,8 +385,13 @@ public class FPController : MonoBehaviour
         if (context.performed && canOpen)
         {
             tutDoor.Open();
+            trigger1.TriggerDialogue();
             memoryCount--;
             canOpen = false;
+        }
+        else if (context.performed && canOpen == false & tutDoor.inTutRange && tutDoor!=null)
+        {
+            trigger2.TriggerDialogue();
         }
     }
 

@@ -38,6 +38,7 @@ public class TutorialMonster : MonoBehaviour
     private AudioSource MonsterMove;
     private AudioSource MonsterRoar;
     private AudioSource MonsterAttack;
+    public DialogueTrigger trigger; 
 
     private void Start()
     {
@@ -172,9 +173,10 @@ public class TutorialMonster : MonoBehaviour
         ai.isStopped = true;
         currentState = AIState.Idle; //my monster is stopped
 
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(3f);
 
         gameObject.SetActive(false);
+        trigger.TriggerDialogue();
     }
 
     private IEnumerator EnemyAttack()
