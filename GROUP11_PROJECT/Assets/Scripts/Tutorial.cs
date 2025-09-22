@@ -17,9 +17,8 @@ public class Tutorial : MonoBehaviour
     private void Awake()
     {
         manage = FindFirstObjectByType<DialogueManager>();
-        targetRenderer = GetComponent<MeshRenderer>();
         inRange = false;
-
+        targetRenderer = GetComponent<MeshRenderer>();
         originalMaterial = targetRenderer.material;
     }
 

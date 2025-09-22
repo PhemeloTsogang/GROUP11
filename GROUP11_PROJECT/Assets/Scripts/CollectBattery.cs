@@ -10,10 +10,16 @@ public class CollectBattery : MonoBehaviour
     private DialogueManager manage;
 
     public DialogueTrigger trigger;
+    public Material glowMaterial;
+    private Material originalMaterial;
+    private MeshRenderer targetRenderer;
+
     private void Awake()
     {
         manage = FindFirstObjectByType<DialogueManager>();
         inCollectRange = false;
+        targetRenderer = GetComponent<MeshRenderer>();
+        originalMaterial = targetRenderer.material;
     }
 
     private void OnTriggerStay(Collider other)
@@ -24,6 +30,7 @@ public class CollectBattery : MonoBehaviour
             {
                 player.battery = this;
                 pickUpText.SetActive(true);
+                targetRenderer.material = glowMaterial;
                 inCollectRange = true;
             }
         }
@@ -34,6 +41,7 @@ public class CollectBattery : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             pickUpText.SetActive(false);
+            targetRenderer.material = originalMaterial;
             inCollectRange = false;
             if (player != null && player.battery == this)
             {
@@ -43,11 +51,6 @@ public class CollectBattery : MonoBehaviour
             if (manage != null)
             {
                 manage.EndDialogue();
-            }
-
-            if(gameObject.name == "TUT_BATTERY")
-            {
-                Destroy(gameObject);
             }
         }
     }
@@ -59,6 +62,7 @@ public class CollectBattery : MonoBehaviour
             player.AddBattery();
             battery.UpdateUI(player.batteryCount);
             pickUpText.SetActive(false);
+            targetRenderer.material = originalMaterial;
 
             if (gameObject.name == "TUT_BATTERY")
             {

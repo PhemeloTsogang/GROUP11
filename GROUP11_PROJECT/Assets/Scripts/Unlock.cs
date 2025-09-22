@@ -5,10 +5,15 @@ public class Unlock : MonoBehaviour
     public GameObject collectText;
     public bool inRange;
     public FPController player;
-  
+    public Material glowMaterial;
+    private Material originalMaterial;
+    private MeshRenderer targetRenderer;
+
 
     private void Awake()
     {
+        targetRenderer = GetComponent<MeshRenderer>();
+        originalMaterial = targetRenderer.material;
         inRange = false;
     }
 
@@ -18,6 +23,7 @@ public class Unlock : MonoBehaviour
         {
             player.unlockDoor = this;
             collectText.SetActive(true);
+            targetRenderer.material = glowMaterial;
             inRange = true;
         }
     }
@@ -25,6 +31,7 @@ public class Unlock : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         collectText.SetActive(false);
+        targetRenderer.material = originalMaterial;
         inRange = false;
         if (player != null && player.unlockDoor == this)
         {
@@ -37,6 +44,7 @@ public class Unlock : MonoBehaviour
         if (inRange && player != null)
         {
             collectText.SetActive(false);
+            targetRenderer.material = originalMaterial;
             Destroy(gameObject);
         }
     }
