@@ -63,6 +63,7 @@ public class Hide : MonoBehaviour
         if (other.CompareTag("MainCamera"))
         {
             hideText.SetActive(false);
+            targetRenderer.material = originalMaterial;
             interact = false;
 
         }
@@ -92,6 +93,7 @@ public class Hide : MonoBehaviour
                 }
 
                 hideText.SetActive(false);
+                targetRenderer.material = originalMaterial;
 
                 if (this.gameObject.CompareTag("Vent"))
                 {
@@ -160,11 +162,13 @@ public class Hide : MonoBehaviour
                 {
                     stopHidingVentText.SetActive(false);
                     blackScreen.SetActive(false);
+                    targetRenderer.material = originalMaterial;
                 }
 
                 if (this.gameObject.CompareTag("Locker"))
                 {
                     lockerScreen.SetActive(false);
+                    targetRenderer.material = originalMaterial;
                 }
 
                 isHiding = false;

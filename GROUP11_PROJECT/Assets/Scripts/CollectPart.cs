@@ -7,10 +7,15 @@ public class CollectPart : MonoBehaviour
     public KeyPartUI part;
     public bool inCollectRange = false;
     public DialogueTrigger trigger;
+    public Material glowMaterial;
+    private Material originalMaterial;
+    private MeshRenderer targetRenderer;
 
     private void Awake()
     {
         inCollectRange = false;
+        targetRenderer = GetComponent<MeshRenderer>();
+        originalMaterial = targetRenderer.material;
     }
 
     private void OnTriggerStay(Collider other)
@@ -31,6 +36,7 @@ public class CollectPart : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             pickUpText.SetActive(false);
+            targetRenderer.material = originalMaterial;
             inCollectRange = false;
 
             if (player != null && player.part == this)
@@ -48,6 +54,7 @@ public class CollectPart : MonoBehaviour
             player.AddPart();
             part.UpdateUI(player.keyPartCount);
             pickUpText.SetActive(false);
+            targetRenderer.material = originalMaterial;
             if (gameObject.CompareTag("Trophy") || gameObject.CompareTag("Bracelet"))
             {
                 trigger.TriggerDialogue();
