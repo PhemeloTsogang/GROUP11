@@ -6,7 +6,7 @@ public class CollectPart : MonoBehaviour
     public GameObject pickUpText;
     public KeyPartUI part;
     public bool inCollectRange = false;
-    public DialogueTrigger trigger;
+    public LetterTextTrigger trigger;
 
     private void Awake()
     {
@@ -48,12 +48,8 @@ public class CollectPart : MonoBehaviour
             player.AddPart();
             part.UpdateUI(player.keyPartCount);
             pickUpText.SetActive(false);
-            if (gameObject.CompareTag("Trophy") || gameObject.CompareTag("Bracelet"))
-            {
-                trigger.TriggerDialogue();
-            }
-            
             Destroy(gameObject);
+            trigger.TriggerLetter();
         }
     }
 }
