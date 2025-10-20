@@ -96,6 +96,9 @@ public class FPController : MonoBehaviour
     [Header("Audio Settings")]
     private AudioSource Walk, Run, Breathe;
 
+    [Header("Animation Settings")]
+    public Animator animator;
+
     [Header("Monster Handling Settings")]
     public GameObject tutMonst, Monst;
 
@@ -155,6 +158,7 @@ public class FPController : MonoBehaviour
         if (Walk == null || !Walk.isPlaying)
         {
             Walk = AudioManager.instance.Play("Walk", this.transform);
+            animator.SetBool("isWalkingAnim", true);
         }
 
         if (moveSpeed != sprintSpeed)
@@ -168,6 +172,7 @@ public class FPController : MonoBehaviour
         {
             AudioManager.instance.StopSound(Walk);
             Walk = null;
+            animator.SetBool("isWalkingAnim", false);
         }
     }
 
@@ -197,6 +202,8 @@ public class FPController : MonoBehaviour
             if (Run == null || !Run.isPlaying)
             {
                 Run = AudioManager.instance.Play("Run", this.transform);
+                animator.SetBool("isSprintingAnim", true);
+                animator.SetBool("isWalkingAnim", false);
             }
 
             if (Breathe == null || !Breathe.isPlaying)
@@ -215,6 +222,7 @@ public class FPController : MonoBehaviour
             stamina.isSprinting = false;
             AudioManager.instance.StopSound(Run);
             Run = null;
+            animator.SetBool("isSprintingAnim", false);
 
             AudioManager.instance.StopSound(Breathe);
             Breathe = null;
@@ -230,6 +238,7 @@ public class FPController : MonoBehaviour
         {
             AudioManager.instance.StopSound(Run);
             Run = null;
+            animator.SetBool("isSprintingAnim", false);
         }
 
         if (Breathe != null)
