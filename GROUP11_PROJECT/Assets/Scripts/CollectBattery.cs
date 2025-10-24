@@ -2,15 +2,24 @@ using UnityEngine;
 
 public class CollectBattery : MonoBehaviour
 {
+    public MeshRenderer visible, visible2, visible3, visible4;
     public FPController player;
     public GameObject pickUpText;
     public BatteryUI battery;
     public bool inCollectRange = false;
+    private DialogueManager manage;
 
     public DialogueTrigger trigger;
+    public Material glowMaterial;
+    private Material originalMaterial;
+    private MeshRenderer targetRenderer;
+
     private void Awake()
     {
+        manage = FindFirstObjectByType<DialogueManager>();
         inCollectRange = false;
+        targetRenderer = GetComponent<MeshRenderer>();
+        originalMaterial = targetRenderer.material;
     }
 
     private void OnTriggerStay(Collider other)
@@ -21,6 +30,7 @@ public class CollectBattery : MonoBehaviour
             {
                 player.battery = this;
                 pickUpText.SetActive(true);
+                targetRenderer.material = glowMaterial;
                 inCollectRange = true;
             }
         }
@@ -31,10 +41,16 @@ public class CollectBattery : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             pickUpText.SetActive(false);
+            targetRenderer.material = originalMaterial;
             inCollectRange = false;
             if (player != null && player.battery == this)
             {
                 player.battery = null;
+            }
+
+            if (manage != null)
+            {
+                manage.EndDialogue();
             }
         }
     }
@@ -46,8 +62,20 @@ public class CollectBattery : MonoBehaviour
             player.AddBattery();
             battery.UpdateUI(player.batteryCount);
             pickUpText.SetActive(false);
-            Destroy(gameObject);
-            trigger.TriggerDialogue();
+            targetRenderer.material = originalMaterial;
+
+            if (gameObject.name == "TUT_BATTERY")
+            {
+                trigger.TriggerDialogue();
+                visible.enabled = false;
+                visible2.enabled = false;
+                visible3.enabled = false;
+                visible4.enabled = false;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

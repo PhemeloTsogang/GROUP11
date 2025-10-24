@@ -159,7 +159,7 @@ public class TutorialMonster : MonoBehaviour
     {
         StopAllCoroutines();
         int random = Random.Range(0, destinationAmount);
-        currDestination = destinations[random];
+        currDestination = destinations[0];
         currentState = AIState.Walking;
     }
 

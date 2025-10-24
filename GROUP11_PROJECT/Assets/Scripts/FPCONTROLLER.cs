@@ -112,6 +112,7 @@ public class FPController : MonoBehaviour
         walkie.SetActive(false);
         canCollect = true;
         canOpen = false;
+        
     }
 
     private void Update()
@@ -122,6 +123,11 @@ public class FPController : MonoBehaviour
         }
 
         HandleLook();
+
+        if (controller.isGrounded && moveInput != Vector2.zero)
+        {
+            headShake();
+        }
 
 
         if (isSprinting && controller.isGrounded && moveInput != Vector2.zero)

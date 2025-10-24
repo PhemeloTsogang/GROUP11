@@ -25,6 +25,10 @@ public class Hide : MonoBehaviour
     public Transform monster;
     public Transform tutMonster;
 
+    public Material glowMaterial;
+    private Material originalMaterial;
+    private MeshRenderer targetRenderer;
+
     private void Awake()
     {
         interact = false;
@@ -33,6 +37,8 @@ public class Hide : MonoBehaviour
         isLocker = false;
         isVent = false;
 
+        targetRenderer = GetComponent<MeshRenderer>();
+        originalMaterial = targetRenderer.material;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -45,6 +51,7 @@ public class Hide : MonoBehaviour
         if (other.CompareTag("MainCamera"))
         {
             hideText.SetActive(true);
+            targetRenderer.material = glowMaterial;
             interact = true;
 
             fpController.locker = this;
@@ -56,6 +63,7 @@ public class Hide : MonoBehaviour
         if (other.CompareTag("MainCamera"))
         {
             hideText.SetActive(false);
+            targetRenderer.material = originalMaterial;
             interact = false;
 
         }
@@ -85,6 +93,7 @@ public class Hide : MonoBehaviour
                 }
 
                 hideText.SetActive(false);
+                targetRenderer.material = originalMaterial;
 
                 if (this.gameObject.CompareTag("Vent"))
                 {
@@ -153,11 +162,13 @@ public class Hide : MonoBehaviour
                 {
                     stopHidingVentText.SetActive(false);
                     blackScreen.SetActive(false);
+                    targetRenderer.material = originalMaterial;
                 }
 
                 if (this.gameObject.CompareTag("Locker"))
                 {
                     lockerScreen.SetActive(false);
+                    targetRenderer.material = originalMaterial;
                 }
 
                 isHiding = false;
