@@ -94,11 +94,14 @@ public class FPController : MonoBehaviour
     public Hide locker;
 
     [Header("Audio Settings")]
-    private AudioSource Walk, Run, Breathe;
+    private AudioSource Walk, Run, Breathe, Level1Growl;
+    public Transform roarPos;
 
     [Header("Monster Handling Settings")]
     public GameObject tutMonst, Monst;
 
+    [Header("End Door Sequence")]
+    public GameObject runtext;
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -200,6 +203,8 @@ public class FPController : MonoBehaviour
 
         if (context.performed && controller.isGrounded)
         {
+            runtext.SetActive(false);
+            
             if (Run == null || !Run.isPlaying)
             {
                 Run = AudioManager.instance.Play("Run", this.transform);
@@ -383,6 +388,8 @@ public class FPController : MonoBehaviour
         if (context.performed && door.canOpen)
         {
             door.Open();
+            runtext.SetActive(true);
+            Level1Growl = AudioManager.instance.Play("Roar", roarPos);
         }
     }
 

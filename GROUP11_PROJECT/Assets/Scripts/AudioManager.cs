@@ -8,7 +8,6 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        Play("Water", this.transform);
         if (instance == null)
         {
             instance = this;
