@@ -5,9 +5,11 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
     public Sound[] sounds;
+    public AudioSource Heart;
 
     void Awake()
     {
+        Heart = Play("HeartRate", this.transform);
         if (instance == null)
         {
             instance = this;

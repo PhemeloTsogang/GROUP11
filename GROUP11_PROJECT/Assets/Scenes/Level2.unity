@@ -29813,6 +29813,174 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &270218422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 270218423}
+  - component: {fileID: 270218429}
+  - component: {fileID: 270218428}
+  - component: {fileID: 270218427}
+  - component: {fileID: 270218426}
+  - component: {fileID: 270218425}
+  - component: {fileID: 270218424}
+  m_Layer: 0
+  m_Name: KeyPart (5)
+  m_TagString: Letter
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &270218423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270218422}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -123.51, y: -11.4, z: -155.72}
+  m_LocalScale: {x: 0.52623, y: 0.52623, z: 0.52623}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1540332413}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &270218424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270218422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a54a76de1901794a91ad4d76b21afc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  letterText:
+    name: Hospital Report
+    pages:
+    - "HOSPICARE PRIVATE MEDICAL CENTRE\r\n1355 Eastern Street, Corner Belbury Drive,
+      Grahamville\r\n\r\nPatient Number: 16835427\r\n\r\nPatient Name: Samuel Bennet\r\n\r\nAge:18\r\n\r\nDate
+      of birth: 1998/02/14\r\n\r\nCase File: Sammuel Bennet is currently in a coma
+      as a result of a drug overdose, namely Heroine. After examining the patient\u2019s
+      body, we discovered that he had engaged in extended periods of drug use until
+      this point. Whether or not the patient will regain consciousness is up in the
+      air, nobody can say for sure what the outcome will be.\r\n\r\n"
+  manager: {fileID: 330311626}
+--- !u!114 &270218425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270218422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92714410f00466c409ab66c241e0c006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 841029685}
+  battery: {fileID: 964902218}
+--- !u!114 &270218426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270218422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d2b8bd53ea9f741883f68ef05120cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 964902218}
+  pickUpText: {fileID: 1505441707}
+  part: {fileID: 270218425}
+  inCollectRange: 0
+  trigger: {fileID: 0}
+  trigger2: {fileID: 270218424}
+  glowMaterial: {fileID: 2100000, guid: 45f138a353d7923469aad110da3a6295, type: 2}
+  letter: {fileID: 270218428}
+--- !u!135 &270218427
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270218422}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &270218428
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270218422}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: ed8e7a5d8d6d51f409ba488836825765, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &270218429
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270218422}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &270447971 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6553274607369936748, guid: 0aab05fda07533348930614829dd978f, type: 3}
@@ -140313,9 +140481,6 @@ MonoBehaviour:
   tutDoor: {fileID: 1019331515}
   canOpen: 0
   unlockDoor: {fileID: 0}
-  trigger1: {fileID: 964902226}
-  trigger2: {fileID: 964902227}
-  trigger3: {fileID: 964902228}
   controller: {fileID: 0}
   hidingYRotation: 0
   hidingLookLimit: 45
@@ -192920,7 +193085,6 @@ MonoBehaviour:
   attackCooldown: 2
   health: {fileID: 964902224}
   hide: {fileID: 1849693195}
-  trigger: {fileID: 1305570742}
 --- !u!114 &1305570742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221090,6 +221254,7 @@ MonoBehaviour:
   closeOff: {fileID: 1982415447}
   player: {fileID: 964902213}
   levelText: {fileID: 858559831}
+  manager: {fileID: 2063991576}
 --- !u!65 &1526316245
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -221240,6 +221405,7 @@ Transform:
   - {fileID: 628511257}
   - {fileID: 463104315}
   - {fileID: 658380597}
+  - {fileID: 270218423}
   - {fileID: 700621302}
   - {fileID: 1263464970}
   m_Father: {fileID: 2069433343}
@@ -302874,10 +303040,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: HeartRate
-    clip: {fileID: 8300000, guid: 0e02e9996b313c74ebd786e9abea61f9, type: 3}
-    volume: 0.679
+    clip: {fileID: 8300000, guid: 12eb67a399de221468b6e1ee15c3d412, type: 3}
+    volume: 0.77
     pitch: 1
-    spatialBlend: 1
+    spatialBlend: 0
     loop: 1
     source: {fileID: 0}
   - name: Roar
@@ -302964,6 +303130,7 @@ MonoBehaviour:
     spatialBlend: 0
     loop: 0
     source: {fileID: 0}
+  Heart: {fileID: 0}
 --- !u!4 &2063991577
 Transform:
   m_ObjectHideFlags: 0

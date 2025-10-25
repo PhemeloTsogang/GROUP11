@@ -5,7 +5,9 @@ public class StartLevel : MonoBehaviour
 {
     public GameObject closeOff, player, levelText;
     private AudioSource Drip;
+    public AudioManager manager;
 
+ 
     private void Update()
     {
         if (levelText.activeInHierarchy)
@@ -19,6 +21,7 @@ public class StartLevel : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+            AudioManager.instance.StopSound(manager.Heart);
             levelText.SetActive(true);
             closeOff.SetActive(true);
             if (Drip == null || !Drip.isPlaying)
