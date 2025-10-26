@@ -5275,7 +5275,6 @@ MonoBehaviour:
   stopHidingText: {fileID: 1273294945}
   player: {fileID: 0}
   hidingSpot: {fileID: 0}
-  walkieTalkie: {fileID: 1821509274}
   lockerScreen: {fileID: 1108091553}
   Sam: {fileID: 1015505540}
   isHiding: 0
@@ -5679,7 +5678,7 @@ Transform:
   m_GameObject: {fileID: 47566574}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071057, z: -0, w: 0.7071079}
-  m_LocalPosition: {x: 215.2, y: -2.5, z: -124.8}
+  m_LocalPosition: {x: 220.6, y: -2.5, z: -124.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8840,7 +8839,6 @@ MonoBehaviour:
   stopHidingText: {fileID: 1273294945}
   player: {fileID: 0}
   hidingSpot: {fileID: 0}
-  walkieTalkie: {fileID: 1821509274}
   lockerScreen: {fileID: 1108091553}
   Sam: {fileID: 1015505540}
   isHiding: 0
@@ -17503,7 +17501,6 @@ MonoBehaviour:
   stopHidingText: {fileID: 1273294945}
   player: {fileID: 964902213}
   hidingSpot: {fileID: 1203782504}
-  walkieTalkie: {fileID: 1821509274}
   lockerScreen: {fileID: 1108091553}
   Sam: {fileID: 1015505540}
   isHiding: 0
@@ -23053,9 +23050,9 @@ MonoBehaviour:
   walkSpeed: 6
   chaseSpeed: 8.5
   detectDistance: 9
-  caughtDist: 1
-  minChasetime: 10
-  maxChasetime: 25
+  caughtDist: 2
+  minChasetime: 5
+  maxChasetime: 10
   player: {fileID: 964902217}
   destinationAmount: 3
   rayCastOffset: {x: 0, y: 0, z: 0}
@@ -23088,6 +23085,7 @@ MonoBehaviour:
     m_Bits: 55
   stunText: {fileID: 8367101}
   monst: {fileID: 243404450}
+  Walkie: {fileID: 1821509274}
   batteryCount: {fileID: 964902218}
 --- !u!1 &243610355
 GameObject:
@@ -24896,6 +24894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 964902218}
   pickUpText: {fileID: 1505441707}
+  Walkie: {fileID: 1821509274}
   part: {fileID: 270218425}
   inCollectRange: 0
   trigger: {fileID: 0}
@@ -27786,7 +27785,6 @@ MonoBehaviour:
   stopHidingText: {fileID: 1273294945}
   player: {fileID: 0}
   hidingSpot: {fileID: 0}
-  walkieTalkie: {fileID: 1821509274}
   lockerScreen: {fileID: 1108091553}
   Sam: {fileID: 1015505540}
   isHiding: 0
@@ -28256,6 +28254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 964902218}
   pickUpText: {fileID: 1505441707}
+  Walkie: {fileID: 1821509274}
   part: {fileID: 324162539}
   inCollectRange: 0
   trigger: {fileID: 0}
@@ -39858,6 +39857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 964902218}
   pickUpText: {fileID: 1505441707}
+  Walkie: {fileID: 1821509274}
   part: {fileID: 463104316}
   inCollectRange: 0
   trigger: {fileID: 0}
@@ -49226,7 +49226,7 @@ Transform:
   m_GameObject: {fileID: 577374408}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071057, z: -0, w: 0.7071079}
-  m_LocalPosition: {x: 248, y: -2.5, z: 24}
+  m_LocalPosition: {x: 315.5, y: -2.5, z: -36.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -54822,7 +54822,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -825, y: -450}
+  m_AnchoredPosition: {x: -339.4, y: 421.4}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &637987977
@@ -54910,7 +54910,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -150.48843, w: 0}
+  m_margin: {x: 0, y: 0, z: -762.3417, w: -196.37231}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -56426,6 +56426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 964902218}
   pickUpText: {fileID: 1505441707}
+  Walkie: {fileID: 1821509274}
   part: {fileID: 658380598}
   inCollectRange: 0
   trigger: {fileID: 0}
@@ -61139,7 +61140,6 @@ MonoBehaviour:
   stopHidingText: {fileID: 1273294945}
   player: {fileID: 0}
   hidingSpot: {fileID: 0}
-  walkieTalkie: {fileID: 1821509274}
   lockerScreen: {fileID: 1108091553}
   Sam: {fileID: 1015505540}
   isHiding: 0
@@ -64114,7 +64114,7 @@ Transform:
   m_GameObject: {fileID: 734215268}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071057, z: -0, w: 0.7071079}
-  m_LocalPosition: {x: 354, y: 4.37, z: 8}
+  m_LocalPosition: {x: 303.6, y: 4.37, z: -8.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -64367,6 +64367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 964902218}
   pickUpText: {fileID: 1505441707}
+  Walkie: {fileID: 1821509274}
   part: {fileID: 741963479}
   inCollectRange: 0
   trigger: {fileID: 0}
@@ -66837,7 +66838,6 @@ MonoBehaviour:
   stopHidingText: {fileID: 1273294945}
   player: {fileID: 0}
   hidingSpot: {fileID: 0}
-  walkieTalkie: {fileID: 1821509274}
   lockerScreen: {fileID: 1108091553}
   Sam: {fileID: 1015505540}
   isHiding: 0
@@ -68888,7 +68888,7 @@ Transform:
   m_GameObject: {fileID: 790689541}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071057, z: -0, w: 0.7071079}
-  m_LocalPosition: {x: 196, y: -2.5, z: 23}
+  m_LocalPosition: {x: 196, y: -2.5, z: -3.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -84136,7 +84136,7 @@ Transform:
   m_GameObject: {fileID: 964902213}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -652.5, y: -13.9, z: 37.9}
+  m_LocalPosition: {x: -650.8, y: -13.99, z: 37.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -84167,7 +84167,7 @@ MonoBehaviour:
   peekLimit: 30
   originalSpeed: 0
   sprintSpeed: 0
-  amplitutde: 0.03
+  amplitutde: 0.05
   _camera: {fileID: 1305895201}
   cameraHolder: {fileID: 951455896}
   stun: {fileID: 1154167341}
@@ -100589,6 +100589,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 964902218}
   pickUpText: {fileID: 1505441707}
+  Walkie: {fileID: 1821509274}
   part: {fileID: 1079370912}
   inCollectRange: 0
   trigger: {fileID: 0}
@@ -102571,7 +102572,7 @@ GameObject:
   - component: {fileID: 1111613219}
   m_Layer: 0
   m_Name: KeyPart (5)
-  m_TagString: Letter
+  m_TagString: Walkie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102639,6 +102640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 964902218}
   pickUpText: {fileID: 1505441707}
+  Walkie: {fileID: 1821509274}
   part: {fileID: 1111613220}
   inCollectRange: 0
   trigger: {fileID: 0}
@@ -106222,6 +106224,7 @@ MonoBehaviour:
     m_Bits: 55
   stunText: {fileID: 8367101}
   monst: {fileID: 1154167340}
+  Walkie: {fileID: 1821509274}
   batteryCount: {fileID: 964902218}
 --- !u!195 &1154167342
 NavMeshAgent:
@@ -106269,9 +106272,9 @@ MonoBehaviour:
   walkSpeed: 6
   chaseSpeed: 8.5
   detectDistance: 9
-  caughtDist: 1
-  minChasetime: 10
-  maxChasetime: 25
+  caughtDist: 2.5
+  minChasetime: 5
+  maxChasetime: 10
   player: {fileID: 964902217}
   destinationAmount: 5
   rayCastOffset: {x: 0, y: 0, z: 0}
@@ -133489,6 +133492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 964902218}
   pickUpText: {fileID: 1505441707}
+  Walkie: {fileID: 1821509274}
   part: {fileID: 1455222644}
   inCollectRange: 0
   trigger: {fileID: 0}
@@ -144668,7 +144672,7 @@ Transform:
   m_GameObject: {fileID: 1568573482}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071057, z: -0, w: 0.7071079}
-  m_LocalPosition: {x: 220.3, y: -2.5, z: -80}
+  m_LocalPosition: {x: 220.3, y: -2.5, z: -58.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -166834,6 +166838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 964902218}
   pickUpText: {fileID: 1505441707}
+  Walkie: {fileID: 1821509274}
   part: {fileID: 1813383787}
   inCollectRange: 0
   trigger: {fileID: 0}
@@ -167312,6 +167317,7 @@ Transform:
   m_LocalScale: {x: 0.15796146, y: 0.34241545, z: 0.106071346}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2058323811}
   - {fileID: 695060484}
   m_Father: {fileID: 1305895201}
   m_LocalEulerAnglesHint: {x: 2.64, y: 29.054, z: 0.382}
@@ -167343,7 +167349,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821509274}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -180361,6 +180367,79 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c52551fbe0595349b572134549c9b73, type: 3}
+--- !u!1001 &1962814116
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1821509275}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 96929a84aee59464ba893335c11231a4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 23.930351
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 96929a84aee59464ba893335c11231a4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 32.802246
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 96929a84aee59464ba893335c11231a4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10.704701
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 96929a84aee59464ba893335c11231a4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 96929a84aee59464ba893335c11231a4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.723
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 96929a84aee59464ba893335c11231a4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 96929a84aee59464ba893335c11231a4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5095504
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 96929a84aee59464ba893335c11231a4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5368366
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 96929a84aee59464ba893335c11231a4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.4846024
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 96929a84aee59464ba893335c11231a4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.46618167
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 96929a84aee59464ba893335c11231a4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -92.668
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 96929a84aee59464ba893335c11231a4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -8.235992
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 96929a84aee59464ba893335c11231a4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 283.71802
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 96929a84aee59464ba893335c11231a4, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 96929a84aee59464ba893335c11231a4, type: 3}
+      propertyPath: m_Name
+      value: WalkieTalkie (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 96929a84aee59464ba893335c11231a4, type: 3}
 --- !u!1001 &1965919392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -185118,8 +185197,8 @@ Transform:
   m_GameObject: {fileID: 1998299280}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 0.7661062, y: 7.2917447, z: 40.194702}
-  m_LocalScale: {x: 1.1001699, y: 0.99232066, z: 0.059363678}
+  m_LocalPosition: {x: 0.77, y: 7.2917447, z: 209}
+  m_LocalScale: {x: 2.3603494, y: 0.99232066, z: 0.10627879}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1482506724}
@@ -190452,6 +190531,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!4 &2058323811 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 96929a84aee59464ba893335c11231a4, type: 3}
+  m_PrefabInstance: {fileID: 1962814116}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &2058595189
 Mesh:
   m_ObjectHideFlags: 0
@@ -192621,7 +192705,6 @@ MonoBehaviour:
   stopHidingText: {fileID: 1273294945}
   player: {fileID: 0}
   hidingSpot: {fileID: 0}
-  walkieTalkie: {fileID: 1821509274}
   lockerScreen: {fileID: 1108091553}
   Sam: {fileID: 1015505540}
   isHiding: 0
@@ -198390,7 +198473,7 @@ Light:
   serializedVersion: 11
   m_Type: 1
   m_Color: {r: 0.8392157, g: 0.96714705, b: 1, a: 1}
-  m_Intensity: 0.3
+  m_Intensity: 0.25
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208

@@ -3,7 +3,7 @@ using UnityEngine;
 public class CollectPart : MonoBehaviour
 {
     public FPController player;
-    public GameObject pickUpText;
+    public GameObject pickUpText, Walkie;
     public KeyPartUI part;
     public bool inCollectRange = false;
     public DialogueTrigger trigger;
@@ -64,9 +64,13 @@ public class CollectPart : MonoBehaviour
                 trigger.TriggerDialogue();
                 
             }
-            else if(gameObject.CompareTag("Letter"))
+            else if(gameObject.CompareTag("Letter") || gameObject.CompareTag("Walkie"))
             { 
                 trigger2.TriggerLetter();
+                if (gameObject.CompareTag("Walkie") && !Walkie.activeInHierarchy)
+                {
+                    Walkie.SetActive(true);
+                }
             }
 
                 Destroy(gameObject);

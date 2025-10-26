@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class Hide : MonoBehaviour
 {
-    public GameObject hideText, stopHidingText, player, hidingSpot, walkieTalkie, lockerScreen, Sam;
+    public GameObject hideText, stopHidingText, player, hidingSpot, lockerScreen, Sam;
     bool interact;
     public bool isHiding;
     //private bool isUsed;
@@ -76,7 +76,6 @@ public class Hide : MonoBehaviour
         {
             if (context.performed)
             {  
-                walkieTalkie.SetActive(false);
                 Sam.SetActive(false);
 
                 if (monsterScript.currentState == EnemyAI.AIState.Chasing)
@@ -141,7 +140,6 @@ public class Hide : MonoBehaviour
             if(context.performed)
             {
                 stopHidingText.SetActive(false);
-                walkieTalkie.SetActive(true);
                 Sam.SetActive(true);
 
                 if (this.gameObject.CompareTag("Locker"))

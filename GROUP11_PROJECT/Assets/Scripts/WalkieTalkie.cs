@@ -10,7 +10,7 @@ public class WalkieTalkie : MonoBehaviour
     public bool inStunRange;
     public Transform monster, player;
     public LayerMask ignore;
-    public GameObject stunText, monst;
+    public GameObject stunText, monst, Walkie;
     public FPController batteryCount;
 
     private void Awake()
@@ -32,7 +32,7 @@ public class WalkieTalkie : MonoBehaviour
                 {
                     batteryCount.stun = this;
                     inStunRange = true;
-                    if (batteryCount.batteryCount == 1)
+                    if (batteryCount.batteryCount == 1 && Walkie.activeInHierarchy)
                     {
                         stunText.SetActive(true);
                     }
