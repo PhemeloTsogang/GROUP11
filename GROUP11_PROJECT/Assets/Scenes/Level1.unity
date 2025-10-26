@@ -68263,7 +68263,7 @@ Transform:
   m_GameObject: {fileID: 700621301}
   serializedVersion: 2
   m_LocalRotation: {x: -0.6885529, y: 0.18649824, z: 0.18342766, w: 0.67636347}
-  m_LocalPosition: {x: -45.828, y: -12.321, z: -202.395}
+  m_LocalPosition: {x: -45.83, y: -12.18, z: -202.4}
   m_LocalScale: {x: 0.3122251, y: 0.3122251, z: 0.3122251}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -68302,7 +68302,7 @@ MonoBehaviour:
   trigger: {fileID: 700621308}
   trigger2: {fileID: 0}
   glowMaterial: {fileID: 2100000, guid: 45f138a353d7923469aad110da3a6295, type: 2}
-  letter: {fileID: 0}
+  letter: {fileID: 700621306}
 --- !u!135 &700621305
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -68395,7 +68395,7 @@ MonoBehaviour:
     - "\"Winner: Sammual Bennet\n\r\nHarrison\u2019s countrywide Tech Expo 2015\""
     - "Hell of a time, still couldn\u2019t believe I pulled off the win\u2026Sis
       was the only one who\r\ncame to cheer me on too\u2026"
-  manager: {fileID: 0}
+  manager: {fileID: 197249655}
 --- !u!43 &701042861
 Mesh:
   m_ObjectHideFlags: 0
@@ -77712,7 +77712,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &841029684
 RectTransform:
   m_ObjectHideFlags: 0
@@ -77761,7 +77761,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -104869,7 +104869,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1069858125
 RectTransform:
   m_ObjectHideFlags: 0
@@ -104918,7 +104918,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
