@@ -6,6 +6,7 @@ public class StartLevel : MonoBehaviour
     public GameObject closeOff, player, levelText;
     private AudioSource Drip;
     public AudioManager manager;
+    public FPController memory;
 
  
     private void Update()
@@ -21,6 +22,11 @@ public class StartLevel : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+            if (memory.keyPartCount != 0)
+            {
+                memory.keyPartCount = 0;
+            }
+
             AudioManager.instance.StopSound(manager.Heart);
             levelText.SetActive(true);
             closeOff.SetActive(true);

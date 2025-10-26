@@ -4,10 +4,10 @@ using UnityEngine.InputSystem;
 
 public class Hide : MonoBehaviour
 {
-    public GameObject hideText, stopHidingText, stopHidingVentText, blackScreen, player, hidingSpot, walkieTalkie, lockerScreen;
+    public GameObject hideText, stopHidingText, player, hidingSpot, walkieTalkie, lockerScreen, Sam;
     bool interact;
     public bool isHiding;
-    private bool isUsed;
+    //private bool isUsed;
 
     public FPController fpController;
     public Transform cameraHolder;
@@ -16,14 +16,11 @@ public class Hide : MonoBehaviour
     private Vector3 originalCameraPosition;
     private Quaternion originalCameraRotation;
     public Transform hideSpot;
-    public bool isVent;
     public bool isLocker;
 
     //monster settings
     public EnemyAI monsterScript;
-    public TutorialMonster tutorial;
     public Transform monster;
-    public Transform tutMonster;
 
     public Material glowMaterial;
     private Material originalMaterial;
@@ -33,9 +30,8 @@ public class Hide : MonoBehaviour
     {
         interact = false;
         isHiding = false;
-        isUsed = false;
+        //isUsed = false;
         isLocker = false;
-        isVent = false;
 
         targetRenderer = GetComponent<MeshRenderer>();
         originalMaterial = targetRenderer.material;
@@ -43,10 +39,10 @@ public class Hide : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (isUsed)
+        /*if (isUsed)
         {
             return;
-        }
+        }*/
 
         if (other.CompareTag("MainCamera"))
         {
@@ -70,36 +66,26 @@ public class Hide : MonoBehaviour
     }
 
     public void onHide(InputAction.CallbackContext context)
-    { 
-        if (isUsed)
+    {
+        /*if (isUsed)
         {
             return;
-        }
+        }*/
 
         if (interact == true)
         {
             if (context.performed)
             {  
                 walkieTalkie.SetActive(false);
+                Sam.SetActive(false);
 
                 if (monsterScript.currentState == EnemyAI.AIState.Chasing)
                 {
                     monsterScript.StopChase();
                 }
 
-                if (tutorial.currentState == TutorialMonster.AIState.Chasing)
-                {
-                    tutorial.StopChase();
-                }
-
                 hideText.SetActive(false);
                 targetRenderer.material = originalMaterial;
-
-                if (this.gameObject.CompareTag("Vent"))
-                {
-                    stopHidingVentText.SetActive(true);
-                    blackScreen.SetActive(true);
-                }
 
                 if (this.gameObject.CompareTag("Locker"))
                 {
@@ -138,13 +124,12 @@ public class Hide : MonoBehaviour
                 if (this.gameObject.CompareTag("Locker"))
                 {
                     isLocker = true;
-                    isUsed = true;
+                    //isUsed = true;
                 }
-                else
+                /*else
                 {
-                    isVent = true;
                     isUsed = false;
-                }
+                }*/
             }
         }
     }
@@ -157,13 +142,7 @@ public class Hide : MonoBehaviour
             {
                 stopHidingText.SetActive(false);
                 walkieTalkie.SetActive(true);
-
-                if (this.gameObject.CompareTag("Vent"))
-                {
-                    stopHidingVentText.SetActive(false);
-                    blackScreen.SetActive(false);
-                    targetRenderer.material = originalMaterial;
-                }
+                Sam.SetActive(true);
 
                 if (this.gameObject.CompareTag("Locker"))
                 {
@@ -173,7 +152,6 @@ public class Hide : MonoBehaviour
 
                 isHiding = false;
                 isLocker = false;
-                isVent = false;
 
                 if (playerMesh != null)
                 {

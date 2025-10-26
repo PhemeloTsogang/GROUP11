@@ -28,6 +28,7 @@ public class CollectPart : MonoBehaviour
             {
                 player.part = this;
                 pickUpText.SetActive(true);
+                targetRenderer.material = glowMaterial;
                 inCollectRange = true;
             }
         }

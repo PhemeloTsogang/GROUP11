@@ -108,7 +108,7 @@ public class FPController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         originalSpeed = moveSpeed;
-        sprintSpeed = moveSpeed * 2.5f;
+        sprintSpeed = moveSpeed * 2f;
         originalSprintSpeed = sprintSpeed;
         startPos = _camera.localPosition;
         batteryCount = 0;
@@ -434,10 +434,6 @@ public class FPController : MonoBehaviour
             horizontalRotation += mouseX;
             horizontalRotation = Mathf.Clamp(horizontalRotation, -horizontalPeekLimit, horizontalPeekLimit);
             locker.cameraHolder.rotation = Quaternion.Euler(0f, lockerBaseYRotation + horizontalRotation, 0f);
-        }
-        else if (locker.isHiding & locker.isVent)
-        {
-
         }
         else 
         {
