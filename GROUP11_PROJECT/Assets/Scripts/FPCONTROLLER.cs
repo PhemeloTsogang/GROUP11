@@ -41,7 +41,7 @@ public class FPController : MonoBehaviour
     public CollectBattery battery;
     public float batteryCount = 0;
     public EnemyAI monster;
-    public TutorialMonster tut;
+    //public TutorialMonster tut;
     public StunFlash flash;
     public GameObject stunText, normalPlayer;
     public BatteryUI batteryUI;
@@ -374,14 +374,14 @@ public class FPController : MonoBehaviour
                 batteryCount--;
                 batteryUI.UpdateUI(batteryCount);
             }
-            else if (tutMonst.activeInHierarchy)
+           /* else if (tutMonst.activeInHierarchy)
             {
                 AudioManager.instance.Play("Stun", this.transform);
                 StartCoroutine(tut.Stun());
                 StartCoroutine(flash.Flash());
                 batteryCount--;
                 batteryUI.UpdateUI(batteryCount);
-            }
+            }*/
 
         }
 

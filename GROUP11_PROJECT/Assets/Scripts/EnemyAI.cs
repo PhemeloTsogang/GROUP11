@@ -177,11 +177,12 @@ public class EnemyAI : MonoBehaviour
         currentState = AIState.Idle; //my monster is stopped
 
         yield return new WaitForSeconds(3f);
+        gameObject.SetActive(false);
 
-        ai.isStopped = false;
+        /*ai.isStopped = false;
         int random = Random.Range(0, destinationAmount);
         currDestination = destinations[random];
-        currentState = AIState.Walking;
+        currentState = AIState.Walking;*/
 
     }
 
