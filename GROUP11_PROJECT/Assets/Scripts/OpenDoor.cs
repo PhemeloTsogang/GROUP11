@@ -34,6 +34,7 @@ public class OpenDoor : MonoBehaviour
 
     public void Open()
     {
+       canOpen = false;
       gameObject.SetActive(false);
       openText.SetActive(false);
     }

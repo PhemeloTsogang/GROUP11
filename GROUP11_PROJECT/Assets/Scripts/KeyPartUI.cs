@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class KeyPartUI : MonoBehaviour
 {
+    public FPController player;
     public TextMeshProUGUI text;
     public FPController battery;
 

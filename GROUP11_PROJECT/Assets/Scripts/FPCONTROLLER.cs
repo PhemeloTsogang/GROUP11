@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static EnemyAI;
@@ -42,7 +43,7 @@ public class FPController : MonoBehaviour
     public EnemyAI monster;
     public TutorialMonster tut;
     public StunFlash flash;
-    public GameObject stunText,normalPlayer;
+    public GameObject stunText, normalPlayer;
     public BatteryUI batteryUI;
 
 
@@ -83,9 +84,9 @@ public class FPController : MonoBehaviour
     private Vector2 lookInput;
     private Vector3 velocity;
     private float verticalRotation = 0f;
-    private float horizontalRotation = 0f; 
+    private float horizontalRotation = 0f;
     public float hidingYRotation = 0f;
-    public float hidingLookLimit = 45f; 
+    public float hidingLookLimit = 45f;
 
     [Header("Hide Settings")]
     public Hide locker;
@@ -102,6 +103,7 @@ public class FPController : MonoBehaviour
 
     [Header("End Door Sequence")]
     public GameObject runtext;
+    public TextMeshProUGUI text;
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -114,11 +116,11 @@ public class FPController : MonoBehaviour
         batteryCount = 0;
         keyPartCount = 0;
         keyCount = 0;
-        memoryCount = 0;    
+        memoryCount = 0;
         walkie.SetActive(false);
         canCollect = true;
         canOpen = false;
-        
+
     }
 
     private void Update()
@@ -157,7 +159,7 @@ public class FPController : MonoBehaviour
             canOpen = true;
         }
 
-       
+
     }
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -190,7 +192,7 @@ public class FPController : MonoBehaviour
             if (device is Mouse)
             {
                 lastControlScheme = "Keyboard&Mouse";
-            }    
+            }
 
             else if (device is Gamepad)
             {
@@ -206,7 +208,7 @@ public class FPController : MonoBehaviour
         if (context.performed && controller.isGrounded)
         {
             runtext.SetActive(false);
-            
+
             if (Run == null || !Run.isPlaying)
             {
                 Run = AudioManager.instance.Play("Run", this.transform);
@@ -390,8 +392,10 @@ public class FPController : MonoBehaviour
     {
         if (context.performed && door.canOpen)
         {
+            keyPartCount = 0;
+            text.text = 0 + "/5";
             door.Open();
-            runtext.SetActive(true);
+            StartCoroutine(wait());
             Level1Growl = AudioManager.instance.Play("Roar", roarPos);
         }
     }
@@ -435,7 +439,7 @@ public class FPController : MonoBehaviour
             horizontalRotation = Mathf.Clamp(horizontalRotation, -horizontalPeekLimit, horizontalPeekLimit);
             locker.cameraHolder.rotation = Quaternion.Euler(0f, lockerBaseYRotation + horizontalRotation, 0f);
         }
-        else 
+        else
         {
             verticalRotation -= mouseY;
             verticalRotation = Mathf.Clamp(verticalRotation, -verticalLookLimit, verticalLookLimit);
@@ -443,5 +447,13 @@ public class FPController : MonoBehaviour
             transform.Rotate(Vector3.up * mouseX);
         }
 
+    }
+
+
+    private IEnumerator wait()
+    {
+        runtext.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        runtext.SetActive(false);
     }
 }

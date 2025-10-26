@@ -1,15 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
-public class StartLevel : MonoBehaviour
+public class StartLevel2 : MonoBehaviour
 {
     public GameObject closeOff, player, levelText;
     private AudioSource Drip;
     public AudioManager manager;
-    public StartHeartbeat heartbeat;
     public FPController memory;
 
- 
+
     private void Update()
     {
         if (levelText.activeInHierarchy)
@@ -21,14 +20,9 @@ public class StartLevel : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             AudioManager.instance.StopSound(manager.Heart);
-            if(heartbeat.Heart != null)
-            {
-                AudioManager.instance.StopSound(heartbeat.Heart);
-            }
-       
             levelText.SetActive(true);
             closeOff.SetActive(true);
             if (Drip == null || !Drip.isPlaying)

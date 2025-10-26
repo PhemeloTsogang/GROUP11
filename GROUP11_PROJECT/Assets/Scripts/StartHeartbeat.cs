@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class StartHeartbeat : MonoBehaviour
 {
-    private AudioSource Heart;
+    public AudioSource Heart;
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
