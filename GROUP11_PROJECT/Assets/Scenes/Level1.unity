@@ -25857,7 +25857,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &243404451
 Transform:
   m_ObjectHideFlags: 0
@@ -25931,6 +25931,7 @@ MonoBehaviour:
   raycastLayerMask:
     serializedVersion: 2
     m_Bits: 1
+  animator: {fileID: 1830072223}
   cameraShake: {fileID: 1305895204}
   attackCooldown: 3
   health: {fileID: 964902224}
@@ -76190,6 +76191,171 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &835020847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 835020848}
+  - component: {fileID: 835020854}
+  - component: {fileID: 835020853}
+  - component: {fileID: 835020852}
+  - component: {fileID: 835020851}
+  - component: {fileID: 835020850}
+  - component: {fileID: 835020849}
+  m_Layer: 0
+  m_Name: KeyPart (8)
+  m_TagString: Trophy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &835020848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835020847}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.6885529, y: 0.18649824, z: 0.18342766, w: 0.67636347}
+  m_LocalPosition: {x: 178.041, y: -12.217, z: -210.501}
+  m_LocalScale: {x: 0.3122251, y: 0.3122251, z: 0.3122251}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1540332413}
+  m_LocalEulerAnglesHint: {x: -91.019, y: 1.0249939, z: 29.302994}
+--- !u!114 &835020849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835020847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03dc01c404a2be044aa0a1bef530ffc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: ~Sammual~
+    sentences:
+    - "\"Winner: Sammual Bennet\n\r\nHarrison\u2019s countrywide Tech Expo 2015\""
+    - "Hell of a time, still couldn\u2019t believe I pulled off the win\u2026Sis
+      was the only one who\r\ncame to cheer me on too\u2026"
+  manager: {fileID: 0}
+--- !u!114 &835020850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835020847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92714410f00466c409ab66c241e0c006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 964902218}
+  text: {fileID: 841029685}
+  battery: {fileID: 964902218}
+--- !u!114 &835020851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835020847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d2b8bd53ea9f741883f68ef05120cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 964902218}
+  pickUpText: {fileID: 1505441707}
+  part: {fileID: 835020850}
+  inCollectRange: 0
+  trigger: {fileID: 835020849}
+  trigger2: {fileID: 0}
+  glowMaterial: {fileID: 2100000, guid: 45f138a353d7923469aad110da3a6295, type: 2}
+  letter: {fileID: 0}
+--- !u!135 &835020852
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835020847}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &835020853
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835020847}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: ed8e7a5d8d6d51f409ba488836825765, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &835020854
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835020847}
+  m_Mesh: {fileID: -462981019419857548, guid: cead12222eb127c45aee116dab09f423, type: 3}
 --- !u!1 &835848702
 GameObject:
   m_ObjectHideFlags: 0
@@ -81596,7 +81762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e1b42793c67db34f8b7650afa695e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lvl2Monst: {fileID: 0}
+  lvl2Monst: {fileID: 243404450}
 --- !u!65 &863543346
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -88442,7 +88608,7 @@ Transform:
   m_GameObject: {fileID: 964902213}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -424.8, y: -13.9, z: 32.2}
+  m_LocalPosition: {x: -653.2, y: -13.9, z: 32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -141606,171 +141772,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1461586843
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1461586844}
-  - component: {fileID: 1461586850}
-  - component: {fileID: 1461586849}
-  - component: {fileID: 1461586848}
-  - component: {fileID: 1461586847}
-  - component: {fileID: 1461586846}
-  - component: {fileID: 1461586845}
-  m_Layer: 0
-  m_Name: KeyPart (8)
-  m_TagString: Trophy
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1461586844
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461586843}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.6885529, y: 0.18649824, z: 0.18342766, w: 0.67636347}
-  m_LocalPosition: {x: 180.13, y: -12.33, z: -206.41}
-  m_LocalScale: {x: 0.3122251, y: 0.3122251, z: 0.3122251}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1540332413}
-  m_LocalEulerAnglesHint: {x: -91.019, y: 1.0249939, z: 29.302994}
---- !u!114 &1461586845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461586843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03dc01c404a2be044aa0a1bef530ffc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    name: ~Sammual~
-    sentences:
-    - "\"Winner: Sammual Bennet\n\r\nHarrison\u2019s countrywide Tech Expo 2015\""
-    - "Hell of a time, still couldn\u2019t believe I pulled off the win\u2026Sis
-      was the only one who\r\ncame to cheer me on too\u2026"
-  manager: {fileID: 0}
---- !u!114 &1461586846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461586843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92714410f00466c409ab66c241e0c006, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 964902218}
-  text: {fileID: 841029685}
-  battery: {fileID: 964902218}
---- !u!114 &1461586847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461586843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9d2b8bd53ea9f741883f68ef05120cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 964902218}
-  pickUpText: {fileID: 1505441707}
-  part: {fileID: 1461586846}
-  inCollectRange: 0
-  trigger: {fileID: 1461586845}
-  trigger2: {fileID: 0}
-  glowMaterial: {fileID: 2100000, guid: 45f138a353d7923469aad110da3a6295, type: 2}
-  letter: {fileID: 0}
---- !u!135 &1461586848
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461586843}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 2.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1461586849
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461586843}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: ed8e7a5d8d6d51f409ba488836825765, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1461586850
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461586843}
-  m_Mesh: {fileID: -462981019419857548, guid: cead12222eb127c45aee116dab09f423, type: 3}
 --- !u!1 &1463102829
 GameObject:
   m_ObjectHideFlags: 0
@@ -150825,8 +150826,8 @@ Transform:
   - {fileID: 2071829015}
   - {fileID: 1309726855}
   - {fileID: 633070135}
+  - {fileID: 835020848}
   - {fileID: 1148075435}
-  - {fileID: 1461586844}
   - {fileID: 270218423}
   m_Father: {fileID: 2069433343}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -21,6 +21,8 @@ public class EnemyAI : MonoBehaviour
     public int destinationAmount;
     public Vector3 rayCastOffset;
     public LayerMask raycastLayerMask;
+    public Animator animator;
+  
 
 
     private Transform currDestination;
@@ -41,6 +43,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
+        animator.SetBool("IsCreatureWalkingAnim", true);
         currentState = AIState.Walking;
         int random = Random.Range(0, destinationAmount);
         currDestination = destinations[random];
