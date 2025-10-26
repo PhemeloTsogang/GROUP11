@@ -390,13 +390,16 @@ public class FPController : MonoBehaviour
 
     public void onOpen(InputAction.CallbackContext context)
     {
-        if (context.performed && door.canOpen)
+        if (door != null)
         {
-            keyPartCount = 0;
-            text.text = 0 + "/5";
-            door.Open();
-            StartCoroutine(wait());
-            Level1Growl = AudioManager.instance.Play("Roar", roarPos);
+            if (context.performed && door.canOpen)
+            {
+                keyPartCount = 0;
+                text.text = 0 + "/5";
+                door.Open();
+                StartCoroutine(wait());
+                Level1Growl = AudioManager.instance.Play("Roar", roarPos);
+            }
         }
     }
 

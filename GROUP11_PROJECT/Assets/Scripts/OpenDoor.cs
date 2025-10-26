@@ -17,6 +17,7 @@ public class OpenDoor : MonoBehaviour
         {
             if (player != null)
             {
+                player.door = this;
                 openText.SetActive(true);
                 canOpen = true;
             }
@@ -34,7 +35,13 @@ public class OpenDoor : MonoBehaviour
 
     public void Open()
     {
-       canOpen = false;
+      canOpen = false;
+
+      if (player.door != null)
+        {
+            player.door = null;
+        }
+      
       gameObject.SetActive(false);
       openText.SetActive(false);
     }
