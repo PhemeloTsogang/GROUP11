@@ -18750,7 +18750,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ed8e7a5d8d6d51f409ba488836825765, type: 2}
+  - {fileID: 2100000, guid: 534c0beba7667df4896c5b1415bf35fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -23050,7 +23050,7 @@ MonoBehaviour:
   walkSpeed: 6
   chaseSpeed: 8.5
   detectDistance: 9
-  caughtDist: 2
+  caughtDist: 1.5
   minChasetime: 5
   maxChasetime: 10
   player: {fileID: 964902217}
@@ -71732,7 +71732,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ed8e7a5d8d6d51f409ba488836825765, type: 2}
+  - {fileID: 2100000, guid: 534c0beba7667df4896c5b1415bf35fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84167,7 +84167,7 @@ MonoBehaviour:
   peekLimit: 30
   originalSpeed: 0
   sprintSpeed: 0
-  amplitutde: 0.05
+  amplitutde: 0.2
   _camera: {fileID: 1305895201}
   cameraHolder: {fileID: 951455896}
   stun: {fileID: 1154167341}
@@ -106271,8 +106271,8 @@ MonoBehaviour:
   idleTime: 2
   walkSpeed: 6
   chaseSpeed: 8.5
-  detectDistance: 9
-  caughtDist: 2.5
+  detectDistance: 10
+  caughtDist: 1.5
   minChasetime: 5
   maxChasetime: 10
   player: {fileID: 964902217}
@@ -194889,7 +194889,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ed8e7a5d8d6d51f409ba488836825765, type: 2}
+  - {fileID: 2100000, guid: 534c0beba7667df4896c5b1415bf35fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
