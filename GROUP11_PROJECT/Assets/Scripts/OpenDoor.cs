@@ -13,7 +13,7 @@ public class OpenDoor : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && player.keyPartCount == 5)
+        if (other.CompareTag("Player") && player.keyPartCount == 3)
         {
             if (player != null)
             {

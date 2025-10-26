@@ -12,13 +12,13 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
-        health = 3f;
+        health = 5f;
         fillImage.color = defaultColor; 
     }
 
     public void ChangeColor()
     {
-        if (health == 2)
+        if (health <=4 && health > 1)
         {
             fillImage.color = hurtColor;
         }

@@ -10,11 +10,11 @@ public class KeyPartUI : MonoBehaviour
 
     void Awake()
     {
-        text.text = battery.batteryCount + "/5";
+        text.text = battery.batteryCount + "/3";
     }
 
     public void UpdateUI(float partCount)
     {
-        text.text = partCount + "/5";
+        text.text = partCount + "/3";
     }
 }

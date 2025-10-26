@@ -395,7 +395,7 @@ public class FPController : MonoBehaviour
             if (context.performed && door.canOpen)
             {
                 keyPartCount = 0;
-                text.text = 0 + "/5";
+                text.text = 0 + "/3";
                 door.Open();
                 StartCoroutine(wait());
                 Level1Growl = AudioManager.instance.Play("Roar", roarPos);
