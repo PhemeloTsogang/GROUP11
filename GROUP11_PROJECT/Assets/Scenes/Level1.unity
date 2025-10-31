@@ -11170,6 +11170,42 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 103339355}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &106545049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 106545050}
+  m_Layer: 5
+  m_Name: HealthContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &106545050
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106545049}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 601155849}
+  m_Father: {fileID: 1504184903}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 827.125, y: -409.25}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &106578797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16126,50 +16162,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!1 &167068249
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 167068250}
-  - component: {fileID: 167068251}
-  m_Layer: 5
-  m_Name: Health
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &167068250
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 167068249}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.19999999, y: 0.19999999, z: 0.19999999}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1504184903}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -569.375, y: 294.875}
-  m_SizeDelta: {x: 1920, y: 1080}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &167068251
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 167068249}
-  m_CullTransparentMesh: 1
 --- !u!1001 &167593353
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51748,7 +51740,7 @@ GameObject:
   - component: {fileID: 601155853}
   - component: {fileID: 601155852}
   m_Layer: 5
-  m_Name: Health_0
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51766,7 +51758,7 @@ RectTransform:
   m_LocalScale: {x: 23.632, y: 23.632, z: 23.632}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1504184903}
+  m_Father: {fileID: 106545050}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -84276,7 +84268,7 @@ MonoBehaviour:
   defaultColor: {r: 0, g: 1, b: 0, a: 1}
   hurtColor: {r: 1, g: 0.5, b: 0, a: 1}
   deathColor: {r: 1, g: 0, b: 0, a: 1}
-  animator: {fileID: 0}
+  animator: {fileID: 601155850}
 --- !u!114 &964902225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137842,8 +137834,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 601155849}
-  - {fileID: 167068250}
   - {fileID: 1069858125}
   - {fileID: 637987976}
   - {fileID: 858559832}
@@ -137861,6 +137851,7 @@ RectTransform:
   - {fileID: 1469260904}
   - {fileID: 1108091557}
   - {fileID: 1920607739}
+  - {fileID: 106545050}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -161214,6 +161205,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 789681429953461264, guid: 0aab05fda07533348930614829dd978f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1315098659714671982, guid: 0aab05fda07533348930614829dd978f, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -77.5
@@ -161320,11 +161315,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8002623027061225339, guid: 0aab05fda07533348930614829dd978f, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8002623027061225339, guid: 0aab05fda07533348930614829dd978f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9218342656562924254, guid: 0aab05fda07533348930614829dd978f, type: 3}
       propertyPath: FPController
