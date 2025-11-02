@@ -27,6 +27,7 @@ public class Stamina : MonoBehaviour
     void Start()
     {
         player = GetComponent<FPController>();
+        staminaCanvasGroup.alpha = 0;
     }
 
     void Update()
