@@ -14,7 +14,7 @@ public class Openable : MonoBehaviour
     {
         targetRenderer = GetComponent<MeshRenderer>();
         inRange = false;
-        originalMaterial = targetRenderer.material;
+        originalMaterial = targetRenderer.material; 
     }
 
     private void OnTriggerEnter(Collider other)
@@ -46,6 +46,7 @@ public class Openable : MonoBehaviour
             collectText.SetActive(false);
             targetRenderer.material = originalMaterial;
             Destroy(gameObject);
+            
         }
     }
 }

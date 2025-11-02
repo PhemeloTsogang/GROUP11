@@ -8,6 +8,7 @@ public class Unlock : MonoBehaviour
     public Material glowMaterial;
     private Material originalMaterial;
     private MeshRenderer targetRenderer;
+    public Animator door;
 
 
     private void Awake()
@@ -45,7 +46,7 @@ public class Unlock : MonoBehaviour
         {
             collectText.SetActive(false);
             targetRenderer.material = originalMaterial;
-            Destroy(gameObject);
+            door.SetTrigger("Open");
         }
     }
 }
