@@ -64,7 +64,7 @@ public class CollectBattery : MonoBehaviour
             pickUpText.SetActive(false);
             targetRenderer.material = originalMaterial;
 
-            if (gameObject.name == "TUT_BATTERY")
+            if (gameObject.CompareTag("Battery"))
             {
                 trigger.TriggerDialogue();
                 visible.enabled = false;
