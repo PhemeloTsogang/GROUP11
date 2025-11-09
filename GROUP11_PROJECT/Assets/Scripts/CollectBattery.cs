@@ -7,16 +7,13 @@ public class CollectBattery : MonoBehaviour
     public GameObject pickUpText;
     public BatteryUI battery;
     public bool inCollectRange = false;
-    private DialogueManager manage;
 
-    public DialogueTrigger trigger;
     public Material glowMaterial;
     private Material originalMaterial;
     private MeshRenderer targetRenderer;
 
     private void Awake()
     {
-        manage = FindFirstObjectByType<DialogueManager>();
         inCollectRange = false;
         targetRenderer = GetComponent<MeshRenderer>();
         originalMaterial = targetRenderer.material;
@@ -47,11 +44,6 @@ public class CollectBattery : MonoBehaviour
             {
                 player.battery = null;
             }
-
-            if (manage != null)
-            {
-                manage.EndDialogue();
-            }
         }
     }
 
@@ -66,7 +58,6 @@ public class CollectBattery : MonoBehaviour
 
             if (gameObject.CompareTag("Battery"))
             {
-                trigger.TriggerDialogue();
                 visible.enabled = false;
                 visible2.enabled = false;
                 visible3.enabled = false;

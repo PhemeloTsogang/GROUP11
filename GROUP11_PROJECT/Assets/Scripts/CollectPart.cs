@@ -62,18 +62,18 @@ public class CollectPart : MonoBehaviour
             part.UpdateUI(player.keyPartCount);
             pickUpText.SetActive(false);
             targetRenderer.material = originalMaterial;
-            if (gameObject.CompareTag("Trophy") || gameObject.CompareTag("Bracelet"))
+            if (gameObject.CompareTag("Trophy") || gameObject.CompareTag("Bracelet") || gameObject.CompareTag("Walkie"))
             {
                 trigger.TriggerDialogue();
-                
-            }
-            else if(gameObject.CompareTag("Letter") || gameObject.CompareTag("Walkie"))
-            { 
-                trigger2.TriggerLetter();
                 if (gameObject.CompareTag("Walkie") && !Walkie.activeInHierarchy)
                 {
                     Walkie.SetActive(true);
                 }
+
+            }
+            else if(gameObject.CompareTag("Letter") || gameObject.CompareTag("Walkie"))
+            { 
+                trigger2.TriggerLetter();
 
                 if (gameObject.name == "ReportCard")
                 {
