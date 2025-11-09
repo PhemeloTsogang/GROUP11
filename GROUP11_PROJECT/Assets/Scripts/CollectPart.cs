@@ -14,6 +14,7 @@ public class CollectPart : MonoBehaviour
     public MeshRenderer letter;
     public Report report;
     public UniLetter uni;
+    public PoliceReport police;
 
     private void Awake()
     {
@@ -82,6 +83,11 @@ public class CollectPart : MonoBehaviour
                 if (gameObject.name == "UniversityLetter")
                 {
                     uni.hasCollected = true;
+                }
+
+                if (gameObject.name == "PoliceReport")
+                {
+                    police.hasCollected = true;
                 }
             }
 

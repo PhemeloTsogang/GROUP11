@@ -8,7 +8,13 @@ public class StartLevel2 : MonoBehaviour
     public AudioManager manager;
     public StartHeartbeat heartbeat;
     public FPController memory;
+    private bool hasSaid;
+    public DialogueTrigger trigger;
 
+    private void Awake()
+    {
+        hasSaid = false;
+    }
 
     private void Update()
     {
@@ -45,6 +51,12 @@ public class StartLevel2 : MonoBehaviour
             {
                 Drip = AudioManager.instance.Play("Water", player.transform);
             }
+
+            if (!hasSaid)
+            {
+                hasSaid=true;
+                StartCoroutine(Wait());
+            }
         }
     }
 
@@ -52,5 +64,11 @@ public class StartLevel2 : MonoBehaviour
     {
         yield return new WaitForSeconds(4f);
         levelText.SetActive(false);
+    }
+
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(2f);
+        trigger.TriggerDialogue();
     }
 }

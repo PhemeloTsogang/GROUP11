@@ -41,6 +41,9 @@ public class EnemyAI : MonoBehaviour
     private AudioSource MonsterRoar;
     private AudioSource MonsterAttack;
 
+    [Header("Dialogue Settings")]
+    public DialogueTrigger trigger;
+
     private void Start()
     {
         animator.SetBool("IsCreatureWalkingAnim", true);
@@ -177,6 +180,7 @@ public class EnemyAI : MonoBehaviour
         currentState = AIState.Idle; //my monster is stopped
 
         yield return new WaitForSeconds(3f);
+        trigger.TriggerDialogue();
         gameObject.SetActive(false);
 
         /*ai.isStopped = false;
