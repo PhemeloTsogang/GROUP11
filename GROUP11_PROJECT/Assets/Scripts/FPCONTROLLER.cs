@@ -104,8 +104,14 @@ public class FPController : MonoBehaviour
     [Header("End Door Sequence")]
     public GameObject runtext;
     public TextMeshProUGUI text;
+
+    [Header("Dialogue Settings")]
+    private DialogueManager manage;
+    public DialogueTrigger trigger;
+
     private void Awake()
     {
+        manage = FindFirstObjectByType<DialogueManager>();
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -306,6 +312,13 @@ public class FPController : MonoBehaviour
                 unlockDoor.Open();
                 unlockDoor = null;
             }
+        }
+        else
+        {
+            if (unlockDoor != null && keyCount < 1)
+            {
+                trigger.TriggerDialogue();
+            }           
         }
     }
 

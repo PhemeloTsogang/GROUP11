@@ -612,7 +612,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""13e9e619-0bff-401d-af90-cde4c544b6fe"",
-                    ""path"": ""<Keyboard>/enter"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard"",
