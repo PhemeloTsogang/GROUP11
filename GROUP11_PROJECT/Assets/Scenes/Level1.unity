@@ -119,6 +119,93 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &4468652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4468656}
+  - component: {fileID: 4468655}
+  - component: {fileID: 4468654}
+  - component: {fileID: 4468653}
+  m_Layer: 0
+  m_Name: Speech3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &4468653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4468652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78d8e83cd1a8b1240b081e19610d7d40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigger: {fileID: 4468654}
+  hasCollected: 0
+--- !u!114 &4468654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4468652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03dc01c404a2be044aa0a1bef530ffc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: ~Sammual
+    sentences:
+    - "That one piece of paper tore my life apart\u2026Those pricks at Loomis don\u2019t
+      know what I could\u2019ve become\u2026They doubted me just like everyone else\u2026"
+  manager: {fileID: 197249655}
+--- !u!65 &4468655
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4468652}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &4468656
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4468652}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.5025189, y: -0.5109509, z: -0.4973467, w: 0.48892766}
+  m_LocalPosition: {x: 47.88, y: 96.9, z: 91.71}
+  m_LocalScale: {x: 2.1002166, y: 0.74450696, z: 0.6314904}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 102138743}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &5492591
 Mesh:
   m_ObjectHideFlags: 0
@@ -11268,6 +11355,7 @@ Transform:
   - {fileID: 1916296484}
   - {fileID: 994572813}
   - {fileID: 1461010409}
+  - {fileID: 4468656}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &102457681
@@ -25366,7 +25454,7 @@ GameObject:
   - component: {fileID: 270218425}
   - component: {fileID: 270218424}
   m_Layer: 0
-  m_Name: KeyPart (5)
+  m_Name: UniversityLetter
   m_TagString: Letter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25448,6 +25536,8 @@ MonoBehaviour:
   trigger2: {fileID: 270218424}
   glowMaterial: {fileID: 2100000, guid: 45f138a353d7923469aad110da3a6295, type: 2}
   letter: {fileID: 270218428}
+  report: {fileID: 0}
+  uni: {fileID: 4468653}
 --- !u!135 &270218427
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -28973,10 +29063,10 @@ GameObject:
   - component: {fileID: 324162541}
   - component: {fileID: 324162540}
   - component: {fileID: 324162539}
-  - component: {fileID: 324162538}
+  - component: {fileID: 324162544}
   m_Layer: 0
-  m_Name: KeyPart (4)
-  m_TagString: Letter
+  m_Name: Needles
+  m_TagString: Trophy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29001,24 +29091,6 @@ Transform:
   - {fileID: 346637128}
   m_Father: {fileID: 1674290758}
   m_LocalEulerAnglesHint: {x: -90.941, y: -46.218018, z: 134.436}
---- !u!114 &324162538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 324162536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a54a76de1901794a91ad4d76b21afc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  letterText:
-    name: ~Sammuel
-    pages:
-    - Reminds me of my time doing Heroine with my friends...
-    - Funny how the monster's always round the drugs I did.
-  manager: {fileID: 330311626}
 --- !u!114 &324162539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29051,10 +29123,12 @@ MonoBehaviour:
   Walkie: {fileID: 1821509274}
   part: {fileID: 324162539}
   inCollectRange: 0
-  trigger: {fileID: 0}
-  trigger2: {fileID: 324162538}
+  trigger: {fileID: 324162544}
+  trigger2: {fileID: 0}
   glowMaterial: {fileID: 2100000, guid: 45f138a353d7923469aad110da3a6295, type: 2}
   letter: {fileID: 324162542}
+  report: {fileID: 0}
+  uni: {fileID: 0}
 --- !u!135 &324162541
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -29129,6 +29203,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 324162536}
   m_Mesh: {fileID: -462981019419857548, guid: cead12222eb127c45aee116dab09f423, type: 3}
+--- !u!114 &324162544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324162536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03dc01c404a2be044aa0a1bef530ffc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: ~Sammual
+    sentences:
+    - "This is where that thing disappeared\u2026 why are there needles here? Somethings
+      not adding up, why would that thing leave these behind\u2026"
+  manager: {fileID: 197249655}
 --- !u!1 &325099285
 GameObject:
   m_ObjectHideFlags: 0
@@ -40632,6 +40724,8 @@ MonoBehaviour:
   trigger2: {fileID: 463104321}
   glowMaterial: {fileID: 2100000, guid: 45f138a353d7923469aad110da3a6295, type: 2}
   letter: {fileID: 463104319}
+  report: {fileID: 1461010411}
+  uni: {fileID: 0}
 --- !u!135 &463104318
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -56952,6 +57046,8 @@ MonoBehaviour:
   trigger2: {fileID: 658380603}
   glowMaterial: {fileID: 2100000, guid: 45f138a353d7923469aad110da3a6295, type: 2}
   letter: {fileID: 658380601}
+  report: {fileID: 0}
+  uni: {fileID: 0}
 --- !u!135 &658380600
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -64813,10 +64909,10 @@ GameObject:
   - component: {fileID: 741963481}
   - component: {fileID: 741963480}
   - component: {fileID: 741963479}
-  - component: {fileID: 741963478}
+  - component: {fileID: 741963484}
   m_Layer: 0
-  m_Name: KeyPart (5)
-  m_TagString: Letter
+  m_Name: Bottles
+  m_TagString: Trophy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64840,24 +64936,6 @@ Transform:
   - {fileID: 496340292}
   m_Father: {fileID: 1674290758}
   m_LocalEulerAnglesHint: {x: -90.941, y: -46.218018, z: 134.436}
---- !u!114 &741963478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 741963476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a54a76de1901794a91ad4d76b21afc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  letterText:
-    name: ~Sammuel
-    pages:
-    - Tequila...used to be my favorite. Too bad the monsters scales are all over
-      the booze.
-  manager: {fileID: 330311626}
 --- !u!114 &741963479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64890,10 +64968,12 @@ MonoBehaviour:
   Walkie: {fileID: 1821509274}
   part: {fileID: 741963479}
   inCollectRange: 0
-  trigger: {fileID: 0}
-  trigger2: {fileID: 741963478}
+  trigger: {fileID: 741963484}
+  trigger2: {fileID: 0}
   glowMaterial: {fileID: 2100000, guid: 45f138a353d7923469aad110da3a6295, type: 2}
   letter: {fileID: 741963482}
+  report: {fileID: 0}
+  uni: {fileID: 0}
 --- !u!135 &741963481
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -64968,6 +65048,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 741963476}
   m_Mesh: {fileID: -462981019419857548, guid: cead12222eb127c45aee116dab09f423, type: 3}
+--- !u!114 &741963484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741963476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03dc01c404a2be044aa0a1bef530ffc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: ~Sammual
+    sentences:
+    - "That\u2019s weird\u2026 there are scales around these bottles too\u2026 this
+      thing must be connected to all this somehow\u2026"
+  manager: {fileID: 197249655}
 --- !u!1001 &742620369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77555,6 +77653,7 @@ GameObject:
   - component: {fileID: 863543344}
   - component: {fileID: 863543346}
   - component: {fileID: 863543345}
+  - component: {fileID: 863543347}
   m_Layer: 0
   m_Name: HandleLvl2Monster
   m_TagString: Untagged
@@ -77571,8 +77670,8 @@ Transform:
   m_GameObject: {fileID: 863543343}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0332, y: 0.1846, z: 0.7551}
-  m_LocalScale: {x: 0.013151267, y: 0.011686324, z: 0.12420461}
+  m_LocalPosition: {x: -0.0332, y: 0.1904, z: 0.7551}
+  m_LocalScale: {x: 0.013151267, y: 0.027143186, z: 0.12420461}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 406360006}
@@ -77590,6 +77689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lvl2Monst: {fileID: 243404450}
+  trigger: {fileID: 863543347}
 --- !u!65 &863543346
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -77611,6 +77711,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &863543347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863543343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03dc01c404a2be044aa0a1bef530ffc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: ~Sammual
+    sentences:
+    - "...Something's outside. I needa get a move on and be careful\u2026\u201D"
+  manager: {fileID: 197249655}
 --- !u!1 &865073651
 GameObject:
   m_ObjectHideFlags: 0
@@ -84474,7 +84591,7 @@ Transform:
   m_GameObject: {fileID: 964902213}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -552.5, y: -13.975, z: 28.8}
+  m_LocalPosition: {x: -306.2, y: -13.975, z: 32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -100917,6 +101034,8 @@ MonoBehaviour:
   trigger2: {fileID: 1079370911}
   glowMaterial: {fileID: 2100000, guid: 45f138a353d7923469aad110da3a6295, type: 2}
   letter: {fileID: 1079370915}
+  report: {fileID: 0}
+  uni: {fileID: 0}
 --- !u!135 &1079370914
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -103033,6 +103152,8 @@ MonoBehaviour:
   trigger2: {fileID: 1111613219}
   glowMaterial: {fileID: 2100000, guid: 45f138a353d7923469aad110da3a6295, type: 2}
   letter: {fileID: 1111613223}
+  report: {fileID: 0}
+  uni: {fileID: 0}
 --- !u!135 &1111613222
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -134293,10 +134414,10 @@ GameObject:
   - component: {fileID: 1455222646}
   - component: {fileID: 1455222645}
   - component: {fileID: 1455222644}
-  - component: {fileID: 1455222643}
+  - component: {fileID: 1455222649}
   m_Layer: 0
-  m_Name: KeyPart (10)
-  m_TagString: Letter
+  m_Name: Bandages
+  m_TagString: Trophy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134318,23 +134439,6 @@ Transform:
   - {fileID: 859096834}
   m_Father: {fileID: 1674290758}
   m_LocalEulerAnglesHint: {x: -90.941, y: -46.218018, z: 134.436}
---- !u!114 &1455222643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1455222641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a54a76de1901794a91ad4d76b21afc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  letterText:
-    name: ~ Sammuel
-    pages:
-    - Bloody Bandages. I had my fair share of time with these when i was in Rehab.
-  manager: {fileID: 330311626}
 --- !u!114 &1455222644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134367,10 +134471,12 @@ MonoBehaviour:
   Walkie: {fileID: 1821509274}
   part: {fileID: 1455222644}
   inCollectRange: 0
-  trigger: {fileID: 0}
-  trigger2: {fileID: 1455222643}
+  trigger: {fileID: 1455222649}
+  trigger2: {fileID: 0}
   glowMaterial: {fileID: 2100000, guid: 45f138a353d7923469aad110da3a6295, type: 2}
   letter: {fileID: 1455222647}
+  report: {fileID: 0}
+  uni: {fileID: 0}
 --- !u!135 &1455222646
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -134445,6 +134551,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1455222641}
   m_Mesh: {fileID: -462981019419857548, guid: cead12222eb127c45aee116dab09f423, type: 3}
+--- !u!114 &1455222649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455222641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03dc01c404a2be044aa0a1bef530ffc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: ~Sammual
+    sentences:
+    - "Weird\u2026 this place is covered in things I used to ease my head\u2026 these
+      bandages were when I kicked up my drug use with Heroine\u2026 That\u2019s when
+      I really fell out of everything around me\u2026"
+  manager: {fileID: 197249655}
 --- !u!1 &1458874578
 GameObject:
   m_ObjectHideFlags: 0
@@ -135369,6 +135494,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1461010409}
   - component: {fileID: 1461010410}
+  - component: {fileID: 1461010411}
+  - component: {fileID: 1461010412}
   m_Layer: 0
   m_Name: Speech2
   m_TagString: Untagged
@@ -135384,9 +135511,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1461010408}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.5025189, y: -0.5109509, z: -0.4973467, w: 0.48892766}
+  m_LocalPosition: {x: -18.51, y: 96.25, z: 68.7}
+  m_LocalScale: {x: 2.1002166, y: 0.74450696, z: 0.6314904}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 102138743}
@@ -135412,6 +135539,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1461010411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461010408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b360245afe91df41a56436c46ada792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigger: {fileID: 1461010412}
+  hasCollected: 0
+--- !u!114 &1461010412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461010408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03dc01c404a2be044aa0a1bef530ffc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: ~Sammual
+    sentences:
+    - "How did that get there?... honestly not a memory I reminisce on, I really
+      let things get out of hand after meeting my friends\u2026"
+  manager: {fileID: 197249655}
 --- !u!43 &1461428887
 Mesh:
   m_ObjectHideFlags: 0
@@ -163322,6 +163481,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 499832903212940829, guid: 0aab05fda07533348930614829dd978f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 175
+      objectReference: {fileID: 0}
     - target: {fileID: 789681429953461264, guid: 0aab05fda07533348930614829dd978f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -163505,6 +163668,10 @@ PrefabInstance:
     - target: {fileID: 3948911758439401130, guid: 0aab05fda07533348930614829dd978f, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 0.5921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 4120435421964969902, guid: 0aab05fda07533348930614829dd978f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 667.6
       objectReference: {fileID: 0}
     - target: {fileID: 4740043036320708972, guid: 0aab05fda07533348930614829dd978f, type: 3}
       propertyPath: m_Color.a
@@ -168774,6 +168941,8 @@ MonoBehaviour:
   trigger2: {fileID: 1813383786}
   glowMaterial: {fileID: 2100000, guid: 45f138a353d7923469aad110da3a6295, type: 2}
   letter: {fileID: 1813383790}
+  report: {fileID: 0}
+  uni: {fileID: 0}
 --- !u!135 &1813383789
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -191760,6 +191929,7 @@ GameObject:
   - component: {fileID: 2046238669}
   - component: {fileID: 2046238671}
   - component: {fileID: 2046238672}
+  - component: {fileID: 2046238673}
   m_Layer: 0
   m_Name: 1stMonsterMove
   m_TagString: Untagged
@@ -191818,6 +191988,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monster: {fileID: 313900534}
   monst: {fileID: 44943744}
+  trigger: {fileID: 2046238673}
+--- !u!114 &2046238673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046238668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03dc01c404a2be044aa0a1bef530ffc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: ~Sammual
+    sentences:
+    - WHAT THE HELL IS THAT!?
+  manager: {fileID: 197249655}
 --- !u!1 &2048213876
 GameObject:
   m_ObjectHideFlags: 0

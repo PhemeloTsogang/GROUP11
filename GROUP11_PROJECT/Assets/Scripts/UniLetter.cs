@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Report : MonoBehaviour
+public class UniLetter : MonoBehaviour
 {
     public DialogueTrigger trigger;
     public bool hasCollected;

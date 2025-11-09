@@ -12,6 +12,8 @@ public class CollectPart : MonoBehaviour
     private Material originalMaterial;
     private MeshRenderer targetRenderer;
     public MeshRenderer letter;
+    public Report report;
+    public UniLetter uni;
 
     private void Awake()
     {
@@ -70,6 +72,16 @@ public class CollectPart : MonoBehaviour
                 if (gameObject.CompareTag("Walkie") && !Walkie.activeInHierarchy)
                 {
                     Walkie.SetActive(true);
+                }
+
+                if (gameObject.name == "ReportCard")
+                {
+                    report.hasCollected = true;
+                }
+
+                if (gameObject.name == "UniversityLetter")
+                {
+                    uni.hasCollected = true;
                 }
             }
 
