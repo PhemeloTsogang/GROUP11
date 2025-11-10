@@ -84,7 +84,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LIzzard_animations
+  m_Name: Old_LIzzard_animations
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: IsCreatureWalkingAnim
