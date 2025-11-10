@@ -104,6 +104,7 @@ public class EnemyAI : MonoBehaviour
                 if (MonsterMove == null || !MonsterMove.isPlaying)
                 {
                     MonsterMove = AudioManager.instance.Play("MonsterMove", this.transform);
+                    animator.SetBool("IsCreatureWalkingAnim", true);
                 }
 
                 ai.destination = player.position;
@@ -125,6 +126,7 @@ public class EnemyAI : MonoBehaviour
                 if (MonsterMove == null || !MonsterMove.isPlaying)
                 {
                     MonsterMove = AudioManager.instance.Play("MonsterMove", this.transform);
+                    animator.SetBool("IsCreatureWalkingAnim", true);
                 }
 
                 ai.destination = currDestination.position;
@@ -148,7 +150,7 @@ public class EnemyAI : MonoBehaviour
                 {
                     MonsterRoar = AudioManager.instance.Play("Roar", this.transform);
                 }
-
+                animator.SetBool("IsCreatureWalkingAnim", false);
                 MonsterMove = null;
                 break;
         }
