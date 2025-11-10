@@ -25,6 +25,7 @@ public class IntroScene : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
+
                 if (!hasTriggered)
                 {
                     hasTriggered = true;

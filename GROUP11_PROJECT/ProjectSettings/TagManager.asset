@@ -16,6 +16,7 @@ TagManager:
   - Trophy
   - Letter
   - Walkie
+  - EndDoor
   layers:
   - Default
   - TransparentFX

@@ -10,9 +10,9 @@ public class EnemyAI : MonoBehaviour
     //Author: iHeartGameDev (Youtube)
     //16 August 2025
     //Availability: https://www.youtube.com/watch?v=Vt8aZDPzRjI
+
     public enum AIState { Idle, Walking, Chasing }
     public AIState currentState;
-
     public NavMeshAgent ai;
     public List<Transform> destinations;
     public float idleTime, walkSpeed, chaseSpeed, detectDistance, caughtDist;
@@ -22,12 +22,8 @@ public class EnemyAI : MonoBehaviour
     public Vector3 rayCastOffset;
     public LayerMask raycastLayerMask;
     public Animator animator;
-  
-
-
     private Transform currDestination;
     private Vector3 dest;
-
 
     //Attack settings
     public Attack cameraShake;
@@ -44,24 +40,46 @@ public class EnemyAI : MonoBehaviour
     [Header("Dialogue Settings")]
     public DialogueTrigger trigger;
 
+    // Minimal additions:
+    private Coroutine movementCoroutine; // used only to manage patrol/idle/chase coroutines
+
     private void Start()
     {
-        animator.SetBool("IsCreatureWalkingAnim", true);
+        // safety null-checks
+        if (animator != null)
+            animator.SetBool("IsCreatureWalkingAnim", true);
+
         currentState = AIState.Walking;
-        int random = Random.Range(0, destinationAmount);
-        currDestination = destinations[random];
+
+        // clamp destinationAmount so Random.Range can't pick a bad index
+        if (destinations == null || destinations.Count == 0)
+        {
+            Debug.LogWarning("EnemyAI: no destinations assigned.");
+            destinationAmount = 0;
+        }
+        else
+        {
+            destinationAmount = Mathf.Clamp(destinationAmount, 1, destinations.Count);
+            int random = Random.Range(0, destinationAmount);
+            currDestination = destinations[random];
+        }
+
         canAttack = true;
     }
 
     private void Update()
     {
+        if (player == null || ai == null || health == null || hide == null)
+            return; // missing required refs, avoid weird runtime errors
+
         Vector3 direction = (player.position - transform.position).normalized;
         RaycastHit hit;
 
         if (health.health <= 0)
         {
+            // when player is dead, disable and go to death scene
             player.gameObject.SetActive(false);
-            StopAllCoroutines();
+            StopMovementCoroutine();
             Dead();
             currentState = AIState.Idle;
             return;
@@ -73,8 +91,8 @@ public class EnemyAI : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Player") && !hide.isHiding)
                 {
-                    StopAllCoroutines();
-                    StartCoroutine(Chase());
+                    StopMovementCoroutine();
+                    movementCoroutine = StartCoroutine(Chase());
                     currentState = AIState.Chasing;
                 }
             }
@@ -92,12 +110,13 @@ public class EnemyAI : MonoBehaviour
                 ai.speed = chaseSpeed;
 
                 float distance = Vector3.Distance(player.position, ai.transform.position);
-                if (distance <= caughtDist && canAttack && !hide.isHiding )
+                if (distance <= caughtDist && canAttack && !hide.isHiding)
                 {
                     if (health.health <= 0)
                     {
                         return;
                     }
+                    // allow attack coroutine to run without being cancelled by movement coroutine stops
                     StartCoroutine(EnemyAttack());
                 }
                 break;
@@ -111,17 +130,19 @@ public class EnemyAI : MonoBehaviour
                 ai.destination = currDestination.position;
                 ai.speed = walkSpeed;
 
-                if (ai.remainingDistance <= ai.stoppingDistance)
+                // only consider arrival if path is not pending (prevents false "already arrived" when path still computing)
+                if (!ai.pathPending && ai.remainingDistance <= ai.stoppingDistance)
                 {
                     ai.speed = 0;
-                    StopAllCoroutines();
-                    StartCoroutine(Idle());
+                    StopMovementCoroutine();
+                    movementCoroutine = StartCoroutine(Idle());
                     currentState = AIState.Idle;
                 }
                 break;
 
             case AIState.Idle:
-                AudioManager.instance.StopSound(MonsterMove);
+                if (MonsterMove != null)
+                    AudioManager.instance.StopSound(MonsterMove);
 
                 if (MonsterRoar == null || !MonsterRoar.isPlaying)
                 {
@@ -136,10 +157,20 @@ public class EnemyAI : MonoBehaviour
     IEnumerator Idle()
     {
         yield return new WaitForSeconds(idleTime);
-
-        int random = Random.Range(0, destinationAmount);
-        currDestination = destinations[random];
+        if (destinations != null && destinations.Count > 0)
+        {
+            int random = Random.Range(0, destinationAmount);
+            currDestination = destinations[random];
+        }
         currentState = AIState.Walking;
+        movementCoroutine = StartCoroutine(DummyCoroutine());
+        yield break;
+    }
+
+    IEnumerator DummyCoroutine()
+    {
+        yield return null;
+        movementCoroutine = null;
     }
 
     IEnumerator Chase()
@@ -147,12 +178,15 @@ public class EnemyAI : MonoBehaviour
         float chaseTime = Random.Range(minChasetime, maxChasetime);
         yield return new WaitForSeconds(chaseTime);
 
-        // Only go back to patrol if player wasn't caught
         if (currentState == AIState.Chasing)
         {
-            int random = Random.Range(0, destinationAmount);
-            currDestination = destinations[random];
+            if (destinations != null && destinations.Count > 0)
+            {
+                int random = Random.Range(0, destinationAmount);
+                currDestination = destinations[random];
+            }
             currentState = AIState.Walking;
+            movementCoroutine = StartCoroutine(DummyCoroutine());
         }
     }
 
@@ -164,30 +198,31 @@ public class EnemyAI : MonoBehaviour
 
     public void StopChase()
     {
-        StopAllCoroutines();
-        int random = Random.Range(0, destinationAmount);
-        currDestination = destinations[random];
+        StopMovementCoroutine();
+        if (destinations != null && destinations.Count > 0)
+        {
+            int random = Random.Range(0, destinationAmount);
+            currDestination = destinations[random];
+        }
         currentState = AIState.Walking;
     }
 
     public IEnumerator Stun()
     {
-        AudioManager.instance.StopSound(MonsterMove);
+        if (MonsterMove != null)
+            AudioManager.instance.StopSound(MonsterMove);
+
         AudioManager.instance.Play("MonsterHurt", this.transform);
         MonsterMove = null;
-
         ai.isStopped = true;
         currentState = AIState.Idle; //my monster is stopped
-
         yield return new WaitForSeconds(3f);
         trigger.TriggerDialogue();
         gameObject.SetActive(false);
-
         /*ai.isStopped = false;
         int random = Random.Range(0, destinationAmount);
         currDestination = destinations[random];
         currentState = AIState.Walking;*/
-
     }
 
     private IEnumerator EnemyAttack()
@@ -200,16 +235,26 @@ public class EnemyAI : MonoBehaviour
         canAttack = false;
         ai.isStopped = true;
 
-        health.health--;
-        health.ChangeColor();
+        if (health != null)
+        {
+            health.health--;
+            health.ChangeColor();
+        }
+
         yield return StartCoroutine(cameraShake.Shake(0.15f, 0.4f));
-
-
         yield return new WaitForSeconds(attackCooldown);
 
         ai.isStopped = false;
-
         canAttack = true;
+    }
 
+    // --- new helper methods (minimal) ---
+    private void StopMovementCoroutine()
+    {
+        if (movementCoroutine != null)
+        {
+            StopCoroutine(movementCoroutine);
+            movementCoroutine = null;
+        }
     }
 }

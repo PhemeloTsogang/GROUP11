@@ -109,6 +109,9 @@ public class FPController : MonoBehaviour
     private DialogueManager manage;
     public DialogueTrigger trigger;
 
+    [Header("Cutscene Settings")]
+    public GameEnd cutscene;
+
     private void Awake()
     {
         manage = FindFirstObjectByType<DialogueManager>();
@@ -409,9 +412,21 @@ public class FPController : MonoBehaviour
             {
                 keyPartCount = 0;
                 text.text = 0 + "/3";
+
+                if (door.name == "Level1_Door")
+                {
+                    StartCoroutine(wait());
+                    Level1Growl = AudioManager.instance.Play("Roar", roarPos);
+                }
+
+                if (door.name == "Level3_Door")
+                {
+                    cutscene.PlayCutscene();
+                    return;
+                }
+
                 door.Open();
-                StartCoroutine(wait());
-                Level1Growl = AudioManager.instance.Play("Roar", roarPos);
+                
             }
         }
     }
