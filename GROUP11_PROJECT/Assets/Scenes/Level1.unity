@@ -36089,6 +36089,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a10fbac07c968874599b802c67a5ec87, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 312668957}
     - targetCorrespondingSourceObject: {fileID: -8068073526183931155, guid: a10fbac07c968874599b802c67a5ec87, type: 3}
       insertIndex: -1
       addedObject: {fileID: 299890083}
@@ -36800,6 +36803,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8a0adce1d73e2774886c73198ee0e55c, type: 3}
   m_PrefabInstance: {fileID: 312255188}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &312668956 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a10fbac07c968874599b802c67a5ec87, type: 3}
+  m_PrefabInstance: {fileID: 299890080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &312668957
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312668956}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &313900531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77330,6 +77360,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8a0adce1d73e2774886c73198ee0e55c, type: 3}
   m_PrefabInstance: {fileID: 765136241}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &770963010 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a10fbac07c968874599b802c67a5ec87, type: 3}
+  m_PrefabInstance: {fileID: 2132412454}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &771495563
 GameObject:
   m_ObjectHideFlags: 0
@@ -94533,7 +94568,7 @@ MonoBehaviour:
     name: ~Sammual~
     sentences:
     - Huh...no key hole...
-    - Feels like I need  something in here to get out.
+    - Feels like I need something in here to get out.
   manager: {fileID: 0}
 --- !u!114 &964902228
 MonoBehaviour:
@@ -117339,8 +117374,9 @@ MonoBehaviour:
     name: ~Sammual
     sentences:
     - "Again, tech was there for me through the <b>\"distractions\"</b>\u2026Hmm...."
-    - "Even now when you'renot here you always have my back Emily\u2026I just wish
-      I could have had yours\u2026see you on the other side, Sis\u2026\u201D"
+    - "Even now when you're not here, you always have my back, Emily\u2026I just
+      wish I could have had yours\u2026"
+    - "...see you on the other side, Sis\u2026\u201D"
   manager: {fileID: 197249655}
 --- !u!64 &1154167346
 MeshCollider:
@@ -128572,6 +128608,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a10fbac07c968874599b802c67a5ec87, type: 3}
   m_PrefabInstance: {fileID: 2132412454}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &1219275116
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770963010}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!43 &1219845912
 Mesh:
   m_ObjectHideFlags: 0
@@ -264321,6 +264379,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a10fbac07c968874599b802c67a5ec87, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1219275116}
     - targetCorrespondingSourceObject: {fileID: -8068073526183931155, guid: a10fbac07c968874599b802c67a5ec87, type: 3}
       insertIndex: -1
       addedObject: {fileID: 424153523}
