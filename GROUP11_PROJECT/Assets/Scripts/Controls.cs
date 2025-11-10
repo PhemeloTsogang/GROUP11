@@ -164,6 +164,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""NextPageDialogue"",
+                    ""type"": ""Button"",
+                    ""id"": ""30a6841c-cb61-4805-a626-4517f0b984da"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""CollectBat"",
                     ""type"": ""Button"",
                     ""id"": ""e7b8a715-cf95-437a-b866-6d47763df570"",
@@ -828,6 +837,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""OpenPause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8c7683d6-5c16-473a-83ef-42e67de1e2d6"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""NextPageDialogue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ac9cafaf-62ae-48f2-b088-55affb84e239"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""NextPageDialogue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -872,6 +903,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Stun = m_Player.FindAction("Stun", throwIfNotFound: true);
         m_Player_Tutorial = m_Player.FindAction("Tutorial", throwIfNotFound: true);
         m_Player_NextPage = m_Player.FindAction("NextPage", throwIfNotFound: true);
+        m_Player_NextPageDialogue = m_Player.FindAction("NextPageDialogue", throwIfNotFound: true);
         m_Player_CollectBat = m_Player.FindAction("CollectBat", throwIfNotFound: true);
         m_Player_CollectPart = m_Player.FindAction("CollectPart", throwIfNotFound: true);
         m_Player_Open = m_Player.FindAction("Open", throwIfNotFound: true);
@@ -969,6 +1001,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Stun;
     private readonly InputAction m_Player_Tutorial;
     private readonly InputAction m_Player_NextPage;
+    private readonly InputAction m_Player_NextPageDialogue;
     private readonly InputAction m_Player_CollectBat;
     private readonly InputAction m_Player_CollectPart;
     private readonly InputAction m_Player_Open;
@@ -1021,6 +1054,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/NextPage".
         /// </summary>
         public InputAction @NextPage => m_Wrapper.m_Player_NextPage;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/NextPageDialogue".
+        /// </summary>
+        public InputAction @NextPageDialogue => m_Wrapper.m_Player_NextPageDialogue;
         /// <summary>
         /// Provides access to the underlying input action "Player/CollectBat".
         /// </summary>
@@ -1107,6 +1144,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @NextPage.started += instance.OnNextPage;
             @NextPage.performed += instance.OnNextPage;
             @NextPage.canceled += instance.OnNextPage;
+            @NextPageDialogue.started += instance.OnNextPageDialogue;
+            @NextPageDialogue.performed += instance.OnNextPageDialogue;
+            @NextPageDialogue.canceled += instance.OnNextPageDialogue;
             @CollectBat.started += instance.OnCollectBat;
             @CollectBat.performed += instance.OnCollectBat;
             @CollectBat.canceled += instance.OnCollectBat;
@@ -1169,6 +1209,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @NextPage.started -= instance.OnNextPage;
             @NextPage.performed -= instance.OnNextPage;
             @NextPage.canceled -= instance.OnNextPage;
+            @NextPageDialogue.started -= instance.OnNextPageDialogue;
+            @NextPageDialogue.performed -= instance.OnNextPageDialogue;
+            @NextPageDialogue.canceled -= instance.OnNextPageDialogue;
             @CollectBat.started -= instance.OnCollectBat;
             @CollectBat.performed -= instance.OnCollectBat;
             @CollectBat.canceled -= instance.OnCollectBat;
@@ -1318,6 +1361,13 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnNextPage(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "NextPageDialogue" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnNextPageDialogue(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "CollectBat" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

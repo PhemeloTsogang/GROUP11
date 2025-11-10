@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 
 public class LetterTextManager : MonoBehaviour
@@ -8,6 +10,7 @@ public class LetterTextManager : MonoBehaviour
     public TMP_Text titleText;
     public TMP_Text letterTextText;
     public Animator animator;
+    public PlayerInput playerInput;
 
     private Queue <string> pages;
 
@@ -19,6 +22,7 @@ public class LetterTextManager : MonoBehaviour
     public void StartLetter(LetterText letterText)
     {
         animator.SetBool("IsOpen", true);
+        StartCoroutine(wait());
         titleText.text = letterText.name;
         pages.Clear();
 
@@ -52,6 +56,13 @@ public class LetterTextManager : MonoBehaviour
     public void EndLetterText()
     {
         animator.SetBool("IsOpen", false);
+    }
+
+    private IEnumerator wait()
+    {
+        playerInput.enabled = false;
+        yield return new WaitForSeconds(2f);
+        playerInput.enabled = true;
     }
 }
 /*

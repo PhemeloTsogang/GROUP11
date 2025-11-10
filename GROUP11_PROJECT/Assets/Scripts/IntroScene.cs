@@ -58,7 +58,7 @@ public class IntroScene : MonoBehaviour
 
     private IEnumerator wait()
     {
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(0.5f);
         trigger.TriggerDialogue();
     }
 }

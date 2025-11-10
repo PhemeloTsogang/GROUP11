@@ -396,7 +396,7 @@ public class FPController : MonoBehaviour
 
     public void onStun(InputAction.CallbackContext context)
     {
-        if (context.performed && stun.inStunRange && batteryCount == 1)
+        if (context.performed && stun.inStunRange && batteryCount == 1 && walkie.activeInHierarchy)
         {
             if (Monst.activeInHierarchy)
             {

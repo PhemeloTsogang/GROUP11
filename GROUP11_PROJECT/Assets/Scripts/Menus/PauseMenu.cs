@@ -63,6 +63,12 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         Time.timeScale = 1f;
+        
+        foreach (var source in FindObjectsOfType<AudioSource>())
+        {
+            source.Stop();
+        }
+        AudioListener.pause = false;
         SceneManager.LoadScene("MainMenu");
     }
     public void QuitGame()

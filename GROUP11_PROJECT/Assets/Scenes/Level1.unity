@@ -19890,7 +19890,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 8cdb7ef7fb6458642a21f05b277e3686, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.11
+      value: 1.29
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8cdb7ef7fb6458642a21f05b277e3686, type: 3}
       propertyPath: m_LocalPosition.y
@@ -22750,7 +22750,7 @@ MonoBehaviour:
   idleTime: 2
   walkSpeed: 6
   chaseSpeed: 8.5
-  detectDistance: 12
+  detectDistance: 14
   caughtDist: 2.5
   minChasetime: 0
   maxChasetime: 4
@@ -62600,11 +62600,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 87834581baa69344e95e592a17410656, type: 3}
       propertyPath: m_LocalScale.x
-      value: 88.66434
+      value: 72.144516
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87834581baa69344e95e592a17410656, type: 3}
       propertyPath: m_LocalScale.y
-      value: 34.428947
+      value: 85.55547
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87834581baa69344e95e592a17410656, type: 3}
       propertyPath: m_LocalScale.z
@@ -62612,7 +62612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87834581baa69344e95e592a17410656, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -115.549995
+      value: -115.467
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87834581baa69344e95e592a17410656, type: 3}
       propertyPath: m_LocalPosition.y
@@ -62624,19 +62624,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87834581baa69344e95e592a17410656, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7008807
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87834581baa69344e95e592a17410656, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7008808
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87834581baa69344e95e592a17410656, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.09362791
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87834581baa69344e95e592a17410656, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0936279
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87834581baa69344e95e592a17410656, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -62648,7 +62648,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87834581baa69344e95e592a17410656, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 15.218
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 87834581baa69344e95e592a17410656, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -62902,6 +62902,9 @@ MonoBehaviour:
   text: {fileID: 1076466318}
   stamina: {fileID: 1904497683}
   healthbar: {fileID: 106545049}
+  memories: {fileID: 1069858124}
+  memoryCount: {fileID: 841029683}
+  playerInput: {fileID: 964902219}
 --- !u!328 &626643818
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -93878,7 +93881,7 @@ Transform:
   m_GameObject: {fileID: 964902213}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -655.134, y: -13.975, z: 38.23}
+  m_LocalPosition: {x: -655.668, y: -13.975, z: 38.264}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -94218,18 +94221,6 @@ MonoBehaviour:
     m_ActionName: 'Player/Tutorial[/Keyboard/t]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 197249655}
-        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-        m_MethodName: NextPage
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 330311626}
         m_TargetAssemblyTypeName: LetterTextManager, Assembly-CSharp
         m_MethodName: NextPage
@@ -94388,6 +94379,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 283d0b4f-0276-4666-8a1b-74f99f66d62c
     m_ActionName: 'Player/OpenPause[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 197249655}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: NextPage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 30a6841c-cb61-4805-a626-4517f0b984da
+    m_ActionName: 'Player/NextPageDialogue[/Mouse/leftButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -117280,7 +117287,7 @@ MonoBehaviour:
   idleTime: 2
   walkSpeed: 6
   chaseSpeed: 8.5
-  detectDistance: 15
+  detectDistance: 17
   caughtDist: 3.25
   minChasetime: 0
   maxChasetime: 5
@@ -163135,8 +163142,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.0197626, y: 1.7176394, z: 1}
+  m_Center: {x: 0.009881431, y: 0.114091136, z: -2.70222e-12}
 --- !u!114 &1461010411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182557,7 +182564,7 @@ MonoBehaviour:
   dialogue:
     name: ~Sammual
     sentences:
-    - "No\u2026that\u2019s last thing I needed to see right now\u2026*exhales*\u2026I\u2019m-I\u2019m
+    - "No\u2026that\u2019s the last thing I needed to see right now\u2026*exhales*\u2026I\u2019m-I\u2019m
       sorry Emma, you got tied up in one of my screw ups and it cost me everything,
       Sis."
     - " I swear I\u2019ll do better\u2026please, don\u2019t leave me\u2026"
@@ -196423,7 +196430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1622267820550248878, guid: 0aab05fda07533348930614829dd978f, type: 3}
       propertyPath: m_text
-      value: Press [Right-Click] / (X) for next
+      value: Press [Left-Click] / (D-Pad Down) for next
       objectReference: {fileID: 0}
     - target: {fileID: 1622267820550248878, guid: 0aab05fda07533348930614829dd978f, type: 3}
       propertyPath: m_margin.x
@@ -196618,8 +196625,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5459536012422306328, guid: 0aab05fda07533348930614829dd978f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 620
+      objectReference: {fileID: 0}
+    - target: {fileID: 5459536012422306328, guid: 0aab05fda07533348930614829dd978f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -191.86
+      value: -171
       objectReference: {fileID: 0}
     - target: {fileID: 5688022439242057202, guid: 0aab05fda07533348930614829dd978f, type: 3}
       propertyPath: m_Sprite
@@ -209914,7 +209925,7 @@ Transform:
   m_GameObject: {fileID: 1800862398}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0.64, y: -0.54, z: 81.97}
+  m_LocalPosition: {x: -0.64, y: 0.93, z: 81.97}
   m_LocalScale: {x: 110.01707, y: 5.936372, z: 99.23212}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -227407,8 +227418,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1916296484}
   - component: {fileID: 1916296487}
-  - component: {fileID: 1916296486}
   - component: {fileID: 1916296485}
+  - component: {fileID: 1916296488}
   m_Layer: 0
   m_Name: Speech
   m_TagString: Untagged
@@ -227449,19 +227460,6 @@ MonoBehaviour:
     - "Weird, I don\u2019t remember being put in a hospital\u2026"
     - "This envelope feels weird too\u2026I need it to keep going forward somehow\u2026"
   manager: {fileID: 197249655}
---- !u!114 &1916296486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916296483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f34994e22fefde4787908d228d6b8bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trigger: {fileID: 1916296485}
 --- !u!65 &1916296487
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -227483,6 +227481,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1916296488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916296483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f34994e22fefde4787908d228d6b8bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigger: {fileID: 1916296485}
 --- !u!1001 &1916885218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -234927,6 +234938,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: LetterTextManager
       objectReference: {fileID: 0}
+    - target: {fileID: 198579444900104074, guid: 1c9045e1999fa96489e9a67fdaed8d1c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489545965196042337, guid: 1c9045e1999fa96489e9a67fdaed8d1c, type: 3}
+      propertyPath: part
+      value: 
+      objectReference: {fileID: 964902218}
+    - target: {fileID: 1489545965196042337, guid: 1c9045e1999fa96489e9a67fdaed8d1c, type: 3}
+      propertyPath: trig1
+      value: 
+      objectReference: {fileID: 1916296485}
+    - target: {fileID: 1489545965196042337, guid: 1c9045e1999fa96489e9a67fdaed8d1c, type: 3}
+      propertyPath: trig2
+      value: 
+      objectReference: {fileID: 4468654}
+    - target: {fileID: 1489545965196042337, guid: 1c9045e1999fa96489e9a67fdaed8d1c, type: 3}
+      propertyPath: trig3
+      value: 
+      objectReference: {fileID: 1461010412}
+    - target: {fileID: 1489545965196042337, guid: 1c9045e1999fa96489e9a67fdaed8d1c, type: 3}
+      propertyPath: trig4
+      value: 
+      objectReference: {fileID: 1604500979}
     - target: {fileID: 1489545965196042337, guid: 1c9045e1999fa96489e9a67fdaed8d1c, type: 3}
       propertyPath: animator
       value: 
@@ -234935,6 +234970,10 @@ PrefabInstance:
       propertyPath: titleText
       value: 
       objectReference: {fileID: 1605703928}
+    - target: {fileID: 1489545965196042337, guid: 1c9045e1999fa96489e9a67fdaed8d1c, type: 3}
+      propertyPath: playerInput
+      value: 
+      objectReference: {fileID: 964902219}
     - target: {fileID: 1489545965196042337, guid: 1c9045e1999fa96489e9a67fdaed8d1c, type: 3}
       propertyPath: letterTextText
       value: 
@@ -251102,14 +251141,14 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Scuffle
     clip: {fileID: 8300000, guid: fdd2d250499fc424ebe864f088c749ea, type: 3}
-    volume: 0.65
+    volume: 0.49
     pitch: 1
     spatialBlend: 1
     loop: 0
     source: {fileID: 0}
   - name: Boxes
     clip: {fileID: 8300000, guid: a33855de67205814c94ed3c1babeeb97, type: 3}
-    volume: 0.54
+    volume: 0.25
     pitch: 1
     spatialBlend: 0
     loop: 0

@@ -2,13 +2,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 using System.Collections;
+using UnityEngine.InputSystem;
 
 public class GameEnd : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
     public GameObject text;
-    public GameObject stamina, healthbar;
-
+    public GameObject stamina, healthbar,memories, memoryCount;
+    public PlayerInput playerInput;
     public void PlayCutscene()
     {
         if (videoPlayer == null)
@@ -19,6 +20,10 @@ public class GameEnd : MonoBehaviour
         stamina.SetActive(false);
         text.SetActive(false);
         healthbar.SetActive(false);
+        memories.SetActive(false);
+        memoryCount.SetActive(false);
+
+        playerInput.enabled = false;
 
         if (Time.timeScale != 0)
         {
@@ -45,7 +50,8 @@ public class GameEnd : MonoBehaviour
         {
             videoPlayer.loopPointReached -= OnCutsceneEnd;
         }
-            
+
+        playerInput.enabled = true;
         Time.timeScale = 1f;
 
         Cursor.lockState = CursorLockMode.None;

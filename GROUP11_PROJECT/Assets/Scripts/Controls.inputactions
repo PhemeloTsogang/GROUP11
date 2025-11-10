@@ -78,6 +78,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "NextPageDialogue",
+                    "type": "Button",
+                    "id": "30a6841c-cb61-4805-a626-4517f0b984da",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "CollectBat",
                     "type": "Button",
                     "id": "e7b8a715-cf95-437a-b866-6d47763df570",
@@ -740,6 +749,28 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "OpenPause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8c7683d6-5c16-473a-83ef-42e67de1e2d6",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "NextPageDialogue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ac9cafaf-62ae-48f2-b088-55affb84e239",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "NextPageDialogue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
