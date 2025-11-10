@@ -40,21 +40,21 @@ public class EnemyAI : MonoBehaviour
     [Header("Dialogue Settings")]
     public DialogueTrigger trigger;
 
-    // Minimal additions:
-    private Coroutine movementCoroutine; // used only to manage patrol/idle/chase coroutines
+    private Coroutine movementCoroutine; //this helps my movement coroutines work better
 
     private void Start()
     {
-        // safety null-checks
         if (animator != null)
+        {
             animator.SetBool("IsCreatureWalkingAnim", true);
+        }
 
         currentState = AIState.Walking;
 
         // clamp destinationAmount so Random.Range can't pick a bad index
+        //it helps the random destinations not mess up the monsters behaviour
         if (destinations == null || destinations.Count == 0)
         {
-            Debug.LogWarning("EnemyAI: no destinations assigned.");
             destinationAmount = 0;
         }
         else
@@ -70,14 +70,16 @@ public class EnemyAI : MonoBehaviour
     private void Update()
     {
         if (player == null || ai == null || health == null || hide == null)
-            return; // missing required refs, avoid weird runtime errors
+        {
+            return; // if everything is disabled
+        }
+            
 
         Vector3 direction = (player.position - transform.position).normalized;
         RaycastHit hit;
 
         if (health.health <= 0)
         {
-            // when player is dead, disable and go to death scene
             player.gameObject.SetActive(false);
             StopMovementCoroutine();
             Dead();
@@ -133,6 +135,7 @@ public class EnemyAI : MonoBehaviour
                 ai.speed = walkSpeed;
 
                 // only consider arrival if path is not pending (prevents false "already arrived" when path still computing)
+                // this helps that other problem I had where the monster wouldn't know what to do when states switched quickly
                 if (!ai.pathPending && ai.remainingDistance <= ai.stoppingDistance)
                 {
                     ai.speed = 0;
@@ -144,12 +147,15 @@ public class EnemyAI : MonoBehaviour
 
             case AIState.Idle:
                 if (MonsterMove != null)
+                {
                     AudioManager.instance.StopSound(MonsterMove);
-
+                }
+                    
                 if (MonsterRoar == null || !MonsterRoar.isPlaying)
                 {
                     MonsterRoar = AudioManager.instance.Play("Roar", this.transform);
                 }
+
                 animator.SetBool("IsCreatureWalkingAnim", false);
                 MonsterMove = null;
                 break;
@@ -159,11 +165,13 @@ public class EnemyAI : MonoBehaviour
     IEnumerator Idle()
     {
         yield return new WaitForSeconds(idleTime);
+
         if (destinations != null && destinations.Count > 0)
         {
             int random = Random.Range(0, destinationAmount);
             currDestination = destinations[random];
         }
+
         currentState = AIState.Walking;
         movementCoroutine = StartCoroutine(DummyCoroutine());
         yield break;
@@ -250,7 +258,7 @@ public class EnemyAI : MonoBehaviour
         canAttack = true;
     }
 
-    // --- new helper methods (minimal) ---
+    // new helper functionnthat helps stop movement better//
     private void StopMovementCoroutine()
     {
         if (movementCoroutine != null)
