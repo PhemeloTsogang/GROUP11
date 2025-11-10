@@ -7,6 +7,7 @@ public class IntroScene : MonoBehaviour
     public DialogueTrigger trigger;
     public Transform player;
     public float detectDistance;
+    public AudioManager manager;
 
     private bool hasTriggered;
 
@@ -30,6 +31,11 @@ public class IntroScene : MonoBehaviour
                 {
                     hasTriggered = true;
                     StartCoroutine(wait());
+                    
+                    if(manager.Heart == null || !manager.Heart.isPlaying)
+                    {
+                        manager.Heart = AudioManager.instance.Play("HeartRate", player);
+                    }
                 }
             }
         }

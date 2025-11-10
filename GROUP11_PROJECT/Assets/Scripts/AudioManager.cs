@@ -12,7 +12,7 @@ public class AudioManager : MonoBehaviour
     {
         if ( Heart == null)
         {
-            Heart = Play("HeartRate", this.transform);
+                Heart = Play("HeartRate", this.transform);
         }
         
         if (instance == null)

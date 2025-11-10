@@ -92,7 +92,7 @@ public class FPController : MonoBehaviour
     public Hide locker;
 
     [Header("Audio Settings")]
-    private AudioSource Walk, Run, Breathe, Level1Growl;
+    private AudioSource Walk, Run, Breathe, Level1Growl, Collect, Door, Memory;
     public Transform roarPos;
 
     [Header("Animation Settings")]
@@ -312,6 +312,12 @@ public class FPController : MonoBehaviour
             if (unlockDoor != null && unlockDoor.inRange)
             {
                 keyCount--;
+
+                if (Door == null || !Door.isPlaying)
+                {
+                    Door = AudioManager.instance.Play("Door", this.transform);
+                } 
+
                 unlockDoor.Open();
                 unlockDoor = null;
             }
@@ -341,6 +347,11 @@ public class FPController : MonoBehaviour
         {
             if (part != null && part.inCollectRange)
             {
+                if (Memory == null || !Memory.isPlaying)
+                {
+                    Memory = AudioManager.instance.Play("Memory", this.transform);
+                }
+
                 part.Collect();
                 part = null;
             }
@@ -367,6 +378,11 @@ public class FPController : MonoBehaviour
         {
             if (key != null && key.inRange)
             {
+                if (Collect == null || !Collect.isPlaying)
+                {
+                    Collect = AudioManager.instance.Play("Collect", this.transform);
+                }
+
                 key.Collect();
                 key = null;
             }
