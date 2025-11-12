@@ -61,7 +61,7 @@ public class LetterTextManager : MonoBehaviour
     private IEnumerator wait()
     {
         playerInput.enabled = false;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         playerInput.enabled = true;
     }
 }
